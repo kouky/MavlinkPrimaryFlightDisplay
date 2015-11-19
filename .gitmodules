@@ -1,3 +1,12 @@
 [submodule "Config"]
 	path = Config
 	url = https://github.com/jspahrsummers/xcconfigs.git
+[submodule "Carthage/Checkouts/Result"]
+	path = Carthage/Checkouts/Result
+	url = https://github.com/antitypical/Result.git
+[submodule "Carthage/Checkouts/ReactiveCocoa"]
+	path = Carthage/Checkouts/ReactiveCocoa
+	url = https://github.com/ReactiveCocoa/ReactiveCocoa.git
+[submodule "Carthage/Checkouts/ReactiveMavlink"]
+	path = Carthage/Checkouts/ReactiveMavlink
+	url = https://github.com/kouky/ReactiveMavlink.git

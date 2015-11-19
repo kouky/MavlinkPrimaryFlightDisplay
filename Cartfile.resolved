@@ -1,0 +1,3 @@
+github "antitypical/Result" "0.6.0-beta.5"
+github "ReactiveCocoa/ReactiveCocoa" "6da453aff28fbb489f389bd9a2d72dc7aa228c85"
+github "kouky/ReactiveMavlink" "eeaf085df42a895f5c5a02736f871e57ea69f706"
