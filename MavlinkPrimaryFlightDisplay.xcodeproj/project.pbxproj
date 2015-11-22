@@ -18,6 +18,7 @@
 		271AFC171BFDFAD100842B1D /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC111BFDFAD100842B1D /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2787452A1C0161440038FDBF /* HorizonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745281C0161440038FDBF /* HorizonNode.swift */; };
 		2787452B1C0161440038FDBF /* PrimaryFlightDisplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */; };
+		278745311C01693C0038FDBF /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 278745301C01693C0038FDBF /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -27,6 +28,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				278745311C01693C0038FDBF /* ORSSerial.framework in Embed Frameworks */,
 				271AFC171BFDFAD100842B1D /* Result.framework in Embed Frameworks */,
 				271AFC151BFDFAD100842B1D /* ReactiveMavlink.framework in Embed Frameworks */,
 				271AFC131BFDFAD100842B1D /* ReactiveCocoa.framework in Embed Frameworks */,
@@ -50,6 +52,7 @@
 		278745261C009FFB0038FDBF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		278745281C0161440038FDBF /* HorizonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizonNode.swift; path = Sources/HorizonNode.swift; sourceTree = SOURCE_ROOT; };
 		278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrimaryFlightDisplayScene.swift; path = Sources/PrimaryFlightDisplayScene.swift; sourceTree = SOURCE_ROOT; };
+		278745301C01693C0038FDBF /* ORSSerial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ORSSerial.framework; path = Carthage/Build/Mac/ORSSerial.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +122,7 @@
 		271AFC191BFDFAEB00842B1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				278745301C01693C0038FDBF /* ORSSerial.framework */,
 				271AFC0F1BFDFAD100842B1D /* ReactiveCocoa.framework */,
 				271AFC101BFDFAD100842B1D /* ReactiveMavlink.framework */,
 				271AFC111BFDFAD100842B1D /* Result.framework */,

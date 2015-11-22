@@ -10,3 +10,6 @@
 [submodule "Carthage/Checkouts/ReactiveMavlink"]
 	path = Carthage/Checkouts/ReactiveMavlink
 	url = https://github.com/kouky/ReactiveMavlink.git
+[submodule "Carthage/Checkouts/ORSSerialPort"]
+	path = Carthage/Checkouts/ORSSerialPort
+	url = https://github.com/armadsen/ORSSerialPort.git
