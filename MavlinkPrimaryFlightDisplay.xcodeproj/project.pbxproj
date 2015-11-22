@@ -19,6 +19,7 @@
 		2787452A1C0161440038FDBF /* HorizonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745281C0161440038FDBF /* HorizonNode.swift */; };
 		2787452B1C0161440038FDBF /* PrimaryFlightDisplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */; };
 		278745311C01693C0038FDBF /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 278745301C01693C0038FDBF /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745321C016C2B0038FDBF /* MavlinkController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,6 +54,7 @@
 		278745281C0161440038FDBF /* HorizonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizonNode.swift; path = Sources/HorizonNode.swift; sourceTree = SOURCE_ROOT; };
 		278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrimaryFlightDisplayScene.swift; path = Sources/PrimaryFlightDisplayScene.swift; sourceTree = SOURCE_ROOT; };
 		278745301C01693C0038FDBF /* ORSSerial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ORSSerial.framework; path = Carthage/Build/Mac/ORSSerial.framework; sourceTree = "<group>"; };
+		278745321C016C2B0038FDBF /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MavlinkController.swift; path = Sources/MavlinkController.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,9 +93,10 @@
 		270E51FD1BFDF640009A050A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				271AFBFB1BFDF72100842B1D /* AppDelegate.swift */,
+				278745321C016C2B0038FDBF /* MavlinkController.swift */,
 				278745281C0161440038FDBF /* HorizonNode.swift */,
 				278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */,
-				271AFBFB1BFDF72100842B1D /* AppDelegate.swift */,
 			);
 			name = Sources;
 			path = MavlinkPrimaryFlightDisplay;
@@ -201,6 +204,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */,
 				271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */,
 				2787452A1C0161440038FDBF /* HorizonNode.swift in Sources */,
 				2787452B1C0161440038FDBF /* PrimaryFlightDisplayScene.swift in Sources */,
