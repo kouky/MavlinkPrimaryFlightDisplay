@@ -110,7 +110,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="539" customClass="SKView">
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="539" customClass="PrimaryFlightDisplayView" customModule="MavlinkPrimaryFlightDisplay" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="800" height="600"/>
                         <subviews>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3Nl-UB-Nfp">
@@ -140,7 +140,7 @@
         </window>
         <customObject id="494" customClass="AppDelegate" customModule="MavlinkPrimaryFlightDisplay" customModuleProvider="target">
             <connections>
-                <outlet property="skView" destination="539" id="540"/>
+                <outlet property="flightView" destination="539" id="TkO-RV-dPM"/>
                 <outlet property="window" destination="371" id="532"/>
             </connections>
         </customObject>

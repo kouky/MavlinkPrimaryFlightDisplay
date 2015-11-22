@@ -14,20 +14,7 @@ import SpriteKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
-    @IBOutlet weak var skView: SKView!
-    
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let scene = PrimaryFlightDisplayScene(size: skView.bounds.size)
-        scene.scaleMode = .AspectFill
-        scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        skView.presentScene(scene)
-        
-        /* Sprite Kit applies additional optimizations to improve rendering performance */
-        skView.ignoresSiblingOrder = true
-        
-        self.skView.showsFPS = true
-        self.skView.showsNodeCount = true
-    }
+    @IBOutlet weak var flightView: PrimaryFlightDisplayView!
     
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
         return true
