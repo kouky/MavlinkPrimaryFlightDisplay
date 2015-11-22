@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AFBFB1BFDF72100842B1D /* AppDelegate.swift */; };
-		271AFBFE1BFDF72100842B1D /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AFBFC1BFDF72100842B1D /* GameScene.swift */; };
-		271AFC011BFDF72E00842B1D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 271AFBFF1BFDF72E00842B1D /* GameScene.sks */; };
 		271AFC041BFDF73700842B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC031BFDF73700842B1D /* Assets.xcassets */; };
 		271AFC071BFDF74700842B1D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC051BFDF74700842B1D /* MainMenu.xib */; };
 		271AFC121BFDFAD100842B1D /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC0F1BFDFAD100842B1D /* ReactiveCocoa.framework */; };
@@ -18,6 +16,8 @@
 		271AFC151BFDFAD100842B1D /* ReactiveMavlink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC101BFDFAD100842B1D /* ReactiveMavlink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		271AFC161BFDFAD100842B1D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC111BFDFAD100842B1D /* Result.framework */; };
 		271AFC171BFDFAD100842B1D /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC111BFDFAD100842B1D /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2787452A1C0161440038FDBF /* HorizonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745281C0161440038FDBF /* HorizonNode.swift */; };
+		2787452B1C0161440038FDBF /* PrimaryFlightDisplayScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,9 +39,6 @@
 /* Begin PBXFileReference section */
 		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MavlinkPrimaryFlightDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		271AFBFB1BFDF72100842B1D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Sources/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		271AFBFC1BFDF72100842B1D /* GameScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameScene.swift; path = Sources/GameScene.swift; sourceTree = SOURCE_ROOT; };
-		271AFBFF1BFDF72E00842B1D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; name = GameScene.sks; path = Resources/GameScene.sks; sourceTree = "<group>"; };
-		271AFC001BFDF72E00842B1D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		271AFC031BFDF73700842B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
 		271AFC061BFDF74700842B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Resources/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Mac-Application.xcconfig"; path = "Config/Mac OS X/Mac-Application.xcconfig"; sourceTree = "<group>"; };
@@ -50,6 +47,9 @@
 		271AFC0F1BFDFAD100842B1D /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		271AFC101BFDFAD100842B1D /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/Mac/ReactiveMavlink.framework; sourceTree = "<group>"; };
 		271AFC111BFDFAD100842B1D /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		278745261C009FFB0038FDBF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
+		278745281C0161440038FDBF /* HorizonNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HorizonNode.swift; path = Sources/HorizonNode.swift; sourceTree = SOURCE_ROOT; };
+		278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrimaryFlightDisplayScene.swift; path = Sources/PrimaryFlightDisplayScene.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,8 +88,9 @@
 		270E51FD1BFDF640009A050A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				278745281C0161440038FDBF /* HorizonNode.swift */,
+				278745291C0161440038FDBF /* PrimaryFlightDisplayScene.swift */,
 				271AFBFB1BFDF72100842B1D /* AppDelegate.swift */,
-				271AFBFC1BFDF72100842B1D /* GameScene.swift */,
 			);
 			name = Sources;
 			path = MavlinkPrimaryFlightDisplay;
@@ -98,10 +99,9 @@
 		271AFBFA1BFDF70D00842B1D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				278745261C009FFB0038FDBF /* Info.plist */,
 				271AFC051BFDF74700842B1D /* MainMenu.xib */,
 				271AFC031BFDF73700842B1D /* Assets.xcassets */,
-				271AFBFF1BFDF72E00842B1D /* GameScene.sks */,
-				271AFC001BFDF72E00842B1D /* Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -186,7 +186,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				271AFC041BFDF73700842B1D /* Assets.xcassets in Resources */,
-				271AFC011BFDF72E00842B1D /* GameScene.sks in Resources */,
 				271AFC071BFDF74700842B1D /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,8 +197,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271AFBFE1BFDF72100842B1D /* GameScene.swift in Sources */,
 				271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */,
+				2787452A1C0161440038FDBF /* HorizonNode.swift in Sources */,
+				2787452B1C0161440038FDBF /* PrimaryFlightDisplayScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
