@@ -20,6 +20,7 @@
 		2787452B1C0161440038FDBF /* PrimaryFlightDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745291C0161440038FDBF /* PrimaryFlightDisplay.swift */; };
 		278745311C01693C0038FDBF /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 278745301C01693C0038FDBF /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745321C016C2B0038FDBF /* MavlinkController.swift */; };
+		27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA2EF71C0724A600C4E349 /* MenuManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,7 @@
 		278745291C0161440038FDBF /* PrimaryFlightDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrimaryFlightDisplay.swift; path = Sources/PrimaryFlightDisplay.swift; sourceTree = SOURCE_ROOT; };
 		278745301C01693C0038FDBF /* ORSSerial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ORSSerial.framework; path = Carthage/Build/Mac/ORSSerial.framework; sourceTree = "<group>"; };
 		278745321C016C2B0038FDBF /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MavlinkController.swift; path = Sources/MavlinkController.swift; sourceTree = SOURCE_ROOT; };
+		27FA2EF71C0724A600C4E349 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuManager.swift; path = Sources/MenuManager.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +78,6 @@
 			children = (
 				270E51FD1BFDF640009A050A /* Sources */,
 				271AFBFA1BFDF70D00842B1D /* Resources */,
-				271AFC081BFDF80400842B1D /* Config */,
 				271AFC191BFDFAEB00842B1D /* Frameworks */,
 				270E51FC1BFDF640009A050A /* Products */,
 			);
@@ -97,6 +98,7 @@
 				278745321C016C2B0038FDBF /* MavlinkController.swift */,
 				278745281C0161440038FDBF /* HorizonNode.swift */,
 				278745291C0161440038FDBF /* PrimaryFlightDisplay.swift */,
+				27FA2EF71C0724A600C4E349 /* MenuManager.swift */,
 			);
 			name = Sources;
 			path = MavlinkPrimaryFlightDisplay;
@@ -125,6 +127,7 @@
 		271AFC191BFDFAEB00842B1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				271AFC081BFDF80400842B1D /* Config */,
 				278745301C01693C0038FDBF /* ORSSerial.framework */,
 				271AFC0F1BFDFAD100842B1D /* ReactiveCocoa.framework */,
 				271AFC101BFDFAD100842B1D /* ReactiveMavlink.framework */,
@@ -204,6 +207,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */,
 				278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */,
 				271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */,
 				2787452A1C0161440038FDBF /* HorizonNode.swift in Sources */,

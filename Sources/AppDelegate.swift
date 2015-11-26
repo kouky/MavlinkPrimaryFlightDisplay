@@ -15,6 +15,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var flightView: PrimaryFlightDisplayView!
+    @IBOutlet weak var mavlinkMenu: NSMenu!
+    var menuManager: MenuManager!
+    var mavlinkController: MavlinkController!
+    
+    func applicationDidFinishLaunching(notification: NSNotification) {
+        mavlinkController = MavlinkController()
+        menuManager = MenuManager(mavlinkMenu: mavlinkMenu, availableSerialPorts: mavlinkController.availableSerialPorts)
+    }
     
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
         return true
