@@ -21,7 +21,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationDidFinishLaunching(notification: NSNotification) {
         mavlinkController = MavlinkController()
-        menuManager = MenuManager(mavlinkMenu: mavlinkMenu, availableSerialPorts: mavlinkController.availableSerialPorts)
+        menuManager = MenuManager(mavlinkMenu: mavlinkMenu, availableSerialPorts: mavlinkController.availableSerialPorts, mavlinkController: mavlinkController)
+        
+        mavlinkController.reactiveMavlink.heartbeat.observeNext { heartbeat in
+            print(heartbeat)
+        }
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {

@@ -21,10 +21,14 @@ class MavlinkController: NSObject {
         didSet {
             oldValue?.close()
             oldValue?.delegate = nil
-            serialPort?.delegate = self
-            serialPort?.baudRate = 57600
-            serialPort?.numberOfStopBits = 1
-            serialPort?.parity = .None
+            if let port = serialPort {
+                port.delegate = self
+                port.baudRate = 57600
+                port.numberOfStopBits = 1
+                port.parity = .None
+                port.open()
+                startUsbMavlinkSession()
+            }
         }
     }
     
@@ -54,20 +58,9 @@ class MavlinkController: NSObject {
     
     // MARK: - Actions
     
-    func openOrClosePort(sender: AnyObject) {
-        guard let port = serialPort else { return }
-        
-        if port.open {
-            port.close()
-        }
-        else {
-            port.open()
-            self.startUsbMavlinkSession()
-        }
-    }
     
-    func startUsbMavlinkSession() {
-        guard let port = self.serialPort where port.open else {
+    private func startUsbMavlinkSession() {
+        guard let port = serialPort where port.open else {
             print("Serial port is not open")
             return
         }
