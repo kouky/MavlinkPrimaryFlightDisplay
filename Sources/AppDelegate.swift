@@ -26,6 +26,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mavlinkController.reactiveMavlink.heartbeat.observeNext { heartbeat in
             print(heartbeat)
         }
+        
+        mavlinkController.reactiveMavlink.attitude.observeNext { [weak self] attitude in
+            self?.flightView.updateAttitude(attitude.roll)
+        }
+
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {

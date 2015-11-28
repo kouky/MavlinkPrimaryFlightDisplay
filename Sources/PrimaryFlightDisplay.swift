@@ -8,13 +8,16 @@
 
 import SpriteKit
 
-class PrimaryFlightDisplayView: SKView {
+public class PrimaryFlightDisplayView: SKView {
+    
+    // MARK: Initializers
+    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
@@ -32,11 +35,19 @@ class PrimaryFlightDisplayView: SKView {
         showsFPS = true
         showsNodeCount = true
     }
+    
+    // MARK: Public Methods
+    
+    public func updateAttitude(roll: Float) {
+        if let scene = scene as? PrimaryFlightDisplayScene {
+            scene.updateRoll(roll)
+        }
+    }
 }
 
 private class PrimaryFlightDisplayScene: SKScene {
     
-    private let horizonNode: HorizonNode
+    let horizonNode: HorizonNode
 
     override init(size: CGSize) {
         horizonNode = HorizonNode(size: size)
@@ -50,5 +61,9 @@ private class PrimaryFlightDisplayScene: SKScene {
     override func didMoveToView(view: SKView) {
         horizonNode.position = CGPoint(x:0, y:0);
         addChild(horizonNode)
+    }
+    
+    func updateRoll(roll: Float) {
+        horizonNode.runAction(SKAction.rotateToAngle(-CGFloat(roll), duration: 0.1, shortestUnitArc: true))
     }
 }
