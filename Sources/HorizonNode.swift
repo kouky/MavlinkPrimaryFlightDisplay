@@ -15,10 +15,10 @@ class HorizonNode: SKNode {
     
     init(size: CGSize) {
         super.init()
-        skyNode.size = CGSize(width: size.width, height: size.height / 2)
-        groundNode.size = CGSize(width: size.width, height: size.height / 2)
-        skyNode.position = CGPoint(x: 0, y: size.height / 4)
-        groundNode.position = CGPoint(x: 0, y: -size.height / 4)
+        skyNode.size = CGSize(width: size.width/2, height: size.height/2)
+        groundNode.size = CGSize(width: size.width/2, height: size.height/2)
+        skyNode.position = CGPoint(x: 0, y: size.height/4)
+        groundNode.position = CGPoint(x: 0, y: -size.height/4)
         addChild(skyNode)
         addChild(groundNode)
     }

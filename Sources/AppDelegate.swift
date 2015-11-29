@@ -24,11 +24,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuManager = MenuManager(mavlinkMenu: mavlinkMenu, availableSerialPorts: mavlinkController.availableSerialPorts, mavlinkController: mavlinkController)
         
         mavlinkController.reactiveMavlink.heartbeat.observeNext { heartbeat in
-            print(heartbeat)
+//            print(heartbeat)
         }
         
         mavlinkController.reactiveMavlink.attitude.observeNext { [weak self] attitude in
-            self?.flightView.updateAttitude(attitude.roll)
+            self?.flightView.updateAttitude(attitude.roll, pitch: attitude.pitch)
         }
 
     }

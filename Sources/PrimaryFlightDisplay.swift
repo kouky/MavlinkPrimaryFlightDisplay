@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import Darwin
 
 public class PrimaryFlightDisplayView: SKView {
     
@@ -37,10 +38,10 @@ public class PrimaryFlightDisplayView: SKView {
     }
     
     // MARK: Public Methods
-    
-    public func updateAttitude(roll: Float) {
+        
+    public func updateAttitude(roll: Float, pitch: Float) {
         if let scene = scene as? PrimaryFlightDisplayScene {
-            scene.updateRoll(roll)
+            scene.updateAttitude(pitch, roll: roll)
         }
     }
 }
@@ -63,7 +64,11 @@ private class PrimaryFlightDisplayScene: SKScene {
         addChild(horizonNode)
     }
     
-    func updateRoll(roll: Float) {
-        horizonNode.runAction(SKAction.rotateToAngle(-CGFloat(roll), duration: 0.1, shortestUnitArc: true))
+    func updateAttitude(pitch: Float, roll: Float) {
+        let x = CGFloat(pitch) * -300
+        let rollaction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
+        let pitchAction = SKAction.moveToY(x, duration: 0.05)
+        let sequence = SKAction.sequence([pitchAction,rollaction])
+        horizonNode.runAction(sequence)
     }
 }
