@@ -1,4 +1,4 @@
 github "armadsen/ORSSerialPort" "2.0.1"
-github "antitypical/Result" "0.6.0-beta.5"
-github "ReactiveCocoa/ReactiveCocoa" "6da453aff28fbb489f389bd9a2d72dc7aa228c85"
-github "kouky/ReactiveMavlink" "eeaf085df42a895f5c5a02736f871e57ea69f706"
+github "antitypical/Result" "1.0.1"
+github "ReactiveCocoa/ReactiveCocoa" "f77534c77434f2112ce663f998c71ab1098335b2"
+github "kouky/ReactiveMavlink" "0f0bdd757ccbfc62e847bbd4c286723457e4d16a"
