@@ -49,6 +49,7 @@ public class PrimaryFlightDisplayView: SKView {
 private class PrimaryFlightDisplayScene: SKScene {
     
     let artificalHorizon: ArtificialHorizon
+    let attitudeReferenceIndex = AttitudeReferenceIndex()
 
     override init(size: CGSize) {
         artificalHorizon = ArtificialHorizon(size: size)
@@ -60,8 +61,10 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
 
     override func didMoveToView(view: SKView) {
-        artificalHorizon.position = CGPoint(x:0, y:0);
+        artificalHorizon.position = CGPointZero
         addChild(artificalHorizon)
+        attitudeReferenceIndex.position = CGPointZero
+        addChild(attitudeReferenceIndex)
     }
     
     func updateAttitude(pitch: Float, roll: Float) {
