@@ -1,5 +1,5 @@
 //
-//  HorizonNode.swift
+//  ArtificialHorizon.swift
 //  MavlinkPrimaryFlightDisplay
 //
 //  Created by Michael Koukoullis on 21/11/2015.
@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class HorizonNode: SKNode {
+class ArtificialHorizon: SKNode {
 
     private let skyNode = SKSpriteNode(color: SKColor.blueColor(), size: CGSize(width: 100, height: 100))
     private let groundNode = SKSpriteNode(color: SKColor.brownColor(), size: CGSize(width: 100, height: 100))

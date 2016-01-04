@@ -48,10 +48,10 @@ public class PrimaryFlightDisplayView: SKView {
 
 private class PrimaryFlightDisplayScene: SKScene {
     
-    let horizonNode: HorizonNode
+    let artificalHorizon: ArtificialHorizon
 
     override init(size: CGSize) {
-        horizonNode = HorizonNode(size: size)
+        artificalHorizon = ArtificialHorizon(size: size)
         super.init(size: size)
     }
     
@@ -60,8 +60,8 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
 
     override func didMoveToView(view: SKView) {
-        horizonNode.position = CGPoint(x:0, y:0);
-        addChild(horizonNode)
+        artificalHorizon.position = CGPoint(x:0, y:0);
+        addChild(artificalHorizon)
     }
     
     func updateAttitude(pitch: Float, roll: Float) {
@@ -69,6 +69,6 @@ private class PrimaryFlightDisplayScene: SKScene {
         let rollaction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
         let pitchAction = SKAction.moveToY(x, duration: 0.05)
         let sequence = SKAction.sequence([pitchAction,rollaction])
-        horizonNode.runAction(sequence)
+        artificalHorizon.runAction(sequence)
     }
 }
