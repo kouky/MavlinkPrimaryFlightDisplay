@@ -41,18 +41,22 @@ public class PrimaryFlightDisplayView: SKView {
         
     public func updateAttitude(roll: Float, pitch: Float) {
         if let scene = scene as? PrimaryFlightDisplayScene {
-            scene.updateAttitude(pitch, roll: roll)
+            scene.setAttitude(pitch: pitch, roll: roll)
         }
     }
 }
 
+protocol AttitudeAdjustable {
+    func setAttitude(pitch pitch: Float, roll: Float)
+}
+
 private class PrimaryFlightDisplayScene: SKScene {
     
-    let artificalHorizon: ArtificialHorizon
+    let gyroscope: Gyroscope
     let attitudeReferenceIndex = AttitudeReferenceIndex()
 
     override init(size: CGSize) {
-        artificalHorizon = ArtificialHorizon(size: size)
+        gyroscope = Gyroscope(size: size)
         super.init(size: size)
     }
     
@@ -61,17 +65,16 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
 
     override func didMoveToView(view: SKView) {
-        artificalHorizon.position = CGPointZero
-        addChild(artificalHorizon)
-        attitudeReferenceIndex.position = CGPointZero
+        gyroscope.position = CGPoint.zero
+        addChild(gyroscope)
+        attitudeReferenceIndex.position = CGPoint.zero
         addChild(attitudeReferenceIndex)
     }
-    
-    func updateAttitude(pitch: Float, roll: Float) {
-        let x = CGFloat(pitch) * -300
-        let rollaction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
-        let pitchAction = SKAction.moveToY(x, duration: 0.05)
-        let sequence = SKAction.sequence([pitchAction,rollaction])
-        artificalHorizon.runAction(sequence)
+}
+
+extension PrimaryFlightDisplayScene: AttitudeAdjustable {
+
+    func setAttitude(pitch pitch: Float, roll: Float) {
+        gyroscope.setAttitude(pitch: pitch, roll: roll)
     }
 }
