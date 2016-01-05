@@ -10,12 +10,16 @@ import SpriteKit
 
 class Gyroscope: SKNode {
     
-    let horizon: ArtificialHorizon
+    private let horizon: ArtificialHorizon
+    private let pitchLadder: PitchLadder
     
-    init(size: CGSize) {
-        horizon = ArtificialHorizon(size: size)
+    init(sceneSize: CGSize) {
+        horizon = ArtificialHorizon(sceneSize: sceneSize)
+        pitchLadder = PitchLadder(sceneSize: sceneSize, degreeSpacing: 5)
         super.init()
+        
         addChild(horizon)
+        addChild(pitchLadder)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -30,6 +34,8 @@ extension Gyroscope: AttitudeAdjustable {
         let rollaction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
         let pitchAction = SKAction.moveToY(x, duration: 0.05)
         let sequence = SKAction.sequence([pitchAction,rollaction])
-        runAction(sequence)
+        horizon.runAction(sequence)
+        
+        pitchLadder.runAction(pitchAction)
     }
 }

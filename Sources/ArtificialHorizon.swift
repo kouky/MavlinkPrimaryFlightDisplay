@@ -12,15 +12,22 @@ class ArtificialHorizon: SKNode {
 
     private let skyNode = SKSpriteNode(color: SKColor.blueColor(), size: CGSize(width: 100, height: 100))
     private let groundNode = SKSpriteNode(color: SKColor.brownColor(), size: CGSize(width: 100, height: 100))
+    private let zeroPitchLine: SKShapeNode
     
-    init(size: CGSize) {
+    init(sceneSize: CGSize) {
+        zeroPitchLine = SKShapeNode(rectOfSize: CGSize(width: 2 * sceneSize.width, height: 1))
         super.init()
-        skyNode.size = CGSize(width: size.width/2, height: size.height/2)
-        groundNode.size = CGSize(width: size.width/2, height: size.height/2)
-        skyNode.position = CGPoint(x: 0, y: size.height/4)
-        groundNode.position = CGPoint(x: 0, y: -size.height/4)
+        
+        skyNode.size = CGSize(width: sceneSize.width/2, height: sceneSize.height/2)
+        groundNode.size = CGSize(width: sceneSize.width/2, height: sceneSize.height/2)
+        skyNode.position = CGPoint(x: 0, y: sceneSize.height/4)
+        groundNode.position = CGPoint(x: 0, y: -sceneSize.height/4)
+        zeroPitchLine.strokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+        zeroPitchLine.position = CGPoint.zero
+        
         addChild(skyNode)
         addChild(groundNode)
+        addChild(zeroPitchLine)
     }
 
     required init?(coder aDecoder: NSCoder) {

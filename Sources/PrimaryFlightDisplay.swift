@@ -56,7 +56,7 @@ private class PrimaryFlightDisplayScene: SKScene {
     let attitudeReferenceIndex = AttitudeReferenceIndex()
 
     override init(size: CGSize) {
-        gyroscope = Gyroscope(size: size)
+        gyroscope = Gyroscope(sceneSize: size)
         super.init(size: size)
     }
     
