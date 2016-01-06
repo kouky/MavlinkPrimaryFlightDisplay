@@ -52,11 +52,13 @@ protocol AttitudeAdjustable {
 
 private class PrimaryFlightDisplayScene: SKScene {
     
-    let gyroscope: Gyroscope
+    let artificalHorizon: ArtificialHorizon
+    let pitchLadder: PitchLadder
     let attitudeReferenceIndex = AttitudeReferenceIndex()
 
     override init(size: CGSize) {
-        gyroscope = Gyroscope(sceneSize: size)
+        artificalHorizon = ArtificialHorizon(sceneSize: size)
+        pitchLadder = PitchLadder(sceneSize: size, degreeSpacing: 5)
         super.init(size: size)
     }
     
@@ -65,9 +67,9 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
 
     override func didMoveToView(view: SKView) {
-        gyroscope.position = CGPoint.zero
-        addChild(gyroscope)
         attitudeReferenceIndex.position = CGPoint.zero
+        addChild(artificalHorizon)
+        addChild(pitchLadder)
         addChild(attitudeReferenceIndex)
     }
 }
@@ -75,6 +77,7 @@ private class PrimaryFlightDisplayScene: SKScene {
 extension PrimaryFlightDisplayScene: AttitudeAdjustable {
 
     func setAttitude(pitch pitch: Float, roll: Float) {
-        gyroscope.setAttitude(pitch: pitch, roll: roll)
+        artificalHorizon.setAttitude(pitch: pitch, roll: roll)
+        pitchLadder.setAttitude(pitch: pitch, roll: roll)
     }
 }

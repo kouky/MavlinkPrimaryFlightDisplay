@@ -34,3 +34,15 @@ class ArtificialHorizon: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+extension ArtificialHorizon: AttitudeAdjustable {
+    
+    func setAttitude(pitch pitch: Float, roll: Float) {
+        let x = CGFloat(pitch) * -300
+        let rollaction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
+        let pitchAction = SKAction.moveToY(x, duration: 0.05)
+        let sequence = SKAction.sequence([pitchAction,rollaction])
+        runAction(sequence)
+    }
+}
+
