@@ -12,24 +12,39 @@ class PitchLadder: SKNode {
     
     private let minorPitchLineWidth = 20
     private let majorPitchLineWidth = 60
+    private let minorPitchDegreeValues = Array(5.stride(to: 86, by: 10))
+    private let majorPitchDegreeValues = Array(10.stride(to: 91, by: 10))
+    private let pitchLines = SKNode()
 
     init(sceneSize: CGSize, degreeSpacing: Int) {
         super.init()
-        addChild(PitchLineBuilder.pitchLineForDegree(-5, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
-        addChild(PitchLineBuilder.pitchLineForDegree(-10, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
-        addChild(PitchLineBuilder.pitchLineForDegree(-15, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
-        addChild(PitchLineBuilder.pitchLineForDegree(5, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
-        addChild(PitchLineBuilder.pitchLineForDegree(10, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
-        addChild(PitchLineBuilder.pitchLineForDegree(15, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
-    }
+        
+        for degree in majorPitchDegreeValues {
+            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
+        }
 
+        for degree in majorPitchDegreeValues.map({ $0 * -1 }) {
+            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
+        }
+        
+        for degree in minorPitchDegreeValues {
+            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
+        }
+
+        for degree in minorPitchDegreeValues.map({ $0 * -1 }) {
+            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
+        }
+
+        addChild(pitchLines)
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 struct PitchLineBuilder {
-
+    
     static func pitchLineForDegree(degree: Int, width: Int, degreeSpacing: Int) -> SKShapeNode {
         let halfWidth = CGFloat(width) / 2
         let path = CGPathCreateMutable()
@@ -52,5 +67,18 @@ struct PitchLineBuilder {
     
     private static func fillColor() -> SKColor {
         return SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+    }
+}
+
+extension PitchLadder: AttitudeAdjustable {
+    
+    func setAttitude(pitch pitch: Float, roll: Float) {
+        
+        let x = CGFloat(pitch) * -300
+        let rollAction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
+        let pitchAction = SKAction.moveToY(x, duration: 0.05)
+     
+        pitchLines.runAction(pitchAction)
+        runAction(rollAction)
     }
 }

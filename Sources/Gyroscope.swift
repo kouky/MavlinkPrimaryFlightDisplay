@@ -36,6 +36,6 @@ extension Gyroscope: AttitudeAdjustable {
         let sequence = SKAction.sequence([pitchAction,rollaction])
         horizon.runAction(sequence)
         
-        pitchLadder.runAction(pitchAction)
+        pitchLadder.setAttitude(pitch: pitch, roll: roll)
     }
 }
