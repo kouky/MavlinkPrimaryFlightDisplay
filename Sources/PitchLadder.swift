@@ -14,28 +14,31 @@ class PitchLadder: SKNode {
     private let majorPitchLineWidth = 60
     private let minorPitchDegreeValues = Array(5.stride(to: 86, by: 10))
     private let majorPitchDegreeValues = Array(10.stride(to: 91, by: 10))
-    private let pitchLines = SKNode()
-
+    private let cropNode = SKCropNode()
+    private let maskNode = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: 110, height: 220))
+    
     init(sceneSize: CGSize, degreeSpacing: Int) {
         super.init()
         
+        cropNode.maskNode = maskNode
+        
         for degree in majorPitchDegreeValues {
-            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
+            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
         }
 
         for degree in majorPitchDegreeValues.map({ $0 * -1 }) {
-            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
+            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: majorPitchLineWidth, degreeSpacing: degreeSpacing))
         }
         
         for degree in minorPitchDegreeValues {
-            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
+            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
         }
 
         for degree in minorPitchDegreeValues.map({ $0 * -1 }) {
-            pitchLines.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
+            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: minorPitchLineWidth, degreeSpacing: degreeSpacing))
         }
 
-        addChild(pitchLines)
+        addChild(cropNode)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,8 +80,10 @@ extension PitchLadder: AttitudeAdjustable {
         let x = CGFloat(pitch) * -300
         let rollAction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
         let pitchAction = SKAction.moveToY(x, duration: 0.05)
+        let reversePitchAction = SKAction.moveToY(-x, duration: 0.05)
      
-        pitchLines.runAction(pitchAction)
+        cropNode.runAction(pitchAction)
+        maskNode.runAction(reversePitchAction)
         runAction(rollAction)
     }
 }
