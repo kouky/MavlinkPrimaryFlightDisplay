@@ -28,7 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         mavlinkController.reactiveMavlink.attitude.observeNext { [weak self] attitude in
-            self?.flightView.updateAttitude(attitude.roll, pitch: attitude.pitch)
+            let attitude = Attitude(pitchRadians: attitude.pitch, rollRadians: attitude.roll)
+            self?.flightView.setAttitude(attitude)
         }
 
     }

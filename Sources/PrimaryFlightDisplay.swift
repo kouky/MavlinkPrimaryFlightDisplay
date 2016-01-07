@@ -35,19 +35,15 @@ public class PrimaryFlightDisplayView: SKView {
         // Diagnostics
         showsFPS = true
         showsNodeCount = true
-    }
-    
-    // MARK: Public Methods
-        
-    public func updateAttitude(roll: Float, pitch: Float) {
-        if let scene = scene as? PrimaryFlightDisplayScene {
-            scene.setAttitude(pitch: pitch, roll: roll)
-        }
-    }
+    }    
 }
 
-protocol AttitudeAdjustable {
-    func setAttitude(pitch pitch: Float, roll: Float)
+extension PrimaryFlightDisplayView: AttitudeSettable {
+    func setAttitude(attitude: AttitudeType) {
+        if let scene = scene as? PrimaryFlightDisplayScene {
+            scene.setAttitude(attitude)
+        }
+    }
 }
 
 private class PrimaryFlightDisplayScene: SKScene {
@@ -74,10 +70,10 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
 }
 
-extension PrimaryFlightDisplayScene: AttitudeAdjustable {
+extension PrimaryFlightDisplayScene: AttitudeSettable{
 
-    func setAttitude(pitch pitch: Float, roll: Float) {
-        artificalHorizon.setAttitude(pitch: pitch, roll: roll)
-        pitchLadder.setAttitude(pitch: pitch, roll: roll)
+    func setAttitude(attitude: AttitudeType) {
+        artificalHorizon.setAttitude(attitude)
+        pitchLadder.setAttitude(attitude)
     }
 }

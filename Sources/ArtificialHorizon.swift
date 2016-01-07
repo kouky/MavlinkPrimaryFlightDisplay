@@ -35,13 +35,10 @@ class ArtificialHorizon: SKNode {
     }
 }
 
-extension ArtificialHorizon: AttitudeAdjustable {
+extension ArtificialHorizon: AttitudeSettable {
     
-    func setAttitude(pitch pitch: Float, roll: Float) {
-        let x = CGFloat(pitch) * -300
-        let rollaction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
-        let pitchAction = SKAction.moveToY(x, duration: 0.05)
-        let sequence = SKAction.sequence([pitchAction,rollaction])
+    func setAttitude(attitude: AttitudeType) {
+        let sequence = SKAction.sequence([attitude.pitchAction(), attitude.rollAction()])
         runAction(sequence)
     }
 }

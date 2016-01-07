@@ -46,6 +46,15 @@ class PitchLadder: SKNode {
     }
 }
 
+extension PitchLadder: AttitudeSettable {
+    
+    func setAttitude(attitude: AttitudeType) {
+        cropNode.runAction(attitude.pitchAction())
+        maskNode.runAction(attitude.pitchReverseAction())
+        runAction(attitude.rollAction())
+    }
+}
+
 struct PitchLineBuilder {
     
     static func pitchLineForDegree(degree: Int, width: Int, degreeSpacing: Int) -> SKShapeNode {
@@ -73,17 +82,3 @@ struct PitchLineBuilder {
     }
 }
 
-extension PitchLadder: AttitudeAdjustable {
-    
-    func setAttitude(pitch pitch: Float, roll: Float) {
-        
-        let x = CGFloat(pitch) * -300
-        let rollAction = SKAction.rotateToAngle(CGFloat(roll), duration: 0.05, shortestUnitArc: true)
-        let pitchAction = SKAction.moveToY(x, duration: 0.05)
-        let reversePitchAction = SKAction.moveToY(-x, duration: 0.05)
-     
-        cropNode.runAction(pitchAction)
-        maskNode.runAction(reversePitchAction)
-        runAction(rollAction)
-    }
-}
