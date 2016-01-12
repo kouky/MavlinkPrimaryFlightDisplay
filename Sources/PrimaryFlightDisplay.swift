@@ -48,12 +48,12 @@ extension PrimaryFlightDisplayView: AttitudeSettable {
 
 private class PrimaryFlightDisplayScene: SKScene {
     
-    let artificalHorizon: ArtificialHorizon
+    let horizon: Horizon
     let pitchLadder: PitchLadder
     let attitudeReferenceIndex = AttitudeReferenceIndex()
 
     override init(size: CGSize) {
-        artificalHorizon = ArtificialHorizon(sceneSize: size)
+        horizon = Horizon(sceneSize: size)
         pitchLadder = PitchLadder(sceneSize: size, degreeSpacing: 5)
         super.init(size: size)
     }
@@ -64,7 +64,7 @@ private class PrimaryFlightDisplayScene: SKScene {
 
     override func didMoveToView(view: SKView) {
         attitudeReferenceIndex.position = CGPoint.zero
-        addChild(artificalHorizon)
+        addChild(horizon)
         addChild(pitchLadder)
         addChild(attitudeReferenceIndex)
     }
@@ -73,7 +73,7 @@ private class PrimaryFlightDisplayScene: SKScene {
 extension PrimaryFlightDisplayScene: AttitudeSettable{
 
     func setAttitude(attitude: AttitudeType) {
-        artificalHorizon.setAttitude(attitude)
+        horizon.setAttitude(attitude)
         pitchLadder.setAttitude(attitude)
     }
 }

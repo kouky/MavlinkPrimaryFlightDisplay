@@ -1,5 +1,5 @@
 //
-//  ArtificialHorizon.swift
+//  Horizon.swift
 //  MavlinkPrimaryFlightDisplay
 //
 //  Created by Michael Koukoullis on 21/11/2015.
@@ -8,10 +8,10 @@
 
 import SpriteKit
 
-class ArtificialHorizon: SKNode {
+class Horizon: SKNode {
 
-    private let skyNode = SKSpriteNode(color: SKColor.blueColor(), size: CGSize(width: 100, height: 100))
-    private let groundNode = SKSpriteNode(color: SKColor.brownColor(), size: CGSize(width: 100, height: 100))
+    private let skyNode = SKSpriteNode(color: Constants.Color.Horizon.sky, size: CGSize(width: 100, height: 100))
+    private let groundNode = SKSpriteNode(color: Constants.Color.Horizon.ground, size: CGSize(width: 100, height: 100))
     private let zeroPitchLine: SKShapeNode
     
     init(sceneSize: CGSize) {
@@ -35,7 +35,7 @@ class ArtificialHorizon: SKNode {
     }
 }
 
-extension ArtificialHorizon: AttitudeSettable {
+extension Horizon: AttitudeSettable {
     
     func setAttitude(attitude: AttitudeType) {
         let sequence = SKAction.sequence([attitude.pitchAction(), attitude.rollAction()])
