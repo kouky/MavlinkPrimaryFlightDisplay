@@ -27,10 +27,10 @@ extension AttitudeType {
     }
     
     func pitchAction() -> SKAction {
-        return SKAction.moveToY(CGFloat(pitchRadians) * -300, duration: 0.05)
+        return SKAction.moveToY(CGFloat(pitchRadians) * -CGFloat(Constants.Angular.pointsPerRadian), duration: 0.05)
     }
     
     func pitchReverseAction() -> SKAction {
-        return SKAction.moveToY(CGFloat(pitchRadians) * 300, duration: 0.05)
+        return SKAction.moveToY(CGFloat(pitchRadians) * CGFloat(Constants.Angular.pointsPerRadian), duration: 0.05)
     }
 }

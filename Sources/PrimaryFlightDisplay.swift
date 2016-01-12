@@ -54,7 +54,7 @@ private class PrimaryFlightDisplayScene: SKScene {
 
     override init(size: CGSize) {
         horizon = Horizon(sceneSize: size)
-        pitchLadder = PitchLadder(sceneSize: size, degreeSpacing: 5)
+        pitchLadder = PitchLadder(sceneSize: size)
         super.init(size: size)
     }
     
