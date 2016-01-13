@@ -40,5 +40,13 @@ struct Constants {
         static var pointsPerRadian : Double {
             return 57.296 * Double(pointsPerDegree)
         }
+        
+        static func pointsPerDegreeForSceneSize(size: CGSize) -> CGFloat {
+            return CGFloat(90) / size.width
+        }
+        
+        static func pointsPerRadianForSceneSize(size: CGSize) -> CGFloat {
+            return 57.296 * pointsPerDegreeForSceneSize(size)
+        }
     }
 }
