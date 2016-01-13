@@ -24,19 +24,19 @@ class PitchLadder: SKNode, SceneType {
         cropNode.maskNode = maskNode
         
         for degree in majorPitchDegreeValues {
-            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: Constants.Size.PitchLadder.majorLineWidth))
+            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.majorLineWidth))
         }
 
         for degree in majorPitchDegreeValues.map({ $0 * -1 }) {
-            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: Constants.Size.PitchLadder.majorLineWidth))
+            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.majorLineWidth))
         }
         
         for degree in minorPitchDegreeValues {
-            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: Constants.Size.PitchLadder.minorLineWidth))
+            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.minorLineWidth))
         }
 
         for degree in minorPitchDegreeValues.map({ $0 * -1 }) {
-            cropNode.addChild(PitchLineBuilder.pitchLineForDegree(degree, width: Constants.Size.PitchLadder.minorLineWidth))
+            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.minorLineWidth))
         }
 
         addChild(cropNode)
@@ -50,15 +50,15 @@ class PitchLadder: SKNode, SceneType {
 extension PitchLadder: AttitudeSettable {
     
     func setAttitude(attitude: AttitudeType) {
-        cropNode.runAction(attitude.pitchAction())
-        maskNode.runAction(attitude.pitchReverseAction())
+        cropNode.runAction(attitude.pitchAction(sceneSize: sceneSize))
+        maskNode.runAction(attitude.pitchReverseAction(sceneSize: sceneSize))
         runAction(attitude.rollAction())
     }
 }
 
 struct PitchLineBuilder {
     
-    static func pitchLineForDegree(degree: Int, width: Int) -> SKShapeNode {
+    static func pitchLine(sceneSize sceneSize: CGSize)(degree: Int, width: Int) -> SKShapeNode {
         let halfWidth = CGFloat(width) / 2
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -halfWidth, 2)
@@ -67,7 +67,7 @@ struct PitchLineBuilder {
         CGPathAddLineToPoint(path, nil, -halfWidth, -2)
         CGPathCloseSubpath(path)
         
-        var transform = CGAffineTransformMakeTranslation(0, CGFloat(degree * Constants.Angular.pointsPerDegree))
+        var transform = CGAffineTransformMakeTranslation(0, CGFloat(degree) * Constants.Angular.pointsPerDegreeForSceneSize(sceneSize))
         let transformedPath = withUnsafeMutablePointer(&transform) {
             CGPathCreateMutableCopyByTransformingPath(path, $0)
         }
@@ -76,9 +76,5 @@ struct PitchLineBuilder {
         line.fillColor = Constants.Color.PitchLadder.line
         line.strokeColor = SKColor.blackColor()
         return line
-    }
-    
-    private static func fillColor() -> SKColor {
-        return SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-    }
+    }    
 }

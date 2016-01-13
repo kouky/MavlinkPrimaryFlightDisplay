@@ -41,7 +41,7 @@ class Horizon: SKNode, SceneType {
 extension Horizon: AttitudeSettable {
     
     func setAttitude(attitude: AttitudeType) {
-        let sequence = SKAction.sequence([attitude.pitchAction(), attitude.rollAction()])
+        let sequence = SKAction.sequence([attitude.pitchAction(sceneSize: sceneSize), attitude.rollAction()])
         runAction(sequence)
     }
 }

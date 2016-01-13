@@ -36,13 +36,8 @@ struct Constants {
     
     struct Angular {
         
-        static let pointsPerDegree = 5
-        static var pointsPerRadian : Double {
-            return 57.296 * Double(pointsPerDegree)
-        }
-        
         static func pointsPerDegreeForSceneSize(size: CGSize) -> CGFloat {
-            return CGFloat(90) / size.width
+            return (size.height / 2) / CGFloat(90)
         }
         
         static func pointsPerRadianForSceneSize(size: CGSize) -> CGFloat {
