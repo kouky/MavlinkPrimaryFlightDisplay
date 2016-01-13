@@ -11,34 +11,24 @@ import SpriteKit
 class PitchLadder: SKNode, SceneType {
     
     let sceneSize: CGSize
-    private let minorPitchDegreeValues = Array(5.stride(to: 86, by: 10))
-    private let majorPitchDegreeValues = Array(10.stride(to: 91, by: 10))
+    private let degreeValues = Array(5.stride(to: 91, by: 5))
     private let cropNode = SKCropNode()
     private let maskNode = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: 110, height: 220))
     
+    
     init(sceneSize: CGSize) {
-        
         self.sceneSize = sceneSize
         super.init()
         
+        let skyPitchLines = degreeValues.map { degree in
+            return (degree, (degree % 10 == 0) ? PitchLineStyle.Major : PitchLineStyle.Minor)
+        }
+        let pitchLines = skyPitchLines + skyPitchLines.map { ($0.0 * -1, $0.1) }
+        for (degree, style) in pitchLines {
+            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize, degree: degree, style: style))
+        }
+        
         cropNode.maskNode = maskNode
-        
-        for degree in majorPitchDegreeValues {
-            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.majorLineWidth))
-        }
-
-        for degree in majorPitchDegreeValues.map({ $0 * -1 }) {
-            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.majorLineWidth))
-        }
-        
-        for degree in minorPitchDegreeValues {
-            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.minorLineWidth))
-        }
-
-        for degree in minorPitchDegreeValues.map({ $0 * -1 }) {
-            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize)(degree: degree, width: Constants.Size.PitchLadder.minorLineWidth))
-        }
-
         addChild(cropNode)
     }
     
@@ -56,10 +46,23 @@ extension PitchLadder: AttitudeSettable {
     }
 }
 
-struct PitchLineBuilder {
+private enum PitchLineStyle {
+    case Major
+    case Minor
     
-    static func pitchLine(sceneSize sceneSize: CGSize)(degree: Int, width: Int) -> SKShapeNode {
-        let halfWidth = CGFloat(width) / 2
+    var width: Int {
+        switch self {
+        case .Major: return Constants.Size.PitchLadder.majorLineWidth
+        case .Minor: return Constants.Size.PitchLadder.minorLineWidth
+        }
+    }
+}
+
+private struct PitchLineBuilder {
+    
+    static func pitchLine(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKShapeNode {
+        
+        let halfWidth = CGFloat(style.width) / 2
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -halfWidth, 2)
         CGPathAddLineToPoint(path, nil, halfWidth, 2)
