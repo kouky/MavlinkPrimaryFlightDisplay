@@ -70,7 +70,7 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
 }
 
-extension PrimaryFlightDisplayScene: AttitudeSettable{
+extension PrimaryFlightDisplayScene: AttitudeSettable {
 
     func setAttitude(attitude: AttitudeType) {
         horizon.setAttitude(attitude)

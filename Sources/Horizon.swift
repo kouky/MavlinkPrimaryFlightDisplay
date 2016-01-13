@@ -8,13 +8,16 @@
 
 import SpriteKit
 
-class Horizon: SKNode {
+class Horizon: SKNode, SceneType {
+    
+    let sceneSize: CGSize
 
     private let skyNode = SKSpriteNode(color: Constants.Color.Horizon.sky, size: CGSize(width: 100, height: 100))
     private let groundNode = SKSpriteNode(color: Constants.Color.Horizon.ground, size: CGSize(width: 100, height: 100))
     private let zeroPitchLine: SKShapeNode
     
     init(sceneSize: CGSize) {
+        self.sceneSize = sceneSize
         zeroPitchLine = SKShapeNode(rectOfSize: CGSize(width: 2 * sceneSize.width, height: 1))
         super.init()
         

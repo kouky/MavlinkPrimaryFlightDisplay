@@ -8,6 +8,10 @@
 
 import SpriteKit
 
+protocol SceneType {
+    var sceneSize: CGSize { get }
+}
+
 protocol AttitudeType {
     var rollRadians: Float { get }
     var pitchRadians: Float { get }

@@ -8,14 +8,17 @@
 
 import SpriteKit
 
-class PitchLadder: SKNode {
+class PitchLadder: SKNode, SceneType {
     
+    let sceneSize: CGSize
     private let minorPitchDegreeValues = Array(5.stride(to: 86, by: 10))
     private let majorPitchDegreeValues = Array(10.stride(to: 91, by: 10))
     private let cropNode = SKCropNode()
     private let maskNode = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: 110, height: 220))
     
     init(sceneSize: CGSize) {
+        
+        self.sceneSize = sceneSize
         super.init()
         
         cropNode.maskNode = maskNode
