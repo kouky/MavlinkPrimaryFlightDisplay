@@ -16,6 +16,10 @@ struct Constants {
             static let sky = SKColor.blueColor()
             static let ground = SKColor.brownColor()
         }
+        
+        struct PitchLadder {
+            static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+        }
     }
     
     struct Size {

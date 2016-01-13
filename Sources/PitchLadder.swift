@@ -73,7 +73,7 @@ struct PitchLineBuilder {
         }
 
         let line = SKShapeNode(path: transformedPath!)
-        line.fillColor = fillColor()
+        line.fillColor = Constants.Color.PitchLadder.line
         line.strokeColor = SKColor.blackColor()
         return line
     }
