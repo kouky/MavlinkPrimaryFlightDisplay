@@ -22,11 +22,11 @@ class Horizon: SKNode, SceneType {
         zeroPitchLine = SKShapeNode(rectOfSize: CGSize(width: 2 * sceneSize.width, height: 1))
         super.init()
         
-        skyNode.size = CGSize(width: sceneSize.width/2, height: sceneSize.height/2)
-        groundNode.size = CGSize(width: sceneSize.width/2, height: sceneSize.height/2)
-        skyNode.position = CGPoint(x: 0, y: sceneSize.height/4)
-        groundNode.position = CGPoint(x: 0, y: -sceneSize.height/4)
-        zeroPitchLine.strokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+        skyNode.size = CGSize(width: sceneSize.width * 2, height: sceneSize.height * 2)
+        groundNode.size = CGSize(width: sceneSize.width * 2, height: sceneSize.height * 2)
+        skyNode.position = CGPoint(x: 0, y: sceneSize.height)
+        groundNode.position = CGPoint(x: 0, y: -sceneSize.height)
+        zeroPitchLine.strokeColor = Constants.Color.Horizon.zeroPitchLine   
         zeroPitchLine.position = CGPoint.zero
         
         gimbalNode.addChild(skyNode)

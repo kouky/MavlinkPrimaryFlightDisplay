@@ -15,6 +15,7 @@ struct Constants {
         struct Horizon {
             static let sky = SKColor.blueColor()
             static let ground = SKColor.brownColor()
+            static let zeroPitchLine = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         }
         
         struct PitchLadder {
