@@ -12,6 +12,7 @@ class Horizon: SKNode, SceneType {
     
     let sceneSize: CGSize
 
+    private let gimbalNode = SKNode()
     private let skyNode = SKSpriteNode(color: Constants.Color.Horizon.sky, size: CGSize(width: 100, height: 100))
     private let groundNode = SKSpriteNode(color: Constants.Color.Horizon.ground, size: CGSize(width: 100, height: 100))
     private let zeroPitchLine: SKShapeNode
@@ -28,9 +29,10 @@ class Horizon: SKNode, SceneType {
         zeroPitchLine.strokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         zeroPitchLine.position = CGPoint.zero
         
-        addChild(skyNode)
-        addChild(groundNode)
-        addChild(zeroPitchLine)
+        gimbalNode.addChild(skyNode)
+        gimbalNode.addChild(groundNode)
+        gimbalNode.addChild(zeroPitchLine)
+        addChild(gimbalNode)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -41,8 +43,8 @@ class Horizon: SKNode, SceneType {
 extension Horizon: AttitudeSettable {
     
     func setAttitude(attitude: AttitudeType) {
-        let sequence = SKAction.sequence([attitude.pitchAction(sceneSize: sceneSize), attitude.rollAction()])
-        runAction(sequence)
+        gimbalNode.runAction(attitude.pitchAction(sceneSize: sceneSize))
+        runAction(attitude.rollAction())
     }
 }
 
