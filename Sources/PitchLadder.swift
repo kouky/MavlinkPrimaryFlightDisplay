@@ -13,11 +13,14 @@ class PitchLadder: SKNode, SceneType {
     let sceneSize: CGSize
     private let degreeValues = Array(5.stride(to: 91, by: 5))
     private let cropNode = SKCropNode()
-    private let maskNode = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: 110, height: 220))
-    
+    private let maskNode: SKSpriteNode
     
     init(sceneSize: CGSize) {
         self.sceneSize = sceneSize
+        let maskSize = CGSize(
+            width: CGFloat(Constants.Size.PitchLadder.majorLineWidth) * 2.0,
+            height: Constants.Angular.pointsPerDegreeForSceneSize(sceneSize) * 44)
+        self.maskNode = SKSpriteNode(color: SKColor.blackColor(), size: maskSize)
         super.init()
         
         let skyPitchLines = degreeValues.map { degree in

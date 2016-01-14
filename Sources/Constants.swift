@@ -28,11 +28,7 @@ struct Constants {
         struct PitchLadder {
             static let minorLineWidth = 20
             static let majorLineWidth = 60
-        }
-        
-        struct Degree {
-            static let points = 5
-        }
+        }        
     }
     
     struct Angular {
