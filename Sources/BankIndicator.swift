@@ -59,25 +59,32 @@ private class SkyPointer: SKNode {
 
 private class BankArc: SKNode {
     
-    private let radianClipping = M_PI/3
-    private let degreeValues = Array((-60).stride(to: 61, by: 5))
+    private let degreeValues = Array((-175).stride(to: 181, by: 5))
  
     override init() {
+        assert(Constants.Size.BankIndicator.maximumDisplayDegree > 0, "Bank indicator maximum display degree must be greater than 0")
+        assert(Constants.Size.BankIndicator.maximumDisplayDegree <= 180, "Bank indicator maximum display degree must have maximum value of 180")
         super.init()
 
         let arc = SKShapeNode(circleOfRadius: CGFloat(Constants.Size.BankIndicator.radius))
         let cropNode = SKCropNode()
         let maskNodeEdgeSize = Constants.Size.BankIndicator.radius * 2 + Constants.Size.BankIndicator.lineWidth
         let maskNode = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: maskNodeEdgeSize, height: maskNodeEdgeSize))
+        let maxDegree = Constants.Size.BankIndicator.maximumDisplayDegree
         
         arc.lineWidth = CGFloat(Constants.Size.BankIndicator.lineWidth)
         cropNode.addChild(arc)
         cropNode.maskNode = maskNode
-        let cropMaskVerticalPosition = CGFloat(cos(radianClipping)) * CGFloat(Constants.Size.BankIndicator.radius)
+        let cropMaskVerticalPosition = CGFloat(cos(Constants.Angular.radiansFromDegrees(CGFloat(maxDegree)))) * CGFloat(Constants.Size.BankIndicator.radius)
         cropNode.maskNode?.position = CGPoint(x: 0, y: CGFloat(Constants.Size.BankIndicator.radius) + cropMaskVerticalPosition)
         addChild(cropNode)
         
-        let markers = degreeValues.map { (degree: $0, displayText: "\(abs($0))") }
+        let markers = degreeValues.filter {
+            return abs($0) <= maxDegree
+        }.map {
+            (degree: $0, displayText: "\(abs($0))")
+        }
+        
         for marker in markers {
             let style: BankArcMarkerStyle = marker.degree % 15 == 0 ? .Major : . Minor
             addChild(BankArcMarker(marker: marker, style: style))

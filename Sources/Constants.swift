@@ -43,6 +43,7 @@ struct Constants {
         
         struct BankIndicator {
             static let radius = 160
+            static let maximumDisplayDegree = 60 // Keep between 0 to 180
             static let lineWidth = 2
             static let minorMarkerHeight = 5
             static let majorMarkerHeight = 10
