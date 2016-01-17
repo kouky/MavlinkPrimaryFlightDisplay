@@ -66,6 +66,15 @@ private class BankArc: SKNode {
         assert(Constants.Size.BankIndicator.maximumDisplayDegree <= 180, "Bank indicator maximum display degree must have maximum value of 180")
         super.init()
 
+        addMaskedArc()
+        addMarkers()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func addMaskedArc() {
         let arc = SKShapeNode(circleOfRadius: CGFloat(Constants.Size.BankIndicator.radius))
         let cropNode = SKCropNode()
         let maskNodeEdgeSize = Constants.Size.BankIndicator.radius * 2 + Constants.Size.BankIndicator.lineWidth
@@ -78,21 +87,17 @@ private class BankArc: SKNode {
         let cropMaskVerticalPosition = CGFloat(cos(Constants.Angular.radiansFromDegrees(CGFloat(maxDegree)))) * CGFloat(Constants.Size.BankIndicator.radius)
         cropNode.maskNode?.position = CGPoint(x: 0, y: CGFloat(Constants.Size.BankIndicator.radius) + cropMaskVerticalPosition)
         addChild(cropNode)
-        
-        let markers = degreeValues.filter {
-            return abs($0) <= maxDegree
+    }
+    
+    private func addMarkers() {
+        degreeValues.filter {
+            abs($0) <= Constants.Size.BankIndicator.maximumDisplayDegree
         }.map {
             (degree: $0, displayText: "\(abs($0))")
-        }
-        
-        for marker in markers {
+        }.forEach { marker in
             let style: BankArcMarkerStyle = marker.degree % 15 == 0 ? .Major : . Minor
             addChild(BankArcMarker(marker: marker, style: style))
         }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
@@ -115,14 +120,16 @@ private class BankArcMarker: SKNode {
         
         let radians = Constants.Angular.radiansFromDegrees(CGFloat(marker.degree))
         let rotateAction = SKAction.rotateByAngle(-radians, duration: 0)
+        let moveAction = { (offset: CGFloat) -> SKAction in
+            SKAction.moveBy(CGVector(dx: offset * sin(radians), dy: offset * cos(radians)), duration: 0)
+        }
         
         let height = (style == .Major ? Constants.Size.BankIndicator.majorMarkerHeight : Constants.Size.BankIndicator.minorMarkerHeight)
         let line = SKShapeNode(rectOfSize: CGSize(width: 0, height: height))
         line.strokeColor = Constants.Color.BankIndicator.line
         line.fillColor = Constants.Color.BankIndicator.line
         let offset = CGFloat(Constants.Size.BankIndicator.radius + (height / 2))
-        let displacement = SKAction.moveBy(CGVector(dx: offset * sin(radians), dy: offset * cos(radians)), duration: 0)
-        line.runAction(SKAction.sequence([rotateAction, displacement]))
+        line.runAction(SKAction.sequence([rotateAction, moveAction(offset)]))
         line.antialiased = true
         addChild(line)
         
@@ -133,8 +140,7 @@ private class BankArcMarker: SKNode {
             label.fontColor = Constants.Color.BankIndicator.text
             
             let offset = CGFloat(Constants.Size.BankIndicator.radius + Constants.Size.BankIndicator.markerTextOffset)
-            let displacement = SKAction.moveBy(CGVector(dx: offset * sin(radians), dy: offset * cos(radians)), duration: 0)
-            label.runAction(SKAction.sequence([rotateAction, displacement]))
+            label.runAction(SKAction.sequence([rotateAction, moveAction(offset)]))
             addChild(label)
         }
     }
