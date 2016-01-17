@@ -10,6 +10,11 @@ import SpriteKit
 
 struct Constants {
     
+    struct Font {
+        static let family = "Helvetica-Bold"
+        static let size: CGFloat = 16
+    }
+    
     struct Color {
         
         struct Horizon {
@@ -24,6 +29,8 @@ struct Constants {
         
         struct BankIndicator {
             static let line = PitchLadder.line
+            static let text = SKColor.whiteColor()
+            static let skyPointer = SKColor.whiteColor()
         }
     }
     
@@ -37,17 +44,34 @@ struct Constants {
         struct BankIndicator {
             static let radius = 160
             static let lineWidth = 2
+            static let minorMarkerHeight = 5
+            static let majorMarkerHeight = 10
+            static let markerTextOffset = 20
+            static let skyPointerHeight = 12
+            static let skyPointerWidth = 12
         }
     }
     
     struct Angular {
+        
+        static let degreesPerRadian: CGFloat = CGFloat(180.0 / M_PI)
+        
+        static let radiansPerDegree: CGFloat = CGFloat(M_PI / 180.0)
         
         static func pointsPerDegreeForSceneSize(size: CGSize) -> CGFloat {
             return (size.height / 2) / CGFloat(90)
         }
         
         static func pointsPerRadianForSceneSize(size: CGSize) -> CGFloat {
-            return 57.296 * pointsPerDegreeForSceneSize(size)
+            return CGFloat(degreesPerRadian) * pointsPerDegreeForSceneSize(size)
+        }
+        
+        static func radiansFromDegrees(degrees: CGFloat) -> CGFloat {
+            return radiansPerDegree * degrees
+        }
+        
+        static func degreesFromRadians(radians: CGFloat) -> CGFloat {
+            return degreesPerRadian * radians
         }
     }
 }
