@@ -51,6 +51,7 @@ private class PrimaryFlightDisplayScene: SKScene {
     let horizon: Horizon
     let pitchLadder: PitchLadder
     let attitudeReferenceIndex = AttitudeReferenceIndex()
+    let bankIndicator = BankIndicator()
 
     override init(size: CGSize) {
         horizon = Horizon(sceneSize: size)
@@ -67,6 +68,7 @@ private class PrimaryFlightDisplayScene: SKScene {
         addChild(horizon)
         addChild(pitchLadder)
         addChild(attitudeReferenceIndex)
+        addChild(bankIndicator)
     }
 }
 
@@ -75,5 +77,6 @@ extension PrimaryFlightDisplayScene: AttitudeSettable {
     func setAttitude(attitude: AttitudeType) {
         horizon.setAttitude(attitude)
         pitchLadder.setAttitude(attitude)
+        bankIndicator.setAttitude(attitude)
     }
 }
