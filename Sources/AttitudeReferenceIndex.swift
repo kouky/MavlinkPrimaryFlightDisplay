@@ -32,6 +32,7 @@ private class Bars: SKNode {
     override init() {
         super.init()
         
+        // TODO: Extract 40 offset
         let left = buildLeftBar(transform: CGAffineTransformMakeTranslation(-40, 0))
         addChild(left)
         
@@ -46,6 +47,7 @@ private class Bars: SKNode {
     }
     
     func buildLeftBar(var transform transform: CGAffineTransform) -> SKShapeNode {
+        // TODO: Extract size and color
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -100, 2)
         CGPathAddLineToPoint(path, nil, 0, 2)
@@ -54,6 +56,7 @@ private class Bars: SKNode {
         CGPathAddLineToPoint(path, nil, -4, -2)
         CGPathAddLineToPoint(path, nil, -100, -2)
         CGPathAddLineToPoint(path, nil, -100, 2)
+        CGPathCloseSubpath(path)
 
         let transformedPath = withUnsafeMutablePointer(&transform) {
             CGPathCreateMutableCopyByTransformingPath(path, $0)
@@ -66,12 +69,14 @@ private class Bars: SKNode {
     }
     
     func buildCenterBar() -> SKShapeNode {
+        // TODO: Extract size and color
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -5, 2)
         CGPathAddLineToPoint(path, nil, 5, 2)
         CGPathAddLineToPoint(path, nil, 5, -2)
         CGPathAddLineToPoint(path, nil, -5, -2)
         CGPathAddLineToPoint(path, nil, -5, 2)
+        CGPathCloseSubpath(path)
         
         let shape = SKShapeNode(path: path)
         shape.fillColor = SKColor.whiteColor()
