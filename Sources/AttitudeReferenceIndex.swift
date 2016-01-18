@@ -8,26 +8,7 @@
 
 import SpriteKit
 
-public enum AttitudeReferenceIndexStyle {
-    case Bars
-    case Nose
-}
-
 class AttitudeReferenceIndex: SKNode {
-    init(style: AttitudeReferenceIndexStyle = .Bars) {
-        super.init()
-        switch style {
-        case .Bars: addChild(Bars())
-        case .Nose: addChild(Nose())
-        }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-}
-
-private class Bars: SKNode {
     
     override init() {
         super.init()
@@ -46,7 +27,7 @@ private class Bars: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func buildLeftBar(var transform transform: CGAffineTransform) -> SKShapeNode {
+    private func buildLeftBar(var transform transform: CGAffineTransform) -> SKShapeNode {
         // TODO: Extract size and color
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -100, 2)
@@ -68,7 +49,7 @@ private class Bars: SKNode {
         return shape
     }
     
-    func buildCenterBar() -> SKShapeNode {
+    private func buildCenterBar() -> SKShapeNode {
         // TODO: Extract size and color
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -5, 2)
@@ -82,17 +63,5 @@ private class Bars: SKNode {
         shape.fillColor = SKColor.whiteColor()
         shape.strokeColor = SKColor.blackColor()
         return shape
-    }
-}
-
-private class Nose: SKNode {
-    override init() {
-        super.init()
-        // TODO: Implement
-        addChild(SKSpriteNode(color: SKColor.greenColor(), size: CGSize(width: 20, height: 20)))
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
