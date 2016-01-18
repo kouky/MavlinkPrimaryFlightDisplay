@@ -13,13 +13,9 @@ class AttitudeReferenceIndex: SKNode {
     override init() {
         super.init()
         
-        // TODO: Extract 40 offset
-        let left = buildLeftBar(transform: CGAffineTransformMakeTranslation(-40, 0))
-        addChild(left)
-        
-        let right = buildLeftBar(transform: CGAffineTransformMake(-1, 0, 0, 1, 40, 0))
-        addChild(right)
-        
+        let offset = Constants.Size.AttitudeReferenceIndex.sideBarOffset
+        addChild(buildLeftBar(transform: CGAffineTransformMakeTranslation(CGFloat(-offset), 0)))
+        addChild(buildLeftBar(transform: CGAffineTransformMake(-1, 0, 0, 1, CGFloat(offset), 0)))
         addChild(buildCenterBar())
     }
 
@@ -28,15 +24,16 @@ class AttitudeReferenceIndex: SKNode {
     }
     
     private func buildLeftBar(var transform transform: CGAffineTransform) -> SKShapeNode {
-        // TODO: Extract size and color
+        let width = CGFloat(Constants.Size.AttitudeReferenceIndex.sideBarWidth)
+        let height = CGFloat(Constants.Size.AttitudeReferenceIndex.sideBarHeight)
+        
         let path = CGPathCreateMutable()
-        CGPathMoveToPoint(path, nil, -100, 2)
+        CGPathMoveToPoint(path, nil, -width, 2)
         CGPathAddLineToPoint(path, nil, 0, 2)
-        CGPathAddLineToPoint(path, nil, 0, -10)
-        CGPathAddLineToPoint(path, nil, -4, -10)
+        CGPathAddLineToPoint(path, nil, 0, -height)
+        CGPathAddLineToPoint(path, nil, -4, -height)
         CGPathAddLineToPoint(path, nil, -4, -2)
-        CGPathAddLineToPoint(path, nil, -100, -2)
-        CGPathAddLineToPoint(path, nil, -100, 2)
+        CGPathAddLineToPoint(path, nil, -width, -2)
         CGPathCloseSubpath(path)
 
         let transformedPath = withUnsafeMutablePointer(&transform) {
@@ -44,24 +41,23 @@ class AttitudeReferenceIndex: SKNode {
         }
         
         let shape = SKShapeNode(path: transformedPath!)
-        shape.fillColor = SKColor.whiteColor()
-        shape.strokeColor = SKColor.blackColor()
+        shape.fillColor = Constants.Color.AttitudeReferenceIndex.shapeFill
+        shape.strokeColor = Constants.Color.AttitudeReferenceIndex.shapeStroke
         return shape
     }
     
     private func buildCenterBar() -> SKShapeNode {
-        // TODO: Extract size and color
+        let halfWidth = CGFloat(Constants.Size.AttitudeReferenceIndex.centerBarWidth) / 2
         let path = CGPathCreateMutable()
-        CGPathMoveToPoint(path, nil, -5, 2)
-        CGPathAddLineToPoint(path, nil, 5, 2)
-        CGPathAddLineToPoint(path, nil, 5, -2)
-        CGPathAddLineToPoint(path, nil, -5, -2)
-        CGPathAddLineToPoint(path, nil, -5, 2)
+        CGPathMoveToPoint(path, nil, -halfWidth, 2)
+        CGPathAddLineToPoint(path, nil, halfWidth, 2)
+        CGPathAddLineToPoint(path, nil, halfWidth, -2)
+        CGPathAddLineToPoint(path, nil, -halfWidth, -2)
         CGPathCloseSubpath(path)
         
         let shape = SKShapeNode(path: path)
-        shape.fillColor = SKColor.whiteColor()
-        shape.strokeColor = SKColor.blackColor()
+        shape.fillColor = Constants.Color.AttitudeReferenceIndex.shapeFill
+        shape.strokeColor = Constants.Color.AttitudeReferenceIndex.shapeStroke
         return shape
     }
 }

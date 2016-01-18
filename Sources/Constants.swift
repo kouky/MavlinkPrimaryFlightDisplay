@@ -23,6 +23,11 @@ struct Constants {
             static let zeroPitchLine = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         }
         
+        struct AttitudeReferenceIndex {
+            static let shapeFill = SKColor.whiteColor()
+            static let shapeStroke = SKColor.blackColor()
+        }
+        
         struct PitchLadder {
             static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         }
@@ -35,6 +40,13 @@ struct Constants {
     }
     
     struct Size {
+        
+        struct AttitudeReferenceIndex {
+            static let centerBarWidth = 10
+            static let sideBarWidth = 100
+            static let sideBarHeight = 15
+            static let sideBarOffset = 40
+        }
         
         struct PitchLadder {
             static let minorLineWidth = 20
