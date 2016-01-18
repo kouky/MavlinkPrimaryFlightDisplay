@@ -29,7 +29,7 @@ extension AttitudeType {
     func rollAction() -> SKAction {
         return SKAction.rotateToAngle(CGFloat(rollRadians), duration: 0.05, shortestUnitArc: true)
     }
-    
+        
     func pitchAction(sceneSize sceneSize: CGSize) -> SKAction {
         let displacement = CGFloat(pitchRadians) * -1 * Constants.Angular.pointsPerRadianForSceneSize(sceneSize)
         return SKAction.moveToY(displacement, duration: 0.05)

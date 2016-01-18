@@ -33,9 +33,21 @@ struct Constants {
         }
         
         struct BankIndicator {
-            static let line = PitchLadder.line
+            static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
             static let text = SKColor.whiteColor()
             static let skyPointer = SKColor.whiteColor()
+        }
+        
+        struct Altimeter {
+            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
+        }
+        
+        struct AirSpeedIndicator {
+            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
+        }
+        
+        struct HeadingIndicator {
+            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
         }
     }
     
@@ -62,6 +74,18 @@ struct Constants {
             static let markerTextOffset = 20
             static let skyPointerHeight = 12
             static let skyPointerWidth = 12
+        }
+        
+        struct Altimeter {
+            static let size = CGSize(width: 60, height: 300)
+        }
+        
+        struct AirSpeedIndicator {
+            static let size = CGSize(width: 60, height: 300)
+        }
+
+        struct HeadingIndicator {
+            static let size = CGSize(width: 300, height: 60)
         }
     }
     

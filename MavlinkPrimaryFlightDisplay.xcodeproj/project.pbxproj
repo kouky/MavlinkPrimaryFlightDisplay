@@ -16,6 +16,7 @@
 		271AFC151BFDFAD100842B1D /* ReactiveMavlink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC101BFDFAD100842B1D /* ReactiveMavlink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		271AFC161BFDFAD100842B1D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC111BFDFAD100842B1D /* Result.framework */; };
 		271AFC171BFDFAD100842B1D /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 271AFC111BFDFAD100842B1D /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		274C98251C4CFA1800334726 /* TapeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 274C98241C4CFA1800334726 /* TapeIndicator.swift */; };
 		2787452A1C0161440038FDBF /* Horizon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745281C0161440038FDBF /* Horizon.swift */; };
 		2787452B1C0161440038FDBF /* PrimaryFlightDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745291C0161440038FDBF /* PrimaryFlightDisplay.swift */; };
 		278745311C01693C0038FDBF /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 278745301C01693C0038FDBF /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -57,6 +58,7 @@
 		271AFC0F1BFDFAD100842B1D /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		271AFC101BFDFAD100842B1D /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/Mac/ReactiveMavlink.framework; sourceTree = "<group>"; };
 		271AFC111BFDFAD100842B1D /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		274C98241C4CFA1800334726 /* TapeIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeIndicator.swift; path = Sources/TapeIndicator.swift; sourceTree = SOURCE_ROOT; };
 		278745261C009FFB0038FDBF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		278745281C0161440038FDBF /* Horizon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Horizon.swift; path = Sources/Horizon.swift; sourceTree = SOURCE_ROOT; };
 		278745291C0161440038FDBF /* PrimaryFlightDisplay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PrimaryFlightDisplay.swift; path = Sources/PrimaryFlightDisplay.swift; sourceTree = SOURCE_ROOT; };
@@ -117,6 +119,7 @@
 				27D4F5831C3E7BA4001FA7BB /* Protocols.swift */,
 				27D4F5851C3E81AD001FA7BB /* Model.swift */,
 				278B7DA11C43CECC00F5794C /* Constants.swift */,
+				274C98241C4CFA1800334726 /* TapeIndicator.swift */,
 			);
 			name = Sources;
 			path = MavlinkPrimaryFlightDisplay;
@@ -230,6 +233,7 @@
 				27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */,
 				278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */,
 				27F16A3D1C3A56AB00422D85 /* AttitudeReferenceIndex.swift in Sources */,
+				274C98251C4CFA1800334726 /* TapeIndicator.swift in Sources */,
 				278B7DA21C43CECC00F5794C /* Constants.swift in Sources */,
 				271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */,
 				278785461C47B94500DB9531 /* BankIndicator.swift in Sources */,
