@@ -52,6 +52,10 @@ private class PrimaryFlightDisplayScene: SKScene {
     let pitchLadder: PitchLadder
     let attitudeReferenceIndex = AttitudeReferenceIndex()
     let bankIndicator = BankIndicator()
+    let altimeter = TapeIndicator(
+        size: Constants.Size.Altimeter.size,
+        style: TapeIndicatorStyle(orientation: .Vertical, justification: .Right),
+        backgroundColor: Constants.Color.Altimeter.background)
 
     override init(size: CGSize) {
         horizon = Horizon(sceneSize: size)
@@ -64,11 +68,16 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
 
     override func didMoveToView(view: SKView) {
-        attitudeReferenceIndex.position = CGPoint.zero
+        scaleMode = .ResizeFill
         addChild(horizon)
         addChild(pitchLadder)
         addChild(attitudeReferenceIndex)
         addChild(bankIndicator)
+        addChild(altimeter)
+    }
+    
+    private override func didChangeSize(oldSize: CGSize) {
+        altimeter.position = CGPoint(x: -size.width/2 + Constants.Size.Altimeter.size.width/2, y: 0)
     }
 }
 
