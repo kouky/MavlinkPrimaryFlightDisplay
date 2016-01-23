@@ -56,6 +56,14 @@ private class PrimaryFlightDisplayScene: SKScene {
         size: Constants.Size.Altimeter.size,
         style: TapeIndicatorStyle(orientation: .Vertical, justification: .Right),
         backgroundColor: Constants.Color.Altimeter.background)
+    let airSpeedIndicator = TapeIndicator(
+        size: Constants.Size.AirSpeedIndicator.size,
+        style: TapeIndicatorStyle(orientation: .Vertical, justification: .Left),
+        backgroundColor: Constants.Color.AirSpeedIndicator.background)
+    let headingIndicator = TapeIndicator(
+        size: Constants.Size.HeadingIndicator.size,
+        style: TapeIndicatorStyle(orientation: .Horizontal, justification: .Top),
+        backgroundColor: Constants.Color.HeadingIndicator.background)
 
     override init(size: CGSize) {
         horizon = Horizon(sceneSize: size)
@@ -74,10 +82,20 @@ private class PrimaryFlightDisplayScene: SKScene {
         addChild(attitudeReferenceIndex)
         addChild(bankIndicator)
         addChild(altimeter)
+        addChild(airSpeedIndicator)
+        addChild(headingIndicator)
     }
     
     private override func didChangeSize(oldSize: CGSize) {
-        altimeter.position = CGPoint(x: -size.width/2 + Constants.Size.Altimeter.size.width/2, y: 0)
+        altimeter.position = CGPoint(
+            x: -size.width/2 + Constants.Size.Altimeter.size.width/2,
+            y: 0)
+        airSpeedIndicator.position = CGPoint(
+            x: size.width/2 - Constants.Size.AirSpeedIndicator.size.width/2,
+            y: 0)
+        headingIndicator.position = CGPoint(
+            x: 0,
+            y: size.height/2 - Constants.Size.HeadingIndicator.size.height/2)
     }
 }
 

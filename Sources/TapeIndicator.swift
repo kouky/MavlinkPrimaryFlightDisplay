@@ -50,7 +50,7 @@ class TapeIndicator: SKNode, TapeIndicatorType {
     }
     
     private func configureNodes() {
-        let backgroundShape = SKShapeNode(rectOfSize: size, cornerRadius: 5)
+        let backgroundShape = SKShapeNode(rectOfSize: size, cornerRadius: 2)
         backgroundShape.fillColor = backgroundColor
         backgroundShape.strokeColor = SKColor.clearColor()
         addChild(backgroundShape)

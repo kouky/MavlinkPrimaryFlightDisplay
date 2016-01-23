@@ -39,15 +39,15 @@ struct Constants {
         }
         
         struct Altimeter {
-            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
+            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
         }
         
         struct AirSpeedIndicator {
-            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
+            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
         }
         
         struct HeadingIndicator {
-            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.7)
+            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
         }
     }
     
@@ -85,7 +85,7 @@ struct Constants {
         }
 
         struct HeadingIndicator {
-            static let size = CGSize(width: 300, height: 60)
+            static let size = CGSize(width: 400, height: 40)
         }
     }
     
