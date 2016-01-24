@@ -52,18 +52,9 @@ private class PrimaryFlightDisplayScene: SKScene {
     let pitchLadder: PitchLadder
     let attitudeReferenceIndex = AttitudeReferenceIndex()
     let bankIndicator = BankIndicator()
-    let altimeter = TapeIndicator(
-        size: Constants.Size.Altimeter.size,
-        style: TapeIndicatorStyle(orientation: .Vertical, justification: .Right),
-        backgroundColor: Constants.Color.Altimeter.background)
-    let airSpeedIndicator = TapeIndicator(
-        size: Constants.Size.AirSpeedIndicator.size,
-        style: TapeIndicatorStyle(orientation: .Vertical, justification: .Left),
-        backgroundColor: Constants.Color.AirSpeedIndicator.background)
-    let headingIndicator = TapeIndicator(
-        size: Constants.Size.HeadingIndicator.size,
-        style: TapeIndicatorStyle(orientation: .Horizontal, justification: .Top),
-        backgroundColor: Constants.Color.HeadingIndicator.background)
+    let altimeter = TapeIndicator(style: Constants.Style.altimeter)
+    let airSpeedIndicator = TapeIndicator(style: Constants.Style.airSpeedIndicator)
+    let headingIndicator = TapeIndicator(style: Constants.Style.headingIndicator)
 
     override init(size: CGSize) {
         horizon = Horizon(sceneSize: size)
@@ -87,15 +78,9 @@ private class PrimaryFlightDisplayScene: SKScene {
     }
     
     private override func didChangeSize(oldSize: CGSize) {
-        altimeter.position = CGPoint(
-            x: -size.width/2 + Constants.Size.Altimeter.size.width/2,
-            y: 0)
-        airSpeedIndicator.position = CGPoint(
-            x: size.width/2 - Constants.Size.AirSpeedIndicator.size.width/2,
-            y: 0)
-        headingIndicator.position = CGPoint(
-            x: 0,
-            y: size.height/2 - Constants.Size.HeadingIndicator.size.height/2)
+        altimeter.position = CGPoint(x: -size.width/2 + altimeter.style.size.width/2, y: 0)
+        airSpeedIndicator.position = CGPoint(x: size.width/2 - airSpeedIndicator.style.size.width/2, y: 0)
+        headingIndicator.position = CGPoint(x: 0, y: size.height/2 - headingIndicator.style.size.height/2)
     }
 }
 

@@ -76,17 +76,51 @@ struct Constants {
             static let skyPointerWidth = 12
         }
         
-        struct Altimeter {
-            static let size = CGSize(width: 60, height: 300)
-        }
+    }
+    
+    struct Style {
         
-        struct AirSpeedIndicator {
-            static let size = CGSize(width: 60, height: 300)
-        }
-
-        struct HeadingIndicator {
-            static let size = CGSize(width: 400, height: 40)
-        }
+        static let altimeter = TapeIndicatorStyle(
+            size: CGSize(width: 60, height: 300),
+            startValue: 0,
+            orientation: .Vertical,
+            range: .Continuous,
+            pointsPerValue: 5,
+            cellJustification: .Left,
+            cellMajorMarkerHeight: 20,
+            cellMinorMarkerHeight: 10,
+            cellMajorMarkerFrequency: 5,
+            cellMinorMarkerFrequency: 1,
+            backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+            contentColor: SKColor.whiteColor())
+        
+        static let airSpeedIndicator = TapeIndicatorStyle(
+            size: CGSize(width: 60, height: 300),
+            startValue: 0,
+            orientation: .Vertical,
+            range: .Continuous,
+            pointsPerValue: 5,
+            cellJustification: .Right,
+            cellMajorMarkerHeight: 20,
+            cellMinorMarkerHeight: 10,
+            cellMajorMarkerFrequency: 10,
+            cellMinorMarkerFrequency: 5,
+            backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+            contentColor: SKColor.whiteColor())
+        
+        static let headingIndicator = TapeIndicatorStyle(
+            size: CGSize(width: 400, height: 40),
+            startValue: 0,
+            orientation: .Horizontal,
+            range: .Loop(range: 0..<360),
+            pointsPerValue: 5,
+            cellJustification: .Right,
+            cellMajorMarkerHeight: 20,
+            cellMinorMarkerHeight: 10,
+            cellMajorMarkerFrequency: 10,
+            cellMinorMarkerFrequency: 5,
+            backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+            contentColor: SKColor.whiteColor())
     }
     
     struct Angular {

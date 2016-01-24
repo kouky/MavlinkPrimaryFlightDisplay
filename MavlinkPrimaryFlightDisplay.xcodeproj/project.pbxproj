@@ -28,6 +28,7 @@
 		27F16A3D1C3A56AB00422D85 /* AttitudeReferenceIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F16A3C1C3A56AB00422D85 /* AttitudeReferenceIndex.swift */; };
 		27F16A411C3BBBCE00422D85 /* PitchLadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F16A401C3BBBCE00422D85 /* PitchLadder.swift */; };
 		27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA2EF71C0724A600C4E349 /* MenuManager.swift */; };
+		27FEA2ED1C54659500616ADA /* TapeIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FEA2EC1C54659500616ADA /* TapeIndicatorStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -71,6 +72,7 @@
 		27F16A3C1C3A56AB00422D85 /* AttitudeReferenceIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttitudeReferenceIndex.swift; path = Sources/AttitudeReferenceIndex.swift; sourceTree = SOURCE_ROOT; };
 		27F16A401C3BBBCE00422D85 /* PitchLadder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchLadder.swift; path = Sources/PitchLadder.swift; sourceTree = SOURCE_ROOT; };
 		27FA2EF71C0724A600C4E349 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuManager.swift; path = Sources/MenuManager.swift; sourceTree = SOURCE_ROOT; };
+		27FEA2EC1C54659500616ADA /* TapeIndicatorStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeIndicatorStyle.swift; path = Sources/TapeIndicatorStyle.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				27D4F5851C3E81AD001FA7BB /* Model.swift */,
 				278B7DA11C43CECC00F5794C /* Constants.swift */,
 				274C98241C4CFA1800334726 /* TapeIndicator.swift */,
+				27FEA2EC1C54659500616ADA /* TapeIndicatorStyle.swift */,
 			);
 			name = Sources;
 			path = MavlinkPrimaryFlightDisplay;
@@ -240,6 +243,7 @@
 				2787452A1C0161440038FDBF /* Horizon.swift in Sources */,
 				2787452B1C0161440038FDBF /* PrimaryFlightDisplay.swift in Sources */,
 				27D4F5841C3E7BA4001FA7BB /* Protocols.swift in Sources */,
+				27FEA2ED1C54659500616ADA /* TapeIndicatorStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
