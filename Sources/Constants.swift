@@ -11,6 +11,7 @@ import SpriteKit
 struct Constants {
     
     struct Font {
+        
         static let family = "Helvetica-Bold"
         static let size: CGFloat = 16
     }
@@ -91,6 +92,7 @@ struct Constants {
             cellMinorMarkerHeight: 5,
             cellMajorMarkerFrequency: 5,
             cellMinorMarkerFrequency: 1,
+            cellMarkerTextOffset: 20,
             backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
             contentColor: SKColor.whiteColor())
         
@@ -105,11 +107,12 @@ struct Constants {
             cellMinorMarkerHeight: 5,
             cellMajorMarkerFrequency: 10,
             cellMinorMarkerFrequency: 5,
+            cellMarkerTextOffset: 20,
             backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
             contentColor: SKColor.whiteColor())
         
         static let headingIndicator = TapeIndicatorStyle(
-            size: CGSize(width: 400, height: 40),
+            size: CGSize(width: 400, height: 60),
             startValue: 0,
             orientation: .Horizontal,
             range: .Loop(range: 0..<360),
@@ -119,6 +122,7 @@ struct Constants {
             cellMinorMarkerHeight:5,
             cellMajorMarkerFrequency: 10,
             cellMinorMarkerFrequency: 5,
+            cellMarkerTextOffset: 20,
             backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
             contentColor: SKColor.whiteColor())
     }

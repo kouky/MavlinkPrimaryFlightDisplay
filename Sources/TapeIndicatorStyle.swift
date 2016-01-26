@@ -38,6 +38,7 @@ struct TapeIndicatorStyle {
     let cellMinorMarkerHeight: Int
     let cellMajorMarkerFrequency: Int
     let cellMinorMarkerFrequency: Int
+    let cellMarkerTextOffset: Int
     var cellSize: CGSize { return size }
     
     let backgroundColor: SKColor

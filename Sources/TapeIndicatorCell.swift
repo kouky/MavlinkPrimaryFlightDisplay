@@ -43,13 +43,26 @@ class TapeIndicatorCell: SKNode {
         Array(model.lowerValue...model.upperValue)
             .flatMap({CellMarker(value: $0, style: style)})
             .forEach { marker in
+                
                 let line = SKShapeNode(rectOfSize: CGSize(width: 0, height: marker.height))
+                line.name = markerNodeName
                 line.strokeColor = marker.color
                 line.fillColor = marker.color
                 line.position = CGPoint(
                     x: CGFloat(((marker.value - model.lowerValue) * style.pointsPerValue)) - style.size.width/2,
                     y: (CGFloat(marker.height) - style.size.height)/2)
                 addChild(line)
+                
+                if marker.isMajor {
+                    let label = SKLabelNode(text: "\(marker.value)")
+                    label.name = markerNodeName
+                    label.fontName = Constants.Font.family
+                    label.fontSize = Constants.Font.size
+                    label.position = CGPoint(
+                        x: CGFloat(((marker.value - model.lowerValue) * style.pointsPerValue)) - style.size.width/2,
+                        y: CGFloat(style.markerTextOffset) - style.size.height/2)
+                    addChild(label)
+                }
             }
     }
 }

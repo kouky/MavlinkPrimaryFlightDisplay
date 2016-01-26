@@ -16,6 +16,7 @@ struct TapeIndicatorCellStyle {
     let minorMarkerHeight: Int
     let majorMarkerFrequency: Int
     let minorMarkerFrequency: Int
+    let markerTextOffset: Int
     let contentColor: SKColor
 }
 
@@ -33,7 +34,7 @@ extension TapeIndicatorStyle: CellStyleConvertible {
         case .Horizontal: transformedSize = cellSize
         case .Vertical: transformedSize = CGSize(width: cellSize.height, height: cellSize.width)
         }
-        
+                
         return TapeIndicatorCellStyle(
             size: transformedSize,
             pointsPerValue: pointsPerValue,
@@ -41,6 +42,7 @@ extension TapeIndicatorStyle: CellStyleConvertible {
             minorMarkerHeight: cellMinorMarkerHeight,
             majorMarkerFrequency: cellMajorMarkerFrequency,
             minorMarkerFrequency: cellMinorMarkerFrequency,
+            markerTextOffset:  cellMarkerTextOffset,
             contentColor: contentColor)
     }
 }
