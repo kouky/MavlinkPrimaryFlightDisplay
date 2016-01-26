@@ -10,11 +10,6 @@ import SpriteKit
 
 struct TapeIndicatorStyle {
     
-    enum Orientation {
-        case Vertical
-        case Horizontal
-    }
-    
     enum CellJustification {
         case Top
         case Bottom
@@ -29,13 +24,12 @@ struct TapeIndicatorStyle {
 
     let size: CGSize
     let startValue: Int
-    let orientation: Orientation
     let range: TapeRange
     let pointsPerValue: Int
     
     let cellJustification: CellJustification
-    let cellMajorMarkerHeight: Int
-    let cellMinorMarkerHeight: Int
+    let cellMajorMarkerLength: Int
+    let cellMinorMarkerLength: Int
     let cellMajorMarkerFrequency: Int
     let cellMinorMarkerFrequency: Int
     let cellMarkerTextOffset: Int

@@ -9,11 +9,19 @@
 import SpriteKit
 
 struct TapeIndicatorCellStyle {
-    
+
+    enum Justification {
+        case Top
+        case Bottom
+        case Left
+        case Right
+    }
+
     let size: CGSize
+    let justification: Justification
     let pointsPerValue: Int
-    let majorMarkerHeight: Int
-    let minorMarkerHeight: Int
+    let majorMarkerLength: Int
+    let minorMarkerLength: Int
     let majorMarkerFrequency: Int
     let minorMarkerFrequency: Int
     let markerTextOffset: Int
@@ -29,17 +37,20 @@ extension TapeIndicatorStyle: CellStyleConvertible {
     
     var cellStyle: TapeIndicatorCellStyle {
         
-        let transformedSize: CGSize
-        switch orientation {
-        case .Horizontal: transformedSize = cellSize
-        case .Vertical: transformedSize = CGSize(width: cellSize.height, height: cellSize.width)
+        let justification: TapeIndicatorCellStyle.Justification
+        switch cellJustification {
+        case .Top: justification = .Top
+        case .Bottom: justification = .Bottom
+        case .Left: justification = .Left
+        case .Right: justification = .Right
         }
-                
+        
         return TapeIndicatorCellStyle(
-            size: transformedSize,
+            size: cellSize,
+            justification: justification,
             pointsPerValue: pointsPerValue,
-            majorMarkerHeight: cellMajorMarkerHeight,
-            minorMarkerHeight: cellMinorMarkerHeight,
+            majorMarkerLength: cellMajorMarkerLength,
+            minorMarkerLength: cellMinorMarkerLength,
             majorMarkerFrequency: cellMajorMarkerFrequency,
             minorMarkerFrequency: cellMinorMarkerFrequency,
             markerTextOffset:  cellMarkerTextOffset,

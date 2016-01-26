@@ -28,15 +28,8 @@ class TapeIndicator: SKNode {
         backgroundShape.fillColor = style.backgroundColor
         backgroundShape.strokeColor = SKColor.clearColor()
         addChild(backgroundShape)
-
-        let cell = TapeIndicatorCell(
+        addChild(TapeIndicatorCell(
             model: TapeIndicatorCellModel(lowerValue: -20, upperValue:  20),
-            style: style.cellStyle)
-
-        if style.orientation == .Vertical {
-            cell.runAction(SKAction.rotateByAngle(CGFloat(M_PI_2), duration: 0))
-        }
-        
-        addChild(cell)
+            style: style.cellStyle))
     }
 }

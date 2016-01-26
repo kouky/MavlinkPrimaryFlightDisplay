@@ -76,7 +76,6 @@ struct Constants {
             static let skyPointerHeight = 12
             static let skyPointerWidth = 12
         }
-        
     }
     
     struct Style {
@@ -84,12 +83,11 @@ struct Constants {
         static let altimeter = TapeIndicatorStyle(
             size: CGSize(width: 60, height: 300),
             startValue: 0,
-            orientation: .Vertical,
             range: .Continuous,
             pointsPerValue: 15,
-            cellJustification: .Left,
-            cellMajorMarkerHeight: 10,
-            cellMinorMarkerHeight: 5,
+            cellJustification: .Right,
+            cellMajorMarkerLength: 10,
+            cellMinorMarkerLength: 5,
             cellMajorMarkerFrequency: 5,
             cellMinorMarkerFrequency: 1,
             cellMarkerTextOffset: 20,
@@ -99,12 +97,11 @@ struct Constants {
         static let airSpeedIndicator = TapeIndicatorStyle(
             size: CGSize(width: 60, height: 300),
             startValue: 0,
-            orientation: .Vertical,
             range: .Continuous,
             pointsPerValue: 5,
-            cellJustification: .Right,
-            cellMajorMarkerHeight: 10,
-            cellMinorMarkerHeight: 5,
+            cellJustification: .Left,
+            cellMajorMarkerLength: 10,
+            cellMinorMarkerLength: 5,
             cellMajorMarkerFrequency: 10,
             cellMinorMarkerFrequency: 5,
             cellMarkerTextOffset: 20,
@@ -114,12 +111,11 @@ struct Constants {
         static let headingIndicator = TapeIndicatorStyle(
             size: CGSize(width: 400, height: 60),
             startValue: 0,
-            orientation: .Horizontal,
             range: .Loop(range: 0..<360),
             pointsPerValue: 5,
-            cellJustification: .Top,
-            cellMajorMarkerHeight: 10,
-            cellMinorMarkerHeight:5,
+            cellJustification: .Bottom,
+            cellMajorMarkerLength: 10,
+            cellMinorMarkerLength:5,
             cellMajorMarkerFrequency: 10,
             cellMinorMarkerFrequency: 5,
             cellMarkerTextOffset: 20,
