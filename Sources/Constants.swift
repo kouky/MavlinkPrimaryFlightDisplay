@@ -19,8 +19,8 @@ struct Constants {
     struct Color {
         
         struct Horizon {
-            static let sky = SKColor.blueColor()
-            static let ground = SKColor.brownColor()
+            static let sky = SKColor(red: 0.078, green: 0.490, blue: 0.816, alpha: 1.00)
+            static let ground = SKColor(red: 0.667, green: 0.855, blue: 0.196, alpha: 1.00)
             static let zeroPitchLine = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         }
         
