@@ -11,17 +11,22 @@ import SpriteKit
 struct TapeIndicatorCellModel {
     let lowerValue: Int
     let upperValue: Int
+    
+    var midValue: Double {
+        let halfRange = (Double(upperValue) - Double(lowerValue)) / 2
+        return Double(lowerValue) + halfRange
+    }
 }
 
 class TapeIndicatorCell: SKNode {
     
-    var model: TapeIndicatorCellModel {
+    private let cellStyle: TapeIndicatorCellStyle
+    private var model: TapeIndicatorCellModel {
         didSet {
             destroyMarkerNodes()
             createMarkerNodes()
         }
     }
-    private let cellStyle: TapeIndicatorCellStyle
     private let cellNodeName = "TapeIndicatorCellNode"
     
     init(model: TapeIndicatorCellModel, style: TapeIndicatorCellStyle) {
@@ -34,7 +39,17 @@ class TapeIndicatorCell: SKNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
+    func actionForValue(value: Double) -> SKAction {
+        let valuePosition = (model.midValue - value) * Double(cellStyle.pointsPerValue)
+        switch cellStyle.justification {
+        case .Top, .Bottom:
+            return SKAction.moveToX(CGFloat(valuePosition), duration: 0.05)
+        case .Left, .Right:
+            return SKAction.moveToY(CGFloat(valuePosition), duration: 0.05)
+        }
+    }
+    
     private func destroyMarkerNodes() {
         removeChildrenInArray(self[cellNodeName])
     }

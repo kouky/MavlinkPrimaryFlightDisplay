@@ -12,25 +12,34 @@ import SpriteKit
 class TapeIndicator: SKNode {
     
     let style: TapeIndicatorStyle
+    var value: Double = 0 {
+        didSet {
+            updateCellPositions()
+        }
+    }
+    private var cells = [TapeIndicatorCell]()
     
     init(style: TapeIndicatorStyle) {
         self.style = style
         super.init()
-        configureNodes()
+        addNodes()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureNodes() {
+    private func addNodes() {
         let backgroundShape = SKShapeNode(rectOfSize: style.size, cornerRadius: 2)
         backgroundShape.fillColor = style.backgroundColor
         backgroundShape.strokeColor = SKColor.clearColor()
         addChild(backgroundShape)
-        addChild(TapeIndicatorCell(
+        let cell = TapeIndicatorCell(
             model: optimalCellModelForLowerValue(0),
-            style: style.cellStyle))
+            style: style.cellStyle)
+        addChild(cell)
+        cells.append(cell)
+        self.value = 0
     }
     
     private func optimalCellModelForLowerValue(lowerValue: Int) -> TapeIndicatorCellModel {
@@ -44,6 +53,13 @@ class TapeIndicator: SKNode {
             return TapeIndicatorCellModel(
                 lowerValue: lowerValue, upperValue:
                 (lowerValue + style.optimalCellValueRange) % range.endIndex)
+        }
+    }
+    
+    private func updateCellPositions() {
+        cells.forEach { [weak self] cell in
+            guard let value = self?.value else { return  }
+            cell.runAction(cell.actionForValue(value))
         }
     }
 }
