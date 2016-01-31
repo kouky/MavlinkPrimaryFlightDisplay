@@ -110,7 +110,7 @@ class TapeIndicatorCell: SKNode {
     }
 }
 
-struct CellMarker {
+private struct CellMarker {
     let value: Int
     let lineSize: CGSize
     let color: SKColor

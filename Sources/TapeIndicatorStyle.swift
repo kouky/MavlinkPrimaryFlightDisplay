@@ -33,8 +33,16 @@ struct TapeIndicatorStyle {
     let cellMajorMarkerFrequency: Int
     let cellMinorMarkerFrequency: Int
     let cellMarkerTextOffset: Int
-    var cellSize: CGSize { return size }
     
     let backgroundColor: SKColor
     let contentColor: SKColor
+    
+    var optimalCellValueRange: Int {
+        switch cellJustification {
+        case .Bottom, .Top:
+            return Int(floor(size.width / CGFloat(pointsPerValue)))
+        case .Left, .Right:
+            return Int(floor(size.height / CGFloat(pointsPerValue)))
+        }
+    }
 }

@@ -29,7 +29,21 @@ class TapeIndicator: SKNode {
         backgroundShape.strokeColor = SKColor.clearColor()
         addChild(backgroundShape)
         addChild(TapeIndicatorCell(
-            model: TapeIndicatorCellModel(lowerValue: -20, upperValue:  20),
+            model: optimalCellModelForLowerValue(0),
             style: style.cellStyle))
+    }
+    
+    private func optimalCellModelForLowerValue(lowerValue: Int) -> TapeIndicatorCellModel {
+        
+        switch style.range {
+        case .Continuous:
+            return TapeIndicatorCellModel(
+                lowerValue: lowerValue,
+                upperValue: lowerValue + style.optimalCellValueRange)
+        case .Loop(let range):
+            return TapeIndicatorCellModel(
+                lowerValue: lowerValue, upperValue:
+                (lowerValue + style.optimalCellValueRange) % range.endIndex)
+        }
     }
 }

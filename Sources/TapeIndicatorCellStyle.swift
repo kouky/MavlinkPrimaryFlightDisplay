@@ -16,7 +16,7 @@ struct TapeIndicatorCellStyle {
         case Left
         case Right
     }
-
+    
     let size: CGSize
     let justification: Justification
     let pointsPerValue: Int
@@ -46,7 +46,7 @@ extension TapeIndicatorStyle: CellStyleConvertible {
         }
         
         return TapeIndicatorCellStyle(
-            size: cellSize,
+            size: size,
             justification: justification,
             pointsPerValue: pointsPerValue,
             majorMarkerLength: cellMajorMarkerLength,
@@ -55,5 +55,5 @@ extension TapeIndicatorStyle: CellStyleConvertible {
             minorMarkerFrequency: cellMinorMarkerFrequency,
             markerTextOffset:  cellMarkerTextOffset,
             contentColor: contentColor)
-    }
+    }    
 }
