@@ -20,13 +20,14 @@ struct TapeIndicatorCellModel {
 
 class TapeIndicatorCell: SKNode {
     
-    private let cellStyle: TapeIndicatorCellStyle
-    private var model: TapeIndicatorCellModel {
+    
+    var model: TapeIndicatorCellModel {
         didSet {
             destroyMarkerNodes()
             createMarkerNodes()
         }
     }
+    private let cellStyle: TapeIndicatorCellStyle
     private let cellNodeName = "TapeIndicatorCellNode"
     
     init(model: TapeIndicatorCellModel, style: TapeIndicatorCellStyle) {

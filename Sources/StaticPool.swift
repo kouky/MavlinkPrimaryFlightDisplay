@@ -28,7 +28,7 @@ class StaticPool <ElementType: Equatable> {
         self.releaseHandler = onRelease
     }
 
-    func request() throws -> ElementType {
+    func requestElement() throws -> ElementType {
         guard !idleElements.isEmpty else {
             throw StaticPoolError.RequestCannotBeFulfilled
         }
@@ -39,7 +39,7 @@ class StaticPool <ElementType: Equatable> {
         return element
     }
     
-    func release(element: ElementType) throws {
+    func releaseElement(element: ElementType) throws {
         guard let index = usedElements.indexOf(element) else {
             throw StaticPoolError.ReleaseOfElementNotOwnedByPool
         }

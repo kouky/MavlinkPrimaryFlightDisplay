@@ -17,29 +17,38 @@ class TapeIndicator: SKNode {
             updateCellPositions()
         }
     }
-    private var cells = [TapeIndicatorCell]()
+    private let cellPool: StaticPool<TapeIndicatorCell>
     
     init(style: TapeIndicatorStyle) {
         self.style = style
+        let cellModel = TapeIndicatorCellModel(lowerValue: 0, upperValue: 1)
+        let cell = TapeIndicatorCell(model: cellModel, style: style.cellStyle)
+        cellPool = StaticPool(elements: [cell])
         super.init()
-        addNodes()
+        addBackgroundNode()
+        addCellNodes()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func addNodes() {
+    private func addBackgroundNode() {
         let backgroundShape = SKShapeNode(rectOfSize: style.size, cornerRadius: 2)
         backgroundShape.fillColor = style.backgroundColor
         backgroundShape.strokeColor = SKColor.clearColor()
         addChild(backgroundShape)
-        let cell = TapeIndicatorCell(
-            model: optimalCellModelForLowerValue(0),
-            style: style.cellStyle)
+    }
+    
+    private func addCellNodes() {
+        guard let cell = try? cellPool.requestElement() else {
+            fatalError("")
+        }
+        
+        cell.model = optimalCellModelForLowerValue(0)
         addChild(cell)
-        cells.append(cell)
-        self.value = 0
+        
+        value = 0
     }
     
     private func optimalCellModelForLowerValue(lowerValue: Int) -> TapeIndicatorCellModel {
@@ -57,7 +66,7 @@ class TapeIndicator: SKNode {
     }
     
     private func updateCellPositions() {
-        cells.forEach { [weak self] cell in
+        cellPool.forEach { [weak self] cell in
             guard let value = self?.value else { return  }
             cell.runAction(cell.actionForValue(value))
         }
