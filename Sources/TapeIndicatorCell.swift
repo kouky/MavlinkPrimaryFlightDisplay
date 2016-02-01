@@ -23,12 +23,11 @@ class TapeIndicatorCell: SKNode {
     
     var model: TapeIndicatorCellModel {
         didSet {
-            destroyMarkerNodes()
+            removeAllChildren()
             createMarkerNodes()
         }
     }
     private let cellStyle: TapeIndicatorCellStyle
-    private let cellNodeName = "TapeIndicatorCellNode"
     
     init(model: TapeIndicatorCellModel, style: TapeIndicatorCellStyle) {
         self.model = model
@@ -51,10 +50,6 @@ class TapeIndicatorCell: SKNode {
         }
     }
     
-    private func destroyMarkerNodes() {
-        removeChildrenInArray(self[cellNodeName])
-    }
-    
     private func createMarkerNodes() {
         Array(model.lowerValue...model.upperValue)
             .flatMap({CellMarker(value: $0, cellStyle: cellStyle)})
@@ -69,7 +64,6 @@ class TapeIndicatorCell: SKNode {
     
     private func buildLineNode(marker: CellMarker) -> SKShapeNode {
         let line =  SKShapeNode(rectOfSize: marker.lineSize)
-        line.name = cellNodeName
         line.strokeColor = marker.color
         line.fillColor = marker.color
         
@@ -97,7 +91,6 @@ class TapeIndicatorCell: SKNode {
     
     private func buildLabelNode(marker: CellMarker) -> SKLabelNode {
         let label = SKLabelNode(text: "\(marker.value)")
-        label.name = cellNodeName
         label.fontName = Constants.Font.family
         label.fontSize = Constants.Font.size
         label.horizontalAlignmentMode = marker.labelAlignment.horizontal
