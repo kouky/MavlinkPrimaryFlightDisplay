@@ -22,7 +22,12 @@ class StaticPool <ElementType: Equatable> {
     private let requestHandler: RequestHandler?
     private let releaseHandler: ReleaseHandler?
 
-    init(elements: [ElementType], onRequest: RequestHandler? = nil, onRelease: ReleaseHandler? = nil) {
+    static func build(size size: Int, builder: () -> ElementType) -> StaticPool {
+        let elements = Array(0..<3).map { _ in builder() }
+        return self.init(elements: elements)
+    }
+    
+    required init(elements: [ElementType], onRequest: RequestHandler? = nil, onRelease: ReleaseHandler? = nil) {
         self.idleElements = elements
         self.requestHandler = onRequest
         self.releaseHandler = onRelease

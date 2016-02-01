@@ -18,12 +18,14 @@ class TapeIndicator: SKNode {
         }
     }
     private let cellPool: StaticPool<TapeIndicatorCell>
+    private let cellPoolSize = 3
     
     init(style: TapeIndicatorStyle) {
         self.style = style
-        let cellModel = TapeIndicatorCellModel(lowerValue: 0, upperValue: 1)
-        let cell = TapeIndicatorCell(model: cellModel, style: style.cellStyle)
-        cellPool = StaticPool(elements: [cell])
+        cellPool = StaticPool.build(size: cellPoolSize) {
+            let cellModel = TapeIndicatorCellModel(lowerValue: 0, upperValue: 1)
+            return TapeIndicatorCell(model: cellModel, style: style.cellStyle)
+        }
         super.init()
         addBackgroundNode()
         addCellNodes()
