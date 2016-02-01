@@ -18,7 +18,7 @@ class TapeIndicator: SKNode {
         }
     }
     private let cellPool: StaticPool<TapeIndicatorCell>
-    private let cellPoolSize = 3
+    private let cellPoolSize: UInt = 3
     
     init(style: TapeIndicatorStyle) {
         self.style = style
@@ -43,12 +43,21 @@ class TapeIndicator: SKNode {
     }
     
     private func addCellNodes() {
-        guard let cell = try? cellPool.requestElement() else {
-            fatalError("")
+        
+        let models: [TapeIndicatorCellModel] = (0..<Int(cellPoolSize)).map { index in
+            let valueRange = style.optimalCellValueRange
+            let lowerValue = index * (valueRange + 1)
+            let upperValue = lowerValue + valueRange
+            return TapeIndicatorCellModel(lowerValue: lowerValue, upperValue: upperValue)
         }
         
-        cell.model = optimalCellModelForLowerValue(0)
-        addChild(cell)
+        models.forEach { model in
+            guard let cell = try? cellPool.requestElement() else {
+                fatalError("Cell pool unable to provide cell")
+            }
+            cell.model = model
+            addChild(cell)
+        }
         
         value = 0
     }

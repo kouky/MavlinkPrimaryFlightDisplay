@@ -22,8 +22,12 @@ class StaticPool <ElementType: Equatable> {
     private let requestHandler: RequestHandler?
     private let releaseHandler: ReleaseHandler?
 
-    static func build(size size: Int, builder: () -> ElementType) -> StaticPool {
-        let elements = Array(0..<3).map { _ in builder() }
+    static func build(size size: UInt, builder: () -> ElementType) -> StaticPool {
+        guard size > 0 else {
+            fatalError("Cannot build StaticPool of size 0")
+        }
+        
+        let elements = (0..<size).map { _ in builder() }
         return self.init(elements: elements)
     }
     
