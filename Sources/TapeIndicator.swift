@@ -52,13 +52,17 @@ class TapeIndicator: SKNode {
         }
         
         models.forEach { model in
-            guard let cell = try? cellPool.requestElement() else {
+            do {
+                try cellPool.requestElement {
+                    $0.model = model
+                    self.addChild($0)
+                }
+            }
+            catch {
                 fatalError("Cell pool unable to provide cell")
             }
-            cell.model = model
-            addChild(cell)
         }
-        
+
         value = 0
     }
     
