@@ -39,9 +39,9 @@ struct TapeIndicatorStyle {
     var optimalCellValueRange: Int {
         switch cellJustification {
         case .Bottom, .Top:
-            return Int(floor(size.width / CGFloat(pointsPerValue)))
+            return Int(round(size.width / CGFloat(pointsPerValue)))
         case .Left, .Right:
-            return Int(floor(size.height / CGFloat(pointsPerValue)))
+            return Int(round(size.height / CGFloat(pointsPerValue)))
         }
     }
 }
