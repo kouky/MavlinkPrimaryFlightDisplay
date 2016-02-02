@@ -1,5 +1,5 @@
 //
-//  TapeIndicatorCell.swift
+//  TapeCell.swift
 //  MavlinkPrimaryFlightDisplay
 //
 //  Created by Michael Koukoullis on 23/01/2016.
@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-struct TapeIndicatorCellModel {
+struct TapeCellModel {
     let lowerValue: Int
     let upperValue: Int
     
@@ -18,17 +18,17 @@ struct TapeIndicatorCellModel {
     }
 }
 
-class TapeIndicatorCell: SKNode {
+class TapeCell: SKNode {
     
-    var model: TapeIndicatorCellModel {
+    var model: TapeCellModel {
         didSet {
             removeAllChildren()
             createMarkerNodes()
         }
     }
-    private let cellStyle: TapeIndicatorCellStyle
+    private let cellStyle: TapeCellStyle
     
-    init(model: TapeIndicatorCellModel, style: TapeIndicatorCellStyle) {
+    init(model: TapeCellModel, style: TapeCellStyle) {
         self.model = model
         self.cellStyle = style
         super.init()
@@ -133,7 +133,7 @@ private struct CellMarker {
     let isMajor: Bool
     let labelAlignment: (horizontal: SKLabelHorizontalAlignmentMode, vertical: SKLabelVerticalAlignmentMode)
 
-    init?(value: Int, cellStyle: TapeIndicatorCellStyle) {
+    init?(value: Int, cellStyle: TapeCellStyle) {
         let isMajor = value % cellStyle.majorMarkerFrequency == 0
         let isMinor = value % cellStyle.minorMarkerFrequency == 0
         

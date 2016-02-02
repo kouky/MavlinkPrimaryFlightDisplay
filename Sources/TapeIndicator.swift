@@ -17,13 +17,13 @@ class TapeIndicator: SKNode {
             updateCellPositions()
         }
     }
-    private let cells: [TapeIndicatorCell]
+    private let cells: [TapeCell]
     
     init(style: TapeIndicatorStyle) {
         self.style = style
         cells = (0..<3).map {_ in 
-            let cellModel = TapeIndicatorCellModel(lowerValue: 0, upperValue: 1)
-            return TapeIndicatorCell(model: cellModel, style: style.cellStyle)
+            let cellModel = TapeCellModel(lowerValue: 0, upperValue: 1)
+            return TapeCell(model: cellModel, style: style.cellStyle)
         }
         super.init()
         addBackgroundNode()
@@ -43,11 +43,11 @@ class TapeIndicator: SKNode {
     
     private func addInitialCellNodes() {
         
-        let models: [TapeIndicatorCellModel] = (0..<Int(cells.count)).map { index in
+        let models: [TapeCellModel] = (0..<Int(cells.count)).map { index in
             let valueRange = style.optimalCellValueRange
             let lowerValue = index * (valueRange + 1)
             let upperValue = lowerValue + valueRange
-            return TapeIndicatorCellModel(lowerValue: lowerValue, upperValue: upperValue)
+            return TapeCellModel(lowerValue: lowerValue, upperValue: upperValue)
         }
         
         zip(models, cells).forEach { (model, cell) in
@@ -57,15 +57,15 @@ class TapeIndicator: SKNode {
         value = 0
     }
     
-    private func optimalCellModelForLowerValue(lowerValue: Int) -> TapeIndicatorCellModel {
+    private func optimalCellModelForLowerValue(lowerValue: Int) -> TapeCellModel {
         
         switch style.range {
         case .Continuous:
-            return TapeIndicatorCellModel(
+            return TapeCellModel(
                 lowerValue: lowerValue,
                 upperValue: lowerValue + style.optimalCellValueRange)
         case .Loop(let range):
-            return TapeIndicatorCellModel(
+            return TapeCellModel(
                 lowerValue: lowerValue, upperValue:
                 (lowerValue + style.optimalCellValueRange) % range.endIndex)
         }

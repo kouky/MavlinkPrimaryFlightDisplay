@@ -1,5 +1,5 @@
 //
-//  TapeIndicatorCellStyle.swift
+//  TapeCellStyle.swift
 //  MavlinkPrimaryFlightDisplay
 //
 //  Created by Michael Koukoullis on 24/01/2016.
@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-struct TapeIndicatorCellStyle {
+struct TapeCellStyle {
 
     enum Justification {
         case Top
@@ -28,16 +28,16 @@ struct TapeIndicatorCellStyle {
     let contentColor: SKColor
 }
 
-protocol CellStyleConvertible {
+protocol TapeCellStyleConvertible {
     
-    var cellStyle: TapeIndicatorCellStyle { get }
+    var cellStyle: TapeCellStyle { get }
 }
 
-extension TapeIndicatorStyle: CellStyleConvertible {
+extension TapeIndicatorStyle: TapeCellStyleConvertible {
     
-    var cellStyle: TapeIndicatorCellStyle {
+    var cellStyle: TapeCellStyle {
         
-        let justification: TapeIndicatorCellStyle.Justification
+        let justification: TapeCellStyle.Justification
         switch cellJustification {
         case .Top: justification = .Top
         case .Bottom: justification = .Bottom
@@ -45,7 +45,7 @@ extension TapeIndicatorStyle: CellStyleConvertible {
         case .Right: justification = .Right
         }
         
-        return TapeIndicatorCellStyle(
+        return TapeCellStyle(
             size: size,
             justification: justification,
             pointsPerValue: pointsPerValue,
