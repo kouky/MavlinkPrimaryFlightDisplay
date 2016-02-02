@@ -20,7 +20,6 @@ struct TapeIndicatorCellModel {
 
 class TapeIndicatorCell: SKNode {
     
-    
     var model: TapeIndicatorCellModel {
         didSet {
             removeAllChildren()

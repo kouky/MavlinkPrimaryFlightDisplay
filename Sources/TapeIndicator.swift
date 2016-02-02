@@ -17,18 +17,17 @@ class TapeIndicator: SKNode {
             updateCellPositions()
         }
     }
-    private let cellPool: StaticPool<TapeIndicatorCell>
-    private let cellPoolSize: UInt = 3
+    private let cells: [TapeIndicatorCell]
     
     init(style: TapeIndicatorStyle) {
         self.style = style
-        cellPool = StaticPool.build(size: cellPoolSize) {
+        cells = (0..<3).map {_ in 
             let cellModel = TapeIndicatorCellModel(lowerValue: 0, upperValue: 1)
             return TapeIndicatorCell(model: cellModel, style: style.cellStyle)
         }
         super.init()
         addBackgroundNode()
-        addCellNodes()
+        addInitialCellNodes()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -42,27 +41,19 @@ class TapeIndicator: SKNode {
         addChild(backgroundShape)
     }
     
-    private func addCellNodes() {
+    private func addInitialCellNodes() {
         
-        let models: [TapeIndicatorCellModel] = (0..<Int(cellPoolSize)).map { index in
+        let models: [TapeIndicatorCellModel] = (0..<Int(cells.count)).map { index in
             let valueRange = style.optimalCellValueRange
             let lowerValue = index * (valueRange + 1)
             let upperValue = lowerValue + valueRange
             return TapeIndicatorCellModel(lowerValue: lowerValue, upperValue: upperValue)
         }
         
-        models.forEach { model in
-            do {
-                try cellPool.requestElement {
-                    $0.model = model
-                    self.addChild($0)
-                }
-            }
-            catch {
-                fatalError("Cell pool unable to provide cell")
-            }
+        zip(models, cells).forEach { (model, cell) in
+            cell.model = model
+            addChild(cell)
         }
-
         value = 0
     }
     
@@ -81,7 +72,7 @@ class TapeIndicator: SKNode {
     }
     
     private func updateCellPositions() {
-        cellPool.forEach { [weak self] cell in
+        cells.forEach { [weak self] cell in
             guard let value = self?.value else { return  }
             cell.runAction(cell.actionForValue(value))
         }
