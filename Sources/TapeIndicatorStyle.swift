@@ -23,7 +23,6 @@ struct TapeIndicatorStyle {
     }
 
     let size: CGSize
-    let startValue: Int
     let range: TapeRange
     let pointsPerValue: Int
     

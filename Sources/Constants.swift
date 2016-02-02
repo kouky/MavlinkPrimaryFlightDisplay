@@ -82,7 +82,6 @@ struct Constants {
         
         static let altimeter = TapeIndicatorStyle(
             size: CGSize(width: 60, height: 300),
-            startValue: 0,
             range: .Continuous,
             pointsPerValue: 15,
             cellJustification: .Right,
@@ -96,7 +95,6 @@ struct Constants {
         
         static let airSpeedIndicator = TapeIndicatorStyle(
             size: CGSize(width: 60, height: 300),
-            startValue: 0,
             range: .Continuous,
             pointsPerValue: 5,
             cellJustification: .Left,
@@ -110,7 +108,6 @@ struct Constants {
         
         static let headingIndicator = TapeIndicatorStyle(
             size: CGSize(width: 400, height: 60),
-            startValue: 0,
             range: .Loop(range: 0..<360),
             pointsPerValue: 5,
             cellJustification: .Bottom,
