@@ -16,6 +16,10 @@ struct TapeCellModel {
         let halfRange = (Double(upperValue) - Double(lowerValue)) / 2
         return Double(lowerValue) + halfRange
     }
+    
+    var range: UInt {
+        return UInt(upperValue - lowerValue)
+    }
 }
 
 class TapeCell: SKNode {
@@ -77,20 +81,20 @@ class TapeCell: SKNode {
         switch cellStyle.justification {
         case .Top:
             line.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.width/2,
+                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2,
                 y: (cellStyle.size.height - CGFloat(marker.lineSize.height))/2)
         case .Bottom:
             line.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.width/2,
+                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2,
                 y: (CGFloat(marker.lineSize.height) - cellStyle.size.height)/2)
         case .Left:
             line.position = CGPoint(
                 x: (CGFloat(marker.lineSize.width) - cellStyle.size.width)/2,
-                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.height/2)
+                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2)
         case .Right:
             line.position = CGPoint(
                 x: (cellStyle.size.width - CGFloat(marker.lineSize.width))/2,
-                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.height/2)
+                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2)
         }
         
         return line
