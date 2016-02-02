@@ -66,7 +66,7 @@ private class PrimaryFlightDisplayScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func didMoveToView(view: SKView) {
+    private override func didMoveToView(view: SKView) {
         scaleMode = .ResizeFill
         addChild(horizon)
         addChild(pitchLadder)
@@ -81,6 +81,11 @@ private class PrimaryFlightDisplayScene: SKScene {
         altimeter.position = CGPoint(x: -size.width/2 + altimeter.style.size.width/2, y: 0)
         airSpeedIndicator.position = CGPoint(x: size.width/2 - airSpeedIndicator.style.size.width/2, y: 0)
         headingIndicator.position = CGPoint(x: 0, y: size.height/2 - headingIndicator.style.size.height/2)
+    }
+    
+    private override func didEvaluateActions() {
+        altimeter.recycleCells()
+        // TODO: Recycle cells for other tape indicators
     }
 }
 

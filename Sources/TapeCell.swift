@@ -49,8 +49,8 @@ class TapeCell: SKNode {
         }
     }
     
-    func containsValue(value: Int) -> Bool {
-        return model.lowerValue <= value && value <= model.upperValue
+    func containsValue(value: Double) -> Bool {
+        return Double(model.lowerValue) <= value && value <= Double(model.upperValue)
     }
     
     func distanceFromValue(value: Int) -> Double {

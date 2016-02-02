@@ -29,6 +29,10 @@ class TapeIndicator: SKNode {
         addBackgroundNode()
         addInitialCellNodes()
     }
+    
+    func recycleCells() {
+        // TODO: Implement
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
