@@ -49,6 +49,14 @@ class TapeIndicatorCell: SKNode {
         }
     }
     
+    func containsValue(value: Int) -> Bool {
+        return model.lowerValue <= value && value <= model.upperValue
+    }
+    
+    func distanceFromValue(value: Int) -> Double {
+        return abs(model.midValue - Double(value))
+    }
+    
     private func createMarkerNodes() {
         Array(model.lowerValue...model.upperValue)
             .flatMap({CellMarker(value: $0, cellStyle: cellStyle)})
