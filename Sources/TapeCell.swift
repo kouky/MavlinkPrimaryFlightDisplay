@@ -110,20 +110,20 @@ class TapeCell: SKNode {
         switch cellStyle.justification {
         case .Top:
             label.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.width/2,
+                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2,
                 y: cellStyle.size.height/2 - CGFloat(cellStyle.markerTextOffset))
         case .Bottom:
             label.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.width/2,
+                x: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2,
                 y: CGFloat(cellStyle.markerTextOffset) - cellStyle.size.height/2)
         case .Left:
             label.position = CGPoint(
                 x: CGFloat(cellStyle.markerTextOffset) - cellStyle.size.width/2,
-                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.height/2)
+                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2)
         case .Right:
             label.position = CGPoint(
                 x: cellStyle.size.width/2 - CGFloat(cellStyle.markerTextOffset),
-                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - cellStyle.size.height/2)
+                y: CGFloat(((marker.value - model.lowerValue) * cellStyle.pointsPerValue)) - (CGFloat(model.range) * CGFloat(cellStyle.pointsPerValue))/2)
         }
 
         return label
