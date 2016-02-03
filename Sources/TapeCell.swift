@@ -8,24 +8,6 @@
 
 import SpriteKit
 
-struct TapeCellModel {
-    let lowerValue: Int
-    let upperValue: Int
-    
-    var midValue: Double {
-        let halfRange = (Double(upperValue) - Double(lowerValue)) / 2
-        return Double(lowerValue) + halfRange
-    }
-    
-    var range: UInt {
-        return UInt(upperValue - lowerValue)
-    }
-    
-    func containsValue(value: Double) -> Bool {
-        return Double(lowerValue) <= value && value <= Double(upperValue)
-    }
-}
-
 class TapeCell: SKNode {
     
     var model: TapeCellModel {
@@ -70,6 +52,7 @@ class TapeCell: SKNode {
         }
     }
     
+    // TODO: Use or delete
     func distanceFromValue(value: Int) -> Double {
         return abs(model.midValue - Double(value))
     }
