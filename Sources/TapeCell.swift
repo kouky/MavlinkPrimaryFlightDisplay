@@ -20,6 +20,10 @@ struct TapeCellModel {
     var range: UInt {
         return UInt(upperValue - lowerValue)
     }
+    
+    func containsValue(value: Double) -> Bool {
+        return Double(lowerValue) <= value && value <= Double(upperValue)
+    }
 }
 
 class TapeCell: SKNode {
@@ -57,8 +61,13 @@ class TapeCell: SKNode {
         }
     }
     
-    func containsValue(value: Double) -> Bool {
-        return Double(model.lowerValue) <= value && value <= Double(model.upperValue)
+    func valueForPosition() -> Double {
+        switch cellStyle.justification {
+        case .Top, .Bottom:
+            return model.midValue - (Double(position.x) / Double(cellStyle.pointsPerValue))
+        case .Left, .Right:
+            return model.midValue - (Double(position.y) / Double(cellStyle.pointsPerValue))
+        }
     }
     
     func distanceFromValue(value: Int) -> Double {
