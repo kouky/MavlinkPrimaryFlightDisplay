@@ -44,12 +44,16 @@ class TapeCell: SKNode {
     }
     
     func actionForValue(value: Double) -> SKAction {
+        return SKAction.moveTo(positionForValue(value), duration: 3)
+    }
+    
+    func positionForValue(value: Double) -> CGPoint {
         let valuePosition = (model.midValue - value) * Double(cellStyle.pointsPerValue)
         switch cellStyle.justification {
         case .Top, .Bottom:
-            return SKAction.moveToX(CGFloat(valuePosition), duration: 0.05)
+            return CGPoint(x: CGFloat(valuePosition), y: position.y)
         case .Left, .Right:
-            return SKAction.moveToY(CGFloat(valuePosition), duration: 0.05)
+            return CGPoint(x: position.x, y: CGFloat(valuePosition))
         }
     }
     

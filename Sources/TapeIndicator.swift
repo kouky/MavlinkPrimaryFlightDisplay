@@ -57,8 +57,8 @@ class TapeIndicator: SKNode {
         zip(models, cells).forEach { (model, cell) in
             cell.model = model
             addChild(cell)
+            cell.position = cell.positionForValue(value)
         }
-        value = 0
     }
     
     private func optimalCellModelForLowerValue(lowerValue: Int) -> TapeCellModel {
