@@ -1,5 +1,5 @@
 //
-//  TapeCell+CollectionType.swift
+//  TapeCellStatus.swift
 //  MavlinkPrimaryFlightDisplay
 //
 //  Created by Michael Koukoullis on 3/02/2016.
