@@ -12,3 +12,9 @@ protocol SceneType {
     var sceneSize: CGSize { get }
 }
 
+protocol DuplexGeneratorType {
+    typealias Element
+    
+    func next() throws -> Element
+    func previous() throws -> Element
+}
