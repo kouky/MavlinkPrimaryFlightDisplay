@@ -36,6 +36,7 @@ struct TapeIndicatorStyle {
     let backgroundColor: SKColor
     let contentColor: SKColor
     
+    // TODO: account for tape range
     var optimalCellValueRange: Int {
         switch cellJustification {
         case .Bottom, .Top:

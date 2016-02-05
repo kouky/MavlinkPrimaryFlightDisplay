@@ -22,7 +22,9 @@ class TapeIndicator: SKNode {
     init(style: TapeIndicatorStyle) {
         self.style = style
         cells = (0..<3).map {_ in 
-            let cellModel = TapeCellModel(lowerValue: 0, upperValue: 1)
+            guard let cellModel = try? TapeCellModel(lowerValue: 0, upperValue: 1) else {
+                fatalError("Canno build tape cell model")
+            }
             return TapeCell(model: cellModel, style: style.cellStyle)
         }
         super.init()
@@ -31,7 +33,9 @@ class TapeIndicator: SKNode {
     }
     
     func recycleCells() {
-        // TODO: Implement
+        let status = cells.statusForPosition()
+        let x = status.map { ($0.value, $0.containsValue) }
+        print(x)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -47,31 +51,22 @@ class TapeIndicator: SKNode {
     
     private func addInitialCellNodes() {
         
+        // TODO: Account for tape range
         let models: [TapeCellModel] = (0..<Int(cells.count)).map { index in
             let valueRange = style.optimalCellValueRange
             let lowerValue = index * (valueRange + 1)
             let upperValue = lowerValue + valueRange
-            return TapeCellModel(lowerValue: lowerValue, upperValue: upperValue)
+
+            guard let model = try? TapeCellModel(lowerValue: lowerValue, upperValue: upperValue) else {
+                fatalError("Canno build tape cell model")
+            }
+            return model
         }
         
         zip(models, cells).forEach { (model, cell) in
             cell.model = model
             addChild(cell)
             cell.position = cell.positionForValue(value)
-        }
-    }
-    
-    private func optimalCellModelForLowerValue(lowerValue: Int) -> TapeCellModel {
-        
-        switch style.range {
-        case .Continuous:
-            return TapeCellModel(
-                lowerValue: lowerValue,
-                upperValue: lowerValue + style.optimalCellValueRange)
-        case .Loop(let range):
-            return TapeCellModel(
-                lowerValue: lowerValue, upperValue:
-                (lowerValue + style.optimalCellValueRange) % range.endIndex)
         }
     }
     
