@@ -21,15 +21,19 @@ class TapeIndicator: SKNode {
     
     init(style: TapeIndicatorStyle) {
         self.style = style
-        cells = (0..<3).map {_ in 
-            guard let cellModel = try? TapeCellModel(lowerValue: 0, upperValue: 1) else {
-                fatalError("Canno build tape cell model")
+        
+        do {
+            let model = try TapeCellModel(lowerValue: 0, upperValue: 1)
+            cells = (0..<3).map { _ in
+                TapeCell(model: model, style: style.cellStyle)
             }
-            return TapeCell(model: cellModel, style: style.cellStyle)
+        } catch {
+            fatalError("Cannot build tape cell model")
         }
+        
         super.init()
         addBackgroundNode()
-        addInitialCellNodes()
+        addCellNodes()
     }
     
     func recycleCells() {
@@ -49,18 +53,20 @@ class TapeIndicator: SKNode {
         addChild(backgroundShape)
     }
     
-    private func addInitialCellNodes() {
+    private func addCellNodes() {
         
         // TODO: Account for tape range
-        let models: [TapeCellModel] = (0..<Int(cells.count)).map { index in
-            let valueRange = style.optimalCellValueRange
-            let lowerValue = index * (valueRange + 1)
-            let upperValue = lowerValue + valueRange
-
-            guard let model = try? TapeCellModel(lowerValue: lowerValue, upperValue: upperValue) else {
-                fatalError("Canno build tape cell model")
+        let models: [TapeCellModel]
+        do {
+            models = try (0..<Int(cells.count)).reduce([]) { (acc: [TapeCellModel], _) in
+                
+                guard let lastModel = acc.last else {
+                    return [try TapeCellModel(lowerValue: 0, upperValue: style.optimalCellValueRange)]
+                }
+                return acc + [try lastModel.next()]
             }
-            return model
+        } catch {
+            fatalError("Cannot build tape cell model")
         }
         
         zip(models, cells).forEach { (model, cell) in

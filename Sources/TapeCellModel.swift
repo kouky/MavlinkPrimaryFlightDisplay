@@ -44,10 +44,18 @@ struct TapeCellModel {
 extension TapeCellModel: DuplexGeneratorType {
     
     func next() throws -> TapeCellModel {
-        return try TapeCellModel(lowerValue: upperValue, upperValue: upperValue + Int(magnitude), isLoop: isLoop)
+        var newUpperValue = upperValue + Int(magnitude)
+        if isLoop {
+            newUpperValue %= Int(magnitude)
+        }
+        return try TapeCellModel(lowerValue: upperValue, upperValue: newUpperValue, isLoop: isLoop)
     }
     
     func previous() throws -> TapeCellModel {
-        return try TapeCellModel(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue, isLoop: isLoop)
+        var newLowerValue = lowerValue - Int(magnitude)
+        if isLoop {
+            newLowerValue %= Int(magnitude)
+        }
+        return try TapeCellModel(lowerValue: newLowerValue, upperValue: lowerValue, isLoop: isLoop)
     }
 }

@@ -51,12 +51,7 @@ class TapeCell: SKNode {
             return model.midValue - (Double(position.y) / Double(cellStyle.pointsPerValue))
         }
     }
-    
-    // TODO: Use or delete
-    func distanceFromValue(value: Int) -> Double {
-        return abs(model.midValue - Double(value))
-    }
-    
+        
     private func createMarkerNodes() {
         Array(model.lowerValue..<model.upperValue)
             .flatMap({CellMarker(value: $0, cellStyle: cellStyle)})
