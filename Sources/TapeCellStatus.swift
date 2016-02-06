@@ -6,14 +6,17 @@
 //  Copyright © 2016 Michael Koukoullis. All rights reserved.
 //
 
-typealias TapeCellStatus = (value: Double, containsValue: Bool, cell: TapeCell)
+typealias TapeCellStatus = (valueForPosition: Double, containsValueForPosition: Bool, modelMidValue: Double, cell: TapeCell)
 
 extension CollectionType where Self.Generator.Element: TapeCell {
     
     func statusForPosition() -> [TapeCellStatus] {
         return map { cell -> TapeCellStatus in
             let currentValue = cell.valueForPosition()
-            return (currentValue, cell.model.containsValue(currentValue), cell)
+            return (currentValue, cell.model.containsValue(currentValue), cell.model.midValue, cell)
+        }
+        .sort { (status1, status2) in
+            status1.modelMidValue < status2.modelMidValue
         }
     }
 }

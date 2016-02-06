@@ -38,7 +38,7 @@ class TapeIndicator: SKNode {
     
     func recycleCells() {
         let status = cells.statusForPosition()
-        let x = status.map { ($0.value, $0.containsValue) }
+        let x = status.map { ($0.valueForPosition, $0.containsValueForPosition) }
         print(x)
     }
 
