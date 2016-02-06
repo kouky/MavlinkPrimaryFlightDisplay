@@ -38,16 +38,6 @@ class TapeCell: SKNode {
             return CGPoint(x: position.x, y: CGFloat(valuePosition))
         }
     }
-
-    // TODO: Use or remove
-    func valueForPosition() -> Double {
-        switch cellStyle.justification {
-        case .Top, .Bottom:
-            return model.midValue - (Double(position.x) / Double(cellStyle.pointsPerValue))
-        case .Left, .Right:
-            return model.midValue - (Double(position.y) / Double(cellStyle.pointsPerValue))
-        }
-    }
     
     private func createMarkerNodes() {
         Array(model.lowerValue..<model.upperValue)

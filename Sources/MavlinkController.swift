@@ -142,7 +142,7 @@ extension MavlinkController: NSUserNotificationCenterDelegate {
     
     func userNotificationCenter(center: NSUserNotificationCenter, didDeliverNotification notification: NSUserNotification) {
         let popTime = dispatch_time(DISPATCH_TIME_NOW, Int64(3.0 * Double(NSEC_PER_SEC)))
-        dispatch_after(popTime, dispatch_get_main_queue()) { () -> Void in
+        dispatch_after(popTime, dispatch_get_main_queue()) {
             center.removeDeliveredNotification(notification)
         }
     }
