@@ -12,34 +12,27 @@ import SpriteKit
 class TapeIndicator: SKNode {
     
     let style: TapeIndicatorStyle
+    let cellContainer: TapeCellContainer
     var value: Double = 0 {
         didSet {
-            updateCellPositions()
+            cellContainer.runAction(cellContainer.actionForValue(value))
         }
     }
-    private let cells: [TapeCell]
     
     init(style: TapeIndicatorStyle) {
-        self.style = style
-        
-        do {
-            let model = try TapeCellModel(lowerValue: 0, upperValue: 1)
-            cells = (0..<3).map { _ in
-                TapeCell(model: model, style: style.cellStyle)
-            }
-        } catch {
-            fatalError("Cannot build tape cell model")
+        guard let model = try? TapeCellModel(lowerValue: 0, upperValue: style.optimalCellValueRange) else {
+            fatalError("Could not create seed tape cell model")
         }
+        self.style = style
+        cellContainer = TapeCellContainer(seedModel: model, cellStyle: style.cellStyle)
         
         super.init()
         addBackgroundNode()
-        addCellNodes()
+        addChild(cellContainer)
     }
     
     func recycleCells() {
-        let status = cells.statusForPosition()
-        let x = status.map { ($0.valueForPosition, $0.containsValueForPosition) }
-        print(x)
+        cellContainer.recycleCells()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -51,35 +44,5 @@ class TapeIndicator: SKNode {
         backgroundShape.fillColor = style.backgroundColor
         backgroundShape.strokeColor = SKColor.clearColor()
         addChild(backgroundShape)
-    }
-    
-    private func addCellNodes() {
-        
-        // TODO: Account for tape range
-        let models: [TapeCellModel]
-        do {
-            models = try (0..<Int(cells.count)).reduce([]) { (acc: [TapeCellModel], _) in
-                
-                guard let lastModel = acc.last else {
-                    return [try TapeCellModel(lowerValue: 0, upperValue: style.optimalCellValueRange)]
-                }
-                return acc + [try lastModel.next()]
-            }
-        } catch {
-            fatalError("Cannot build tape cell model")
-        }
-        
-        zip(models, cells).forEach { (model, cell) in
-            cell.model = model
-            addChild(cell)
-            cell.position = cell.positionForValue(value)
-        }
-    }
-    
-    private func updateCellPositions() {
-        cells.forEach { [weak self] cell in
-            guard let value = self?.value else { return  }
-            cell.runAction(cell.actionForValue(value))
-        }
-    }
+    }    
 }

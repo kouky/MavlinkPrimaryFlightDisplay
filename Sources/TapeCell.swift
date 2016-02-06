@@ -28,11 +28,7 @@ class TapeCell: SKNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func actionForValue(value: Double) -> SKAction {
-        return SKAction.moveTo(positionForValue(value), duration: 3)
-    }
-    
+        
     func positionForValue(value: Double) -> CGPoint {
         let valuePosition = (model.midValue - value) * Double(cellStyle.pointsPerValue)
         switch cellStyle.justification {
@@ -42,7 +38,8 @@ class TapeCell: SKNode {
             return CGPoint(x: position.x, y: CGFloat(valuePosition))
         }
     }
-    
+
+    // TODO: Use or remove
     func valueForPosition() -> Double {
         switch cellStyle.justification {
         case .Top, .Bottom:
@@ -51,7 +48,7 @@ class TapeCell: SKNode {
             return model.midValue - (Double(position.y) / Double(cellStyle.pointsPerValue))
         }
     }
-        
+    
     private func createMarkerNodes() {
         Array(model.lowerValue..<model.upperValue)
             .flatMap({CellMarker(value: $0, cellStyle: cellStyle)})
