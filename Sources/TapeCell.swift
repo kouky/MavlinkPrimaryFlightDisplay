@@ -58,7 +58,7 @@ class TapeCell: SKNode {
     }
     
     private func createMarkerNodes() {
-        Array(model.lowerValue...model.upperValue)
+        Array(model.lowerValue..<model.upperValue)
             .flatMap({CellMarker(value: $0, cellStyle: cellStyle)})
             .forEach { marker in
                 addChild(buildLineNode(marker))
