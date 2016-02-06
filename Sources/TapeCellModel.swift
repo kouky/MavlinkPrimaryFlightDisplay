@@ -15,7 +15,7 @@ struct TapeCellModel {
     
     let lowerValue: Int
     let upperValue: Int
-    let magnitude: Int
+    let magnitude: UInt
     private let isLoop: Bool
     
     init(lowerValue: Int, upperValue: Int, isLoop: Bool = false) throws {
@@ -28,18 +28,14 @@ struct TapeCellModel {
         self.lowerValue = lowerValue
         self.upperValue = upperValue
         self.isLoop = isLoop
-        self.magnitude = magnitude
+        self.magnitude = UInt(magnitude)
     }
     
     var midValue: Double {
         let halfRange = (Double(upperValue) - Double(lowerValue)) / 2
         return Double(lowerValue) + halfRange
     }
-    
-    var range: UInt {
-        return UInt(upperValue - lowerValue)
-    }
-    
+        
     func containsValue(value: Double) -> Bool {
         return Double(lowerValue) <= value && value <= Double(upperValue)
     }
@@ -48,10 +44,10 @@ struct TapeCellModel {
 extension TapeCellModel: DuplexGeneratorType {
     
     func next() throws -> TapeCellModel {
-        return try TapeCellModel(lowerValue: upperValue + 1, upperValue: upperValue + 1 + magnitude, isLoop: isLoop)
+        return try TapeCellModel(lowerValue: upperValue, upperValue: upperValue + Int(magnitude), isLoop: isLoop)
     }
     
     func previous() throws -> TapeCellModel {
-        return try TapeCellModel(lowerValue: lowerValue - 1 - magnitude, upperValue: lowerValue - 1, isLoop: isLoop)
+        return try TapeCellModel(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue, isLoop: isLoop)
     }
 }
