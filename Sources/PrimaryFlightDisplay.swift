@@ -52,9 +52,9 @@ private class PrimaryFlightDisplayScene: SKScene {
     let pitchLadder: PitchLadder
     let attitudeReferenceIndex = AttitudeReferenceIndex()
     let bankIndicator = BankIndicator()
-    let altimeter = TapeIndicator(style: Constants.Style.altimeter)
-    let airSpeedIndicator = TapeIndicator(style: Constants.Style.airSpeedIndicator)
-    let headingIndicator = TapeIndicator(style: Constants.Style.headingIndicator)
+    let altimeter = TapeIndicator(style: Constants.Style.altimeter())
+    let airSpeedIndicator = TapeIndicator(style: Constants.Style.airSpeedIndicator())
+    let headingIndicator = TapeIndicator(style: Constants.Style.headingIndicator())
 
     override init(size: CGSize) {
         horizon = Horizon(sceneSize: size)

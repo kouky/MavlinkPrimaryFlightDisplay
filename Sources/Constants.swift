@@ -80,53 +80,71 @@ struct Constants {
     
     struct Style {
         
-        static let altimeter = TapeStyle(
-            size: CGSize(width: 60, height: 300),
-            type: .Continuous,
-            backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
-            markerStyle: TapeMarkerStyle(
-                justification: .Right,
-                pointsPerValue: 15,
-                majorMarkerLength: 10,
-                minorMarkerLength: 5,
-                majorMarkerFrequency: 5,
-                minorMarkerFrequency: 1,
-                textOffset: 20,
-                color: SKColor.whiteColor()
-            )
-        )
+        static func altimeter() -> TapeStyle {
+            do {
+                return try TapeStyle(
+                    size: CGSize(width: 60, height: 300),
+                    type: .Continuous,
+                    backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+                    markerStyle: TapeMarkerStyle(
+                        justification: .Right,
+                        pointsPerValue: 15,
+                        majorMarkerLength: 10,
+                        minorMarkerLength: 5,
+                        majorMarkerFrequency: 5,
+                        minorMarkerFrequency: 1,
+                        textOffset: 20,
+                        color: SKColor.whiteColor()
+                    )
+                )
+            } catch {
+                fatalError("Invalid tape style")
+            }
+        }
         
-        static let airSpeedIndicator = TapeStyle(
-            size: CGSize(width: 60, height: 300),
-            type: .Continuous,
-            backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
-            markerStyle: TapeMarkerStyle(
-                justification: .Left,
-                pointsPerValue: 5,
-                majorMarkerLength: 10,
-                minorMarkerLength: 5,
-                majorMarkerFrequency: 10,
-                minorMarkerFrequency: 5,
-                textOffset: 20,
-                color: SKColor.whiteColor()
-            )
-        )
+        static func airSpeedIndicator() -> TapeStyle {
+            do {
+                return try TapeStyle(
+                    size: CGSize(width: 60, height: 300),
+                    type: .Continuous,
+                    backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+                    markerStyle: TapeMarkerStyle(
+                        justification: .Left,
+                        pointsPerValue: 5,
+                        majorMarkerLength: 10,
+                        minorMarkerLength: 5,
+                        majorMarkerFrequency: 10,
+                        minorMarkerFrequency: 5,
+                        textOffset: 20,
+                        color: SKColor.whiteColor()
+                    )
+                )
+            } catch {
+                fatalError("Invalid tape style")
+            }
+        }
         
-        static let headingIndicator = TapeStyle(
-            size: CGSize(width: 400, height: 60),
-            type: .Compass,
-            backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
-            markerStyle: TapeMarkerStyle(
-                justification: .Bottom,
-                pointsPerValue: 5,
-                majorMarkerLength: 10,
-                minorMarkerLength: 5,
-                majorMarkerFrequency: 10,
-                minorMarkerFrequency: 5,
-                textOffset: 20,
-                color: SKColor.whiteColor()
-            )
-        )
+        static func headingIndicator() -> TapeStyle {
+            do {
+                return try TapeStyle(
+                    size: CGSize(width: 400, height: 60),
+                    type: .Compass,
+                    backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+                    markerStyle: TapeMarkerStyle(
+                        justification: .Bottom,
+                        pointsPerValue: 5,
+                        majorMarkerLength: 10,
+                        minorMarkerLength: 5,
+                        majorMarkerFrequency: 10,
+                        minorMarkerFrequency: 5,
+                        textOffset: 20,
+                        color: SKColor.whiteColor()
+                    )
+                )
+            } catch {
+                fatalError("Invalid tape style")
+            }
+        }
     }
     
     struct Angular {

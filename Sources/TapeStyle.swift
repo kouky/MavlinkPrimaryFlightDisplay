@@ -15,6 +15,10 @@ struct TapeStyle {
         case Continuous
     }
     
+    enum Error: ErrorType {
+        case InvalidCompassStyle
+    }
+    
     let size: CGSize
     let type: Type
     let backgroundColor: SKColor
@@ -29,11 +33,15 @@ struct TapeStyle {
         }
     }
     
-    init(size: CGSize, type: Type, backgroundColor: SKColor, markerStyle: TapeMarkerStyle) {
+    init(size: CGSize, type: Type, backgroundColor: SKColor, markerStyle: TapeMarkerStyle) throws {
         self.size = size
         self.type = type
         self.backgroundColor = backgroundColor
         self.markerStyle = markerStyle
+
+        if type == .Compass && optimalCellMagnitude > 120  {
+            throw Error.InvalidCompassStyle
+        }
     }
 }
 
