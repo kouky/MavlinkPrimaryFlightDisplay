@@ -98,7 +98,7 @@ struct Constants {
                     )
                 )
             } catch {
-                fatalError("Invalid tape style")
+                fatalError("Invalid compass style. Decrease size and/or increase points per value.")
             }
         }
         
@@ -120,7 +120,7 @@ struct Constants {
                     )
                 )
             } catch {
-                fatalError("Invalid tape style")
+                fatalError("Invalid compass style. Decrease size and/or increase points per value.")
             }
         }
         
@@ -142,7 +142,7 @@ struct Constants {
                     )
                 )
             } catch {
-                fatalError("Invalid tape style")
+                fatalError("Invalid compass style. Decrease size and/or increase points per value.")
             }
         }
     }

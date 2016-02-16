@@ -10,15 +10,6 @@ import SpriteKit
 
 struct TapeStyle {
     
-    enum Type {
-        case Compass
-        case Continuous
-    }
-    
-    enum Error: ErrorType {
-        case InvalidCompassStyle
-    }
-    
     let size: CGSize
     let type: Type
     let backgroundColor: SKColor
@@ -42,6 +33,34 @@ struct TapeStyle {
         if type == .Compass && optimalCellMagnitude > 120  {
             throw Error.InvalidCompassStyle
         }
+    }
+    
+    enum Type {
+        case Compass
+        case Continuous
+        
+        func labelForValue(value: Int) -> String  {
+            switch self {
+            case .Continuous:
+                return "\(value)"
+            case .Compass:
+                var presentedValue = value % 360
+                if presentedValue < 0 {
+                    presentedValue = 360 + presentedValue
+                }
+                
+                let cardinalDirections = [0: "N", 45: "NE", 90: "E", 135: "SE", 180: "S", 225: "SW", 270: "W", 315: "NW"]
+                if let cardinal = cardinalDirections[presentedValue] {
+                    return cardinal
+                } else {
+                    return "\(presentedValue)"
+                }
+            }
+        }
+    }
+    
+    enum Error: ErrorType {
+        case InvalidCompassStyle
     }
 }
 

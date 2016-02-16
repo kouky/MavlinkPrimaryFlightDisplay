@@ -22,7 +22,7 @@ class TapeCellContainer: SKNode {
             let nextCell = TapeCell(model: try seedModel.next(), style: style)
             cellTriad = TapeCellTriad(cell1: previousCell, cell2: centerCell, cell3: nextCell)
         } catch {
-            fatalError("Could not create tape cells")
+            fatalError("Could not create next / previous tape cell")
         }
         self.style = style
         initialValue = Double(seedModel.lowerValue)
@@ -36,16 +36,6 @@ class TapeCellContainer: SKNode {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func positionForValue(value: Double) -> CGPoint {
-        let valuePosition =  -value * Double(style.markerStyle.pointsPerValue)
-        switch style.markerStyle.justification {
-        case .Top, .Bottom:
-            return CGPoint(x: CGFloat(valuePosition), y: position.y)
-        case .Left, .Right:
-            return CGPoint(x: position.x, y: CGFloat(valuePosition))
-        }
     }
     
     func actionForValue(value: Double) -> SKAction {
@@ -81,6 +71,16 @@ class TapeCellContainer: SKNode {
             return -Double(position.x) / Double(style.markerStyle.pointsPerValue)
         case .Left, .Right:
             return -Double(position.y) / Double(style.markerStyle.pointsPerValue)
+        }
+    }
+    
+    private func positionForValue(value: Double) -> CGPoint {
+        let valuePosition =  -value * Double(style.markerStyle.pointsPerValue)
+        switch style.markerStyle.justification {
+        case .Top, .Bottom:
+            return CGPoint(x: CGFloat(valuePosition), y: position.y)
+        case .Left, .Right:
+            return CGPoint(x: position.x, y: CGFloat(valuePosition))
         }
     }
 }
