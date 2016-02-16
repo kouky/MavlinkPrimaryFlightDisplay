@@ -16,11 +16,11 @@ class TapeCell: SKNode {
             createMarkerNodes()
         }
     }
-    private let cellStyle: TapeCellStyle
+    private let style: TapeStyle
     
-    init(model: TapeCellModel, style: TapeCellStyle) {
+    init(model: TapeCellModel, style: TapeStyle) {
         self.model = model
-        self.cellStyle = style
+        self.style = style
         super.init()
         createMarkerNodes()
     }
@@ -30,8 +30,8 @@ class TapeCell: SKNode {
     }
         
     func positionForValue(value: Double) -> CGPoint {
-        let valuePosition = (model.midValue - value) * Double(cellStyle.pointsPerValue)
-        switch cellStyle.justification {
+        let valuePosition = (model.midValue - value) * Double(style.markerStyle.pointsPerValue)
+        switch style.markerStyle.justification {
         case .Top, .Bottom:
             return CGPoint(x: CGFloat(valuePosition), y: position.y)
         case .Left, .Right:
@@ -41,7 +41,7 @@ class TapeCell: SKNode {
     
     private func createMarkerNodes() {
         Array(model.lowerValue..<model.upperValue)
-            .flatMap({CellMarker(value: $0, cellStyle: cellStyle)})
+            .flatMap({CellMarker(value: $0, style: style)})
             .forEach { marker in
                 addChild(buildLineNode(marker))
                 
@@ -56,23 +56,23 @@ class TapeCell: SKNode {
         line.strokeColor = marker.color
         line.fillColor = marker.color
         
-        switch cellStyle.justification {
+        switch style.markerStyle.justification {
         case .Top:
             line.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2,
-                y: (cellStyle.size.height - CGFloat(marker.lineSize.height))/2)
+                x: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2,
+                y: (style.size.height - CGFloat(marker.lineSize.height))/2)
         case .Bottom:
             line.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2,
-                y: (CGFloat(marker.lineSize.height) - cellStyle.size.height)/2)
+                x: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2,
+                y: (CGFloat(marker.lineSize.height) - style.size.height)/2)
         case .Left:
             line.position = CGPoint(
-                x: (CGFloat(marker.lineSize.width) - cellStyle.size.width)/2,
-                y: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2)
+                x: (CGFloat(marker.lineSize.width) - style.size.width)/2,
+                y: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2)
         case .Right:
             line.position = CGPoint(
-                x: (cellStyle.size.width - CGFloat(marker.lineSize.width))/2,
-                y: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2)
+                x: (style.size.width - CGFloat(marker.lineSize.width))/2,
+                y: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2)
         }
         
         return line
@@ -85,23 +85,23 @@ class TapeCell: SKNode {
         label.horizontalAlignmentMode = marker.labelAlignment.horizontal
         label.verticalAlignmentMode = marker.labelAlignment.vertical
         
-        switch cellStyle.justification {
+        switch style.markerStyle.justification {
         case .Top:
             label.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2,
-                y: cellStyle.size.height/2 - CGFloat(cellStyle.markerTextOffset))
+                x: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2,
+                y: style.size.height/2 - CGFloat(style.markerStyle.textOffset))
         case .Bottom:
             label.position = CGPoint(
-                x: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2,
-                y: CGFloat(cellStyle.markerTextOffset) - cellStyle.size.height/2)
+                x: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2,
+                y: CGFloat(style.markerStyle.textOffset) - style.size.height/2)
         case .Left:
             label.position = CGPoint(
-                x: CGFloat(cellStyle.markerTextOffset) - cellStyle.size.width/2,
-                y: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2)
+                x: CGFloat(style.markerStyle.textOffset) - style.size.width/2,
+                y: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2)
         case .Right:
             label.position = CGPoint(
-                x: cellStyle.size.width/2 - CGFloat(cellStyle.markerTextOffset),
-                y: CGFloat(((marker.value - model.lowerValue) * Int(cellStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(cellStyle.pointsPerValue))/2)
+                x: style.size.width/2 - CGFloat(style.markerStyle.textOffset),
+                y: CGFloat(((marker.value - model.lowerValue) * Int(style.markerStyle.pointsPerValue))) - (CGFloat(model.magnitude) * CGFloat(style.markerStyle.pointsPerValue))/2)
         }
 
         return label
@@ -115,23 +115,23 @@ private struct CellMarker {
     let isMajor: Bool
     let labelAlignment: (horizontal: SKLabelHorizontalAlignmentMode, vertical: SKLabelVerticalAlignmentMode)
 
-    init?(value: Int, cellStyle: TapeCellStyle) {
-        let isMajor = value % cellStyle.majorMarkerFrequency == 0
-        let isMinor = value % cellStyle.minorMarkerFrequency == 0
+    init?(value: Int, style: TapeStyle) {
+        let isMajor = value % style.markerStyle.majorMarkerFrequency == 0
+        let isMinor = value % style.markerStyle.minorMarkerFrequency == 0
         
         guard isMajor || isMinor else { return nil }
         
         self.value = value
-        self.color = cellStyle.contentColor
+        self.color = style.markerStyle.color
         self.isMajor = isMajor
         
-        let length = isMajor ? cellStyle.majorMarkerLength : cellStyle.minorMarkerLength
-        switch cellStyle.justification {
+        let length = isMajor ? style.markerStyle.majorMarkerLength : style.markerStyle.minorMarkerLength
+        switch style.markerStyle.justification {
         case .Top, .Bottom: lineSize = CGSize(width: 0, height: length)
         case .Left, .Right: lineSize = CGSize(width: length, height: 0)
         }
         
-        switch cellStyle.justification {
+        switch style.markerStyle.justification {
         case .Top: labelAlignment = (horizontal: .Center, vertical: .Top)
         case .Bottom: labelAlignment = (horizontal: .Center, vertical: .Bottom)
         case .Left: labelAlignment = (horizontal: .Left, vertical: .Center)

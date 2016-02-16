@@ -11,20 +11,20 @@ import SpriteKit
 class TapeCellContainer: SKNode {
     
     private let cellTriad: TapeCellTriad
-    private let cellStyle: TapeCellStyle
+    private let style: TapeStyle
     private let initialValue: Double
     
-    init(seedModel: TapeCellModel, cellStyle: TapeCellStyle) {
+    init(seedModel: TapeCellModel, style: TapeStyle) {
         
         do {
-            let centerCell = TapeCell(model: seedModel, style: cellStyle)
-            let previousCell = TapeCell(model: try seedModel.previous(), style: cellStyle)
-            let nextCell = TapeCell(model: try seedModel.next(), style: cellStyle)
+            let centerCell = TapeCell(model: seedModel, style: style)
+            let previousCell = TapeCell(model: try seedModel.previous(), style: style)
+            let nextCell = TapeCell(model: try seedModel.next(), style: style)
             cellTriad = TapeCellTriad(cell1: previousCell, cell2: centerCell, cell3: nextCell)
         } catch {
             fatalError("Could not create tape cells")
         }
-        self.cellStyle = cellStyle
+        self.style = style
         initialValue = Double(seedModel.lowerValue)
         
         super.init()
@@ -39,8 +39,8 @@ class TapeCellContainer: SKNode {
     }
     
     func positionForValue(value: Double) -> CGPoint {
-        let valuePosition =  -value * Double(cellStyle.pointsPerValue)
-        switch cellStyle.justification {
+        let valuePosition =  -value * Double(style.markerStyle.pointsPerValue)
+        switch style.markerStyle.justification {
         case .Top, .Bottom:
             return CGPoint(x: CGFloat(valuePosition), y: position.y)
         case .Left, .Right:
@@ -76,11 +76,11 @@ class TapeCellContainer: SKNode {
     }
     
     private func valueForPosition() -> Double {
-        switch cellStyle.justification {
+        switch style.markerStyle.justification {
         case .Top, .Bottom:
-            return -Double(position.x) / Double(cellStyle.pointsPerValue)
+            return -Double(position.x) / Double(style.markerStyle.pointsPerValue)
         case .Left, .Right:
-            return -Double(position.y) / Double(cellStyle.pointsPerValue)
+            return -Double(position.y) / Double(style.markerStyle.pointsPerValue)
         }
     }
 }

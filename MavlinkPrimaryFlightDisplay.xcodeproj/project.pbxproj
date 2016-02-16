@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2703BC101C5490C3001952DD /* TapeCellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2703BC0F1C5490C3001952DD /* TapeCellStyle.swift */; };
 		271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AFBFB1BFDF72100842B1D /* AppDelegate.swift */; };
 		271AFC041BFDF73700842B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC031BFDF73700842B1D /* Assets.xcassets */; };
 		271AFC071BFDF74700842B1D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC051BFDF74700842B1D /* MainMenu.xib */; };
@@ -28,12 +27,12 @@
 		278B7DA21C43CECC00F5794C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278B7DA11C43CECC00F5794C /* Constants.swift */; };
 		27D4F5841C3E7BA4001FA7BB /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4F5831C3E7BA4001FA7BB /* Protocols.swift */; };
 		27D4F5861C3E81AD001FA7BB /* Attitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4F5851C3E81AD001FA7BB /* Attitude.swift */; };
+		27E069ED1C72ED2800AE26C1 /* TapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */; };
 		27E593EE1C622E3A00B79EF7 /* TapeCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E593ED1C622E3A00B79EF7 /* TapeCellModel.swift */; };
 		27F16A3D1C3A56AB00422D85 /* AttitudeReferenceIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F16A3C1C3A56AB00422D85 /* AttitudeReferenceIndex.swift */; };
 		27F16A411C3BBBCE00422D85 /* PitchLadder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F16A401C3BBBCE00422D85 /* PitchLadder.swift */; };
 		27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA2EF71C0724A600C4E349 /* MenuManager.swift */; };
 		27FEA2EA1C5333AB00616ADA /* TapeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FEA2E91C5333AB00616ADA /* TapeCell.swift */; };
-		27FEA2ED1C54659500616ADA /* TapeIndicatorStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FEA2EC1C54659500616ADA /* TapeIndicatorStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -54,7 +53,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2703BC0F1C5490C3001952DD /* TapeCellStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeCellStyle.swift; path = Sources/TapeCellStyle.swift; sourceTree = SOURCE_ROOT; };
 		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MavlinkPrimaryFlightDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		271AFBFB1BFDF72100842B1D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Sources/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		271AFC031BFDF73700842B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
@@ -77,12 +75,12 @@
 		278B7DA11C43CECC00F5794C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/Constants.swift; sourceTree = SOURCE_ROOT; };
 		27D4F5831C3E7BA4001FA7BB /* Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Protocols.swift; path = Sources/Protocols.swift; sourceTree = SOURCE_ROOT; };
 		27D4F5851C3E81AD001FA7BB /* Attitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attitude.swift; path = Sources/Attitude.swift; sourceTree = SOURCE_ROOT; };
+		27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeStyle.swift; path = Sources/TapeStyle.swift; sourceTree = SOURCE_ROOT; };
 		27E593ED1C622E3A00B79EF7 /* TapeCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeCellModel.swift; path = Sources/TapeCellModel.swift; sourceTree = SOURCE_ROOT; };
 		27F16A3C1C3A56AB00422D85 /* AttitudeReferenceIndex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AttitudeReferenceIndex.swift; path = Sources/AttitudeReferenceIndex.swift; sourceTree = SOURCE_ROOT; };
 		27F16A401C3BBBCE00422D85 /* PitchLadder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PitchLadder.swift; path = Sources/PitchLadder.swift; sourceTree = SOURCE_ROOT; };
 		27FA2EF71C0724A600C4E349 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuManager.swift; path = Sources/MenuManager.swift; sourceTree = SOURCE_ROOT; };
 		27FEA2E91C5333AB00616ADA /* TapeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeCell.swift; path = Sources/TapeCell.swift; sourceTree = SOURCE_ROOT; };
-		27FEA2EC1C54659500616ADA /* TapeIndicatorStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeIndicatorStyle.swift; path = Sources/TapeIndicatorStyle.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,12 +129,11 @@
 				27D4F5831C3E7BA4001FA7BB /* Protocols.swift */,
 				27D4F5851C3E81AD001FA7BB /* Attitude.swift */,
 				278B7DA11C43CECC00F5794C /* Constants.swift */,
+				27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */,
 				274C98241C4CFA1800334726 /* TapeIndicator.swift */,
-				27FEA2EC1C54659500616ADA /* TapeIndicatorStyle.swift */,
 				27FEA2E91C5333AB00616ADA /* TapeCell.swift */,
 				27330F201C65B786006DC223 /* TapeCellContainer.swift */,
 				27E593ED1C622E3A00B79EF7 /* TapeCellModel.swift */,
-				2703BC0F1C5490C3001952DD /* TapeCellStyle.swift */,
 				27487E4F1C65F45400C18065 /* TapeCellTriad.swift */,
 			);
 			name = Sources;
@@ -262,8 +259,7 @@
 				2787452B1C0161440038FDBF /* PrimaryFlightDisplay.swift in Sources */,
 				27D4F5841C3E7BA4001FA7BB /* Protocols.swift in Sources */,
 				27E593EE1C622E3A00B79EF7 /* TapeCellModel.swift in Sources */,
-				27FEA2ED1C54659500616ADA /* TapeIndicatorStyle.swift in Sources */,
-				2703BC101C5490C3001952DD /* TapeCellStyle.swift in Sources */,
+				27E069ED1C72ED2800AE26C1 /* TapeStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

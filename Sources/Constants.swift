@@ -80,44 +80,53 @@ struct Constants {
     
     struct Style {
         
-        static let altimeter = TapeIndicatorStyle(
+        static let altimeter = TapeStyle(
             size: CGSize(width: 60, height: 300),
-            valueRange: .Continuous,
-            pointsPerValue: 15,
-            cellJustification: .Right,
-            cellMajorMarkerLength: 10,
-            cellMinorMarkerLength: 5,
-            cellMajorMarkerFrequency: 5,
-            cellMinorMarkerFrequency: 1,
-            cellMarkerTextOffset: 20,
+            type: .Continuous,
             backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
-            contentColor: SKColor.whiteColor())
+            markerStyle: TapeMarkerStyle(
+                justification: .Right,
+                pointsPerValue: 15,
+                majorMarkerLength: 10,
+                minorMarkerLength: 5,
+                majorMarkerFrequency: 5,
+                minorMarkerFrequency: 1,
+                textOffset: 20,
+                color: SKColor.whiteColor()
+            )
+        )
         
-        static let airSpeedIndicator = TapeIndicatorStyle(
+        static let airSpeedIndicator = TapeStyle(
             size: CGSize(width: 60, height: 300),
-            valueRange: .Continuous,
-            pointsPerValue: 5,
-            cellJustification: .Left,
-            cellMajorMarkerLength: 10,
-            cellMinorMarkerLength: 5,
-            cellMajorMarkerFrequency: 10,
-            cellMinorMarkerFrequency: 5,
-            cellMarkerTextOffset: 20,
+            type: .Continuous,
             backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
-            contentColor: SKColor.whiteColor())
+            markerStyle: TapeMarkerStyle(
+                justification: .Left,
+                pointsPerValue: 5,
+                majorMarkerLength: 10,
+                minorMarkerLength: 5,
+                majorMarkerFrequency: 10,
+                minorMarkerFrequency: 5,
+                textOffset: 20,
+                color: SKColor.whiteColor()
+            )
+        )
         
-        static let headingIndicator = TapeIndicatorStyle(
+        static let headingIndicator = TapeStyle(
             size: CGSize(width: 400, height: 60),
-            valueRange: .Compass,
-            pointsPerValue: 5,
-            cellJustification: .Bottom,
-            cellMajorMarkerLength: 10,
-            cellMinorMarkerLength:5,
-            cellMajorMarkerFrequency: 10,
-            cellMinorMarkerFrequency: 5,
-            cellMarkerTextOffset: 20,
+            type: .Compass,
             backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
-            contentColor: SKColor.whiteColor())
+            markerStyle: TapeMarkerStyle(
+                justification: .Bottom,
+                pointsPerValue: 5,
+                majorMarkerLength: 10,
+                minorMarkerLength: 5,
+                majorMarkerFrequency: 10,
+                minorMarkerFrequency: 5,
+                textOffset: 20,
+                color: SKColor.whiteColor()
+            )
+        )
     }
     
     struct Angular {

@@ -11,7 +11,7 @@ import SpriteKit
 
 class TapeIndicator: SKNode {
     
-    let style: TapeIndicatorStyle
+    let style: TapeStyle
     let cellContainer: TapeCellContainer
     var value: Double = 0 {
         didSet {
@@ -19,13 +19,13 @@ class TapeIndicator: SKNode {
         }
     }
     
-    init(style: TapeIndicatorStyle) {
+    init(style: TapeStyle) {
         guard let model = try? TapeCellModel(lowerValue: 0, upperValue: style.optimalCellMagnitude) else {
             fatalError("Could not create seed tape cell model")
         }
         
         self.style = style
-        cellContainer = TapeCellContainer(seedModel: model, cellStyle: style.cellStyle)
+        cellContainer = TapeCellContainer(seedModel: model, style: style)
         
         super.init()
         addBackgroundNode()
