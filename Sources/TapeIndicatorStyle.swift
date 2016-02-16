@@ -24,7 +24,7 @@ struct TapeIndicatorStyle {
     
     let size: CGSize
     let valueRange: ValueRange
-    let pointsPerValue: Int
+    let pointsPerValue: UInt
     
     let cellJustification: CellJustification
     let cellMajorMarkerLength: Int

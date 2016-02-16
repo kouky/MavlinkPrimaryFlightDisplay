@@ -19,7 +19,7 @@ struct TapeCellStyle {
     
     let size: CGSize
     let justification: Justification
-    let pointsPerValue: Int
+    let pointsPerValue: UInt
     let majorMarkerLength: Int
     let minorMarkerLength: Int
     let majorMarkerFrequency: Int
