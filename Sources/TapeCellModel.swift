@@ -17,14 +17,12 @@ struct TapeCellModel {
     var magnitude: UInt {
         return UInt(abs(upperValue - lowerValue))
     }
-    private let isCompass: Bool
     
-    init(lowerValue: Int, upperValue: Int, isCompass: Bool = false) throws {
+    init(lowerValue: Int, upperValue: Int) throws {
         guard upperValue > lowerValue else { throw Error.UpperValueMustExceedLowerValue }
         
         self.lowerValue = lowerValue
         self.upperValue = upperValue
-        self.isCompass = isCompass
     }
     
     var midValue: Double {
@@ -40,18 +38,10 @@ struct TapeCellModel {
 extension TapeCellModel: DuplexGeneratorType {
     
     func next() throws -> TapeCellModel {
-        var newUpperValue = upperValue + Int(magnitude)
-        if isCompass {
-            newUpperValue %= Int(magnitude)
-        }
-        return try TapeCellModel(lowerValue: upperValue, upperValue: newUpperValue, isCompass: isCompass)
+        return try TapeCellModel(lowerValue: upperValue, upperValue: upperValue + Int(magnitude))
     }
     
     func previous() throws -> TapeCellModel {
-        var newLowerValue = lowerValue - Int(magnitude)
-        if isCompass {
-            newLowerValue %= Int(magnitude)
-        }
-        return try TapeCellModel(lowerValue: newLowerValue, upperValue: lowerValue, isCompass: isCompass)
+        return try TapeCellModel(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue)
     }
 }
