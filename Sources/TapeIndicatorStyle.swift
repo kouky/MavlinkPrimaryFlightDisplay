@@ -17,13 +17,13 @@ struct TapeIndicatorStyle {
         case Right
     }
     
-    enum TapeRange {
-        case Loop(range: Range<Int>)
+    enum ValueRange {
+        case Compass
         case Continuous
     }
-
+    
     let size: CGSize
-    let range: TapeRange
+    let valueRange: ValueRange
     let pointsPerValue: Int
     
     let cellJustification: CellJustification
@@ -36,8 +36,7 @@ struct TapeIndicatorStyle {
     let backgroundColor: SKColor
     let contentColor: SKColor
     
-    // TODO: account for tape range
-    var optimalCellValueRange: Int {
+    var optimalCellMagnitude: Int {
         switch cellJustification {
         case .Bottom, .Top:
             return Int(round(size.width / CGFloat(pointsPerValue)))

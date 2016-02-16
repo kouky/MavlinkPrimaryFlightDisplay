@@ -9,25 +9,26 @@
 struct TapeCellModel {
     
     enum Error: ErrorType {
-        case UpperValueMusExceedLowerValue
-        case InvalidLoop
+        case UpperValueMustExceedLowerValue
+        case CompassLowerValueMustBeMultipleOfMagnitude
+        case CompassUpperValueMustBeMultipleOfMagnitude
     }
     
     let lowerValue: Int
     let upperValue: Int
     let magnitude: UInt
-    private let isLoop: Bool
+    private let isCompass: Bool
     
-    init(lowerValue: Int, upperValue: Int, isLoop: Bool = false) throws {
-        guard upperValue > lowerValue else { throw Error.UpperValueMusExceedLowerValue }
+    init(lowerValue: Int, upperValue: Int, isCompass: Bool = false) throws {
+        guard upperValue > lowerValue else { throw Error.UpperValueMustExceedLowerValue }
 
         let magnitude = upperValue - lowerValue
-        if isLoop && upperValue % magnitude == 0 { throw Error.InvalidLoop }
-        if isLoop && lowerValue % magnitude == 0 { throw Error.InvalidLoop }
+        if isCompass && upperValue % magnitude == 0 { throw Error.CompassLowerValueMustBeMultipleOfMagnitude }
+        if isCompass && lowerValue % magnitude == 0 { throw Error.CompassUpperValueMustBeMultipleOfMagnitude }
         
         self.lowerValue = lowerValue
         self.upperValue = upperValue
-        self.isLoop = isLoop
+        self.isCompass = isCompass
         self.magnitude = UInt(magnitude)
     }
     
@@ -45,17 +46,17 @@ extension TapeCellModel: DuplexGeneratorType {
     
     func next() throws -> TapeCellModel {
         var newUpperValue = upperValue + Int(magnitude)
-        if isLoop {
+        if isCompass {
             newUpperValue %= Int(magnitude)
         }
-        return try TapeCellModel(lowerValue: upperValue, upperValue: newUpperValue, isLoop: isLoop)
+        return try TapeCellModel(lowerValue: upperValue, upperValue: newUpperValue, isCompass: isCompass)
     }
     
     func previous() throws -> TapeCellModel {
         var newLowerValue = lowerValue - Int(magnitude)
-        if isLoop {
+        if isCompass {
             newLowerValue %= Int(magnitude)
         }
-        return try TapeCellModel(lowerValue: newLowerValue, upperValue: lowerValue, isLoop: isLoop)
+        return try TapeCellModel(lowerValue: newLowerValue, upperValue: lowerValue, isCompass: isCompass)
     }
 }

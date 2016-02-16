@@ -20,10 +20,10 @@ class TapeIndicator: SKNode {
     }
     
     init(style: TapeIndicatorStyle) {
-        //TODO: Handle loop tape range
-        guard let model = try? TapeCellModel(lowerValue: 0, upperValue: style.optimalCellValueRange) else {
+        guard let model = try? TapeCellModel(lowerValue: 0, upperValue: style.optimalCellMagnitude) else {
             fatalError("Could not create seed tape cell model")
         }
+        
         self.style = style
         cellContainer = TapeCellContainer(seedModel: model, cellStyle: style.cellStyle)
         
