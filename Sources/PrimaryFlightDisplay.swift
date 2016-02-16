@@ -86,7 +86,7 @@ private class PrimaryFlightDisplayScene: SKScene {
     private override func didEvaluateActions() {
         altimeter.recycleCells()
         airSpeedIndicator.recycleCells()
-        // TODO: Recycle cells for other tape indicators
+        headingIndicator.recycleCells()
     }
 }
 
