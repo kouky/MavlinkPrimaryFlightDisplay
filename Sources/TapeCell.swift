@@ -10,7 +10,7 @@ import SpriteKit
 
 class TapeCell: SKNode {
     
-    var model: TapeCellModel {
+    var model: TapeCellModelType {
         didSet {
             removeAllChildren()
             createMarkerNodes()
@@ -18,7 +18,7 @@ class TapeCell: SKNode {
     }
     private let style: TapeStyle
     
-    init(model: TapeCellModel, style: TapeStyle) {
+    init(model: TapeCellModelType, style: TapeStyle) {
         self.model = model
         self.style = style
         super.init()

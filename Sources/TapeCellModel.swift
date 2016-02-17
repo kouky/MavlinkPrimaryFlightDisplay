@@ -6,42 +6,68 @@
 //  Copyright © 2016 Michael Koukoullis. All rights reserved.
 //
 
-struct TapeCellModel {
+protocol TapeCellModelType {
+    var lowerValue: Int  { get }
+    var upperValue: Int  { get }
+    var magnitude:  UInt { get }
+    var midValue:   Double { get }
+
+    func containsValue(value: Double) -> Bool
+    func next() throws -> TapeCellModelType
+    func previous() throws -> TapeCellModelType
     
-    enum Error: ErrorType {
-        case UpperValueMustExceedLowerValue
-    }
+    init(lowerValue: Int, upperValue: Int) throws
+}
+
+extension TapeCellModelType {
     
-    let lowerValue: Int
-    let upperValue: Int
     var magnitude: UInt {
         return UInt(abs(upperValue - lowerValue))
     }
-    
-    init(lowerValue: Int, upperValue: Int) throws {
-        guard upperValue > lowerValue else { throw Error.UpperValueMustExceedLowerValue }
-        
-        self.lowerValue = lowerValue
-        self.upperValue = upperValue
-    }
-    
+
     var midValue: Double {
         let halfRange = (Double(upperValue) - Double(lowerValue)) / 2
         return Double(lowerValue) + halfRange
     }
-    
+
     func containsValue(value: Double) -> Bool {
         return Double(lowerValue) <= value && value <= Double(upperValue)
     }
-}
-
-extension TapeCellModel: DuplexGeneratorType {
     
-    func next() throws -> TapeCellModel {
-        return try TapeCellModel(lowerValue: upperValue, upperValue: upperValue + Int(magnitude))
+    func next() throws -> TapeCellModelType {
+        return try Self(lowerValue: upperValue, upperValue: upperValue + Int(magnitude))
     }
     
-    func previous() throws -> TapeCellModel {
-        return try TapeCellModel(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue)
+    func previous() throws -> TapeCellModelType {
+        return try Self(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue)
+    }
+
+}
+
+enum TapeCellModelError: ErrorType {
+    case UpperValueMustExceedLowerValue
+}
+
+struct ContinuousTapeCellModel: TapeCellModelType {
+    let lowerValue: Int
+    let upperValue: Int
+    
+    init(lowerValue: Int, upperValue: Int) throws {
+        guard upperValue > lowerValue else { throw TapeCellModelError.UpperValueMustExceedLowerValue }
+        
+        self.lowerValue = lowerValue
+        self.upperValue = upperValue
+    }
+}
+
+struct CompassTapeCellModel: TapeCellModelType {
+    let lowerValue: Int
+    let upperValue: Int
+    
+    init(lowerValue: Int, upperValue: Int) throws {
+        guard upperValue > lowerValue else { throw TapeCellModelError.UpperValueMustExceedLowerValue }
+        
+        self.lowerValue = lowerValue
+        self.upperValue = upperValue
     }
 }

@@ -24,6 +24,19 @@ struct TapeStyle {
         }
     }
     
+    var seedModel: TapeCellModelType {
+        do {
+            switch type {
+            case .Continuous:
+                return try ContinuousTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
+            case .Compass:
+                return try CompassTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
+            }
+        } catch {
+            fatalError("Could not create seed tape cell model")
+        }
+    }
+
     init(size: CGSize, type: Type, backgroundColor: SKColor, markerStyle: TapeMarkerStyle) throws {
         self.size = size
         self.type = type

@@ -14,7 +14,7 @@ class TapeCellContainer: SKNode {
     private let style: TapeStyle
     private let initialValue: Double
     
-    init(seedModel: TapeCellModel, style: TapeStyle) {
+    init(seedModel: TapeCellModelType, style: TapeStyle) {
         
         do {
             let centerCell = TapeCell(model: seedModel, style: style)
