@@ -41,7 +41,6 @@ extension TapeCellModelType {
     func previous() throws -> TapeCellModelType {
         return try Self(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue)
     }
-
 }
 
 enum TapeCellModelError: ErrorType {

@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class PitchLadder: SKNode, SceneType {
+class PitchLadder: SKNode {
     
     let sceneSize: CGSize
     private let degreeValues = Array(5.stride(to: 91, by: 5))

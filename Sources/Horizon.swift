@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class Horizon: SKNode, SceneType {
+class Horizon: SKNode {
     
     let sceneSize: CGSize
 
