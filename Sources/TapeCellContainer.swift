@@ -39,7 +39,12 @@ class TapeCellContainer: SKNode {
     }
     
     func actionForValue(value: Double) -> SKAction {
-        return SKAction.moveTo(positionForValue(value), duration: 3)
+        switch style.type {
+        case .Continuous:
+            return SKAction.moveTo(positionForContinuousValue(value), duration: 0.05)
+        case .Compass:
+            return SKAction.moveTo(positionForCompassValue(value), duration: 0.05)
+        }
     }
     
     func recycleCells() {
@@ -74,9 +79,29 @@ class TapeCellContainer: SKNode {
         }
     }
     
-    private func positionForValue(value: Double) -> CGPoint {
+    private func positionForContinuousValue(value: Double) -> CGPoint {
         // TODO: Account for initial value
         let valuePosition =  -value * Double(style.markerStyle.pointsPerValue)
+        switch style.markerStyle.justification {
+        case .Top, .Bottom:
+            return CGPoint(x: CGFloat(valuePosition), y: position.y)
+        case .Left, .Right:
+            return CGPoint(x: position.x, y: CGFloat(valuePosition))
+        }
+    }
+    
+    private func positionForCompassValue(compassValue: Double) -> CGPoint {
+        let left = abs(leftwardValueDeltaFromCompassValue(continuousValueForPosition().compassValue, toCompassValue: compassValue))
+        let right = abs(rightwardValueDeltaFromCompassValue(continuousValueForPosition().compassValue, toCompassValue: compassValue))
+        
+        let delta: Double
+        if left < right {
+            delta = leftwardValueDeltaFromCompassValue(initialValue.compassValue, toCompassValue: compassValue)
+        } else {
+            delta = rightwardValueDeltaFromCompassValue(initialValue.compassValue, toCompassValue: compassValue)
+        }
+        
+        let valuePosition =  -delta * Double(style.markerStyle.pointsPerValue)
         switch style.markerStyle.justification {
         case .Top, .Bottom:
             return CGPoint(x: CGFloat(valuePosition), y: position.y)
@@ -91,6 +116,24 @@ class TapeCellContainer: SKNode {
             return -Double(position.x) / Double(style.markerStyle.pointsPerValue)
         case .Left, .Right:
             return -Double(position.y) / Double(style.markerStyle.pointsPerValue)
+        }
+    }
+    
+    private func rightwardValueDeltaFromCompassValue(fromCompassValue: Double, toCompassValue: Double) -> Double {
+        if fromCompassValue < toCompassValue {
+            return toCompassValue - fromCompassValue
+        }
+        else {
+            return toCompassValue - fromCompassValue + 360
+        }
+    }
+    
+    private func leftwardValueDeltaFromCompassValue(fromCompassValue: Double, toCompassValue: Double) -> Double {
+        if fromCompassValue < toCompassValue {
+            return toCompassValue - fromCompassValue - 360
+        }
+        else {
+            return toCompassValue - fromCompassValue
         }
     }
 }

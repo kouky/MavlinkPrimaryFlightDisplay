@@ -28,7 +28,8 @@ class TapeCell: SKNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-        
+    
+    // TODO: Account for container initial value
     func positionForValue(value: Double) -> CGPoint {
         let valuePosition = (model.midValue - value) * Double(style.markerStyle.pointsPerValue)
         switch style.markerStyle.justification {
