@@ -70,3 +70,12 @@ struct CompassTapeCellModel: TapeCellModelType {
         self.upperValue = upperValue
     }
 }
+
+extension CompassTapeCellModel {
+    
+    func containsValue(value: Double) -> Bool {
+        let leftValue = lowerValue.compassValue
+        let rightValue = upperValue.compassValue == 0 ? 360 : upperValue.compassValue
+        return leftValue <= value && value <= rightValue
+    }
+}

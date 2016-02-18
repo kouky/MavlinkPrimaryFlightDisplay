@@ -66,21 +66,31 @@ class TapeCellContainer: SKNode {
     }
     
     private func valueForPosition() -> Double {
-        switch style.markerStyle.justification {
-        case .Top, .Bottom:
-            return -Double(position.x) / Double(style.markerStyle.pointsPerValue)
-        case .Left, .Right:
-            return -Double(position.y) / Double(style.markerStyle.pointsPerValue)
+        switch style.type {
+        case .Continuous:
+            return continuousValueForPosition()
+        case .Compass:
+            return continuousValueForPosition().compassValue
         }
     }
     
     private func positionForValue(value: Double) -> CGPoint {
+        // TODO: Account for initial value
         let valuePosition =  -value * Double(style.markerStyle.pointsPerValue)
         switch style.markerStyle.justification {
         case .Top, .Bottom:
             return CGPoint(x: CGFloat(valuePosition), y: position.y)
         case .Left, .Right:
             return CGPoint(x: position.x, y: CGFloat(valuePosition))
+        }
+    }
+    
+    private func continuousValueForPosition() -> Double {
+        switch style.markerStyle.justification {
+        case .Top, .Bottom:
+            return -Double(position.x) / Double(style.markerStyle.pointsPerValue)
+        case .Left, .Right:
+            return -Double(position.y) / Double(style.markerStyle.pointsPerValue)
         }
     }
 }

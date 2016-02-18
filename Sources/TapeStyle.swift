@@ -15,12 +15,17 @@ struct TapeStyle {
     let backgroundColor: SKColor
     let markerStyle: TapeMarkerStyle
     
-    var optimalCellMagnitude: Int {
-        switch markerStyle.justification {
-        case .Bottom, .Top:
-            return Int(round(size.width / CGFloat(markerStyle.pointsPerValue)))
-        case .Left, .Right:
-            return Int(round(size.height / CGFloat(markerStyle.pointsPerValue)))
+    private var optimalCellMagnitude: Int {
+        switch type {
+        case .Continuous:
+            switch markerStyle.justification {
+            case .Bottom, .Top:
+                return Int(round(size.width / CGFloat(markerStyle.pointsPerValue)))
+            case .Left, .Right:
+                return Int(round(size.height / CGFloat(markerStyle.pointsPerValue)))
+            }
+        case .Compass:
+            return 120
         }
     }
     
@@ -43,6 +48,7 @@ struct TapeStyle {
         self.backgroundColor = backgroundColor
         self.markerStyle = markerStyle
 
+        // TODO: Ensure size can fit 120 or less
         if type == .Compass && optimalCellMagnitude > 120  {
             throw Error.InvalidCompassStyle
         }
