@@ -10,6 +10,7 @@ import Cocoa
 import ORSSerial
 import ReactiveMavlink
 import ReactiveCocoa
+import Result
 
 class MavlinkController: NSObject {
     

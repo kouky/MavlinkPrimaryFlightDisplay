@@ -8,6 +8,7 @@
 
 import Cocoa
 import ReactiveCocoa
+import Result
 import ORSSerial
 
 private typealias MenuPort = (port: ORSSerialPort, menuItem: NSMenuItem)
