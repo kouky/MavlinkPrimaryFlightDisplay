@@ -13,6 +13,8 @@ class TapeIndicator: SKNode {
     
     let style: TapeStyle
     let cellContainer: TapeCellContainer
+    let cropNode = SKCropNode()
+    
     var value: Double = 0 {
         didSet {
             cellContainer.runAction(cellContainer.actionForValue(value))
@@ -22,10 +24,16 @@ class TapeIndicator: SKNode {
     init(style: TapeStyle) {
         self.style = style
         cellContainer = TapeCellContainer(seedModel: style.seedModel, style: style)
-        
         super.init()
-        addBackgroundNode()
-        addChild(cellContainer)
+
+        let backgroundShape = SKShapeNode(rectOfSize: style.size, cornerRadius: 2)
+        backgroundShape.fillColor = style.backgroundColor
+        backgroundShape.strokeColor = SKColor.clearColor()
+        
+        cropNode.addChild(backgroundShape)
+        cropNode.addChild(cellContainer)
+        cropNode.maskNode = SKSpriteNode(color: SKColor.blackColor(), size: style.size)
+        addChild(cropNode)
     }
     
     func recycleCells() {
@@ -35,11 +43,4 @@ class TapeIndicator: SKNode {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func addBackgroundNode() {
-        let backgroundShape = SKShapeNode(rectOfSize: style.size, cornerRadius: 2)
-        backgroundShape.fillColor = style.backgroundColor
-        backgroundShape.strokeColor = SKColor.clearColor()
-        addChild(backgroundShape)
-    }    
 }
