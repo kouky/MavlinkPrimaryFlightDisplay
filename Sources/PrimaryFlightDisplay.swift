@@ -35,7 +35,25 @@ public class PrimaryFlightDisplayView: SKView {
         // Diagnostics
         showsFPS = true
         showsNodeCount = true
-    }    
+    }
+    
+    public func setHeading(heading: Double) {
+        if let scene = scene as? PrimaryFlightDisplayScene {
+            scene.setHeading(heading)
+        }
+    }
+    
+    public func setAirSpeed(airSpeed: Double) {
+        if let scene = scene as? PrimaryFlightDisplayScene {
+            scene.setAirSpeed(airSpeed)
+        }
+    }
+
+    public func setAltitude(altitude: Double) {
+        if let scene = scene as? PrimaryFlightDisplayScene {
+            scene.setAltitude(altitude)
+        }
+    }
 }
 
 extension PrimaryFlightDisplayView: AttitudeSettable {
@@ -46,15 +64,15 @@ extension PrimaryFlightDisplayView: AttitudeSettable {
     }
 }
 
-private class PrimaryFlightDisplayScene: SKScene {
+class PrimaryFlightDisplayScene: SKScene {
     
-    let horizon: Horizon
-    let pitchLadder: PitchLadder
-    let attitudeReferenceIndex = AttitudeReferenceIndex()
-    let bankIndicator = BankIndicator()
-    let altimeter = TapeIndicator(style: Constants.Style.altimeter())
-    let airSpeedIndicator = TapeIndicator(style: Constants.Style.airSpeedIndicator())
-    let headingIndicator = TapeIndicator(style: Constants.Style.headingIndicator())
+    private let horizon: Horizon
+    private let pitchLadder: PitchLadder
+    private let attitudeReferenceIndex = AttitudeReferenceIndex()
+    private let bankIndicator = BankIndicator()
+    private let altimeter = TapeIndicator(style: Constants.Style.altimeter())
+    private let airSpeedIndicator = TapeIndicator(style: Constants.Style.airSpeedIndicator())
+    private let headingIndicator = TapeIndicator(style: Constants.Style.headingIndicator())
 
     override init(size: CGSize) {
         horizon = Horizon(sceneSize: size)
@@ -66,7 +84,7 @@ private class PrimaryFlightDisplayScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private override func didMoveToView(view: SKView) {
+    override func didMoveToView(view: SKView) {
         scaleMode = .ResizeFill
         addChild(horizon)
         addChild(pitchLadder)
@@ -77,16 +95,28 @@ private class PrimaryFlightDisplayScene: SKScene {
         addChild(headingIndicator)
     }
     
-    private override func didChangeSize(oldSize: CGSize) {
+    override func didChangeSize(oldSize: CGSize) {
         altimeter.position = CGPoint(x: -size.width/2 + altimeter.style.size.width/2, y: 0)
         airSpeedIndicator.position = CGPoint(x: size.width/2 - airSpeedIndicator.style.size.width/2, y: 0)
         headingIndicator.position = CGPoint(x: 0, y: size.height/2 - headingIndicator.style.size.height/2)
     }
     
-    private override func didEvaluateActions() {
+    override func didEvaluateActions() {
         altimeter.recycleCells()
         airSpeedIndicator.recycleCells()
         headingIndicator.recycleCells()
+    }
+    
+    func setHeading(heading: Double) {
+        headingIndicator.value = heading
+    }
+    
+    func setAltitude(altitude: Double) {
+        altimeter.value = altitude
+    }
+
+    func setAirSpeed(airSpeed: Double) {
+        airSpeedIndicator.value = airSpeed
     }
 }
 

@@ -22,16 +22,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(notification: NSNotification) {
         mavlinkController = MavlinkController()
         menuManager = MenuManager(mavlinkMenu: mavlinkMenu, availableSerialPorts: mavlinkController.availableSerialPorts, mavlinkController: mavlinkController)
-        
-        mavlinkController.reactiveMavlink.heartbeat.observeNext { heartbeat in
-//            print(heartbeat)
-        }
-        
+                
         mavlinkController.reactiveMavlink.attitude.observeNext { [weak self] attitude in
             let attitude = Attitude(pitchRadians: attitude.pitch, rollRadians: attitude.roll)
             self?.flightView.setAttitude(attitude)
         }
-
+        
+        mavlinkController.reactiveMavlink.headUpDisplay.observeNext { [weak self] hud in
+            self?.flightView.setHeading(Double(hud.heading))
+            self?.flightView.setAirSpeed(Double(hud.airSpeed))
+            self?.flightView.setAltitude(Double(hud.altitude))
+        }
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
