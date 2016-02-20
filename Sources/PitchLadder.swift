@@ -18,7 +18,7 @@ class PitchLadder: SKNode {
     init(sceneSize: CGSize) {
         self.sceneSize = sceneSize
         let maskSize = CGSize(
-            width: CGFloat(Constants.Size.PitchLadder.majorLineWidth) * 2.0,
+            width: CGFloat(Constants.Size.PitchLadder.majorLineWidth) * 3.0,
             height: Constants.Angular.pointsPerDegreeForSceneSize(sceneSize) * 44)
         self.maskNode = SKSpriteNode(color: SKColor.blackColor(), size: maskSize)
         super.init()
@@ -29,6 +29,10 @@ class PitchLadder: SKNode {
         let pitchLines = skyPitchLines + skyPitchLines.map { ($0.0 * -1, $0.1) }
         for (degree, style) in pitchLines {
             cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize, degree: degree, style: style))
+        }
+        for (degree, style) in pitchLines.filter({ $1 == .Major }) {
+            cropNode.addChild(PitchLineBuilder.leftPitchLineLabel(sceneSize: sceneSize, degree: degree, style: style))
+            cropNode.addChild(PitchLineBuilder.rightPitchLineLabel(sceneSize: sceneSize, degree: degree, style: style))
         }
         
         cropNode.maskNode = maskNode
@@ -82,5 +86,30 @@ private struct PitchLineBuilder {
         line.fillColor = Constants.Color.PitchLadder.line
         line.strokeColor = SKColor.blackColor()
         return line
-    }    
+    }
+    
+    static func leftPitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKLabelNode {
+        let label = pitchLineLabel(sceneSize: sceneSize, degree: degree, style: style)
+        label.horizontalAlignmentMode = .Right
+        let halfWidth = CGFloat(style.width) / 2
+        label.position.x = -halfWidth - CGFloat(Constants.Size.PitchLadder.markerTextOffset)
+        return label
+    }
+
+    static func rightPitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKLabelNode {
+        let label = pitchLineLabel(sceneSize: sceneSize, degree: degree, style: style)
+        label.horizontalAlignmentMode = .Left
+        let halfWidth = CGFloat(style.width) / 2
+        label.position.x = halfWidth + CGFloat(Constants.Size.PitchLadder.markerTextOffset)
+        return label
+    }
+
+    private static func pitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKLabelNode {
+        let label = SKLabelNode(text: "\(degree)")
+        label.fontName = Constants.Font.family
+        label.fontSize = Constants.Font.size
+        label.verticalAlignmentMode = .Center
+        label.position.y = CGFloat(degree) * Constants.Angular.pointsPerDegreeForSceneSize(sceneSize)
+        return label
+    }
 }

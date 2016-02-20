@@ -56,18 +56,19 @@ struct Constants {
         
         struct AttitudeReferenceIndex {
             static let centerBarWidth = 10
-            static let sideBarWidth = 100
-            static let sideBarHeight = 15
-            static let sideBarOffset = 40
+            static let sideBarWidth = 120
+            static let sideBarHeight = 20
+            static let sideBarOffset = 70
         }
         
         struct PitchLadder {
             static let minorLineWidth = 20
-            static let majorLineWidth = 60
-        }        
+            static let majorLineWidth = 50
+            static let markerTextOffset = 10
+        }
         
         struct BankIndicator {
-            static let radius = 160
+            static let radius = 180
             static let maximumDisplayDegree = 60 // Keep between 0 to 180
             static let lineWidth = 2
             static let minorMarkerHeight = 5
