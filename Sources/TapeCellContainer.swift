@@ -43,7 +43,7 @@ class TapeCellContainer: SKNode {
         case .Continuous:
             return SKAction.moveTo(positionForContinuousValue(value), duration: 0.05)
         case .Compass:
-            return SKAction.moveTo(positionForCompassValue(value), duration: 0.05)
+            return SKAction.moveTo(positionForCompassValue(value), duration: 0.2)
         }
     }
     
@@ -91,22 +91,15 @@ class TapeCellContainer: SKNode {
     }
     
     private func positionForCompassValue(compassValue: Double) -> CGPoint {
-        let left = abs(leftwardValueDeltaFromCompassValue(continuousValueForPosition().compassValue, toCompassValue: compassValue))
-        let right = abs(rightwardValueDeltaFromCompassValue(continuousValueForPosition().compassValue, toCompassValue: compassValue))
+        let left = leftwardValueDeltaFromCompassValue(continuousValueForPosition().compassValue, toCompassValue: compassValue)
+        let right = rightwardValueDeltaFromCompassValue(continuousValueForPosition().compassValue, toCompassValue: compassValue)
         
-        let delta: Double
-        if left < right {
-            delta = leftwardValueDeltaFromCompassValue(initialValue.compassValue, toCompassValue: compassValue)
+        if abs(left) < abs(right) {
+            let newContinuousValue = continuousValueForPosition() + left
+            return positionForContinuousValue(newContinuousValue)
         } else {
-            delta = rightwardValueDeltaFromCompassValue(initialValue.compassValue, toCompassValue: compassValue)
-        }
-        
-        let valuePosition =  -delta * Double(style.markerStyle.pointsPerValue)
-        switch style.markerStyle.justification {
-        case .Top, .Bottom:
-            return CGPoint(x: CGFloat(valuePosition), y: position.y)
-        case .Left, .Right:
-            return CGPoint(x: position.x, y: CGFloat(valuePosition))
+            let newContinuousValue = continuousValueForPosition() + right
+            return positionForContinuousValue(newContinuousValue)
         }
     }
     
