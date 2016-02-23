@@ -54,8 +54,8 @@ class TapeCell: SKNode {
     
     private func buildLineNode(marker: CellMarker) -> SKShapeNode {
         let line =  SKShapeNode(rectOfSize: marker.lineSize)
-        line.strokeColor = marker.color
-        line.fillColor = marker.color
+        line.strokeColor = style.markerStyle.color
+        line.fillColor = style.markerStyle.color
         
         switch style.markerStyle.justification {
         case .Top:
@@ -85,6 +85,7 @@ class TapeCell: SKNode {
         label.fontSize = Constants.Font.size
         label.horizontalAlignmentMode = marker.labelAlignment.horizontal
         label.verticalAlignmentMode = marker.labelAlignment.vertical
+        label.color = style.markerStyle.color
         
         switch style.markerStyle.justification {
         case .Top:
@@ -112,7 +113,6 @@ class TapeCell: SKNode {
 private struct CellMarker {
     let value: Int
     let lineSize: CGSize
-    let color: SKColor
     let isMajor: Bool
     let labelAlignment: (horizontal: SKLabelHorizontalAlignmentMode, vertical: SKLabelVerticalAlignmentMode)
 
@@ -123,7 +123,6 @@ private struct CellMarker {
         guard isMajor || isMinor else { return nil }
         
         self.value = value
-        self.color = style.markerStyle.color
         self.isMajor = isMajor
         
         let length = isMajor ? style.markerStyle.majorMarkerLength : style.markerStyle.minorMarkerLength
