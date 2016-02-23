@@ -138,7 +138,7 @@ struct Constants {
                         minorMarkerLength: 5,
                         majorMarkerFrequency: 10,
                         minorMarkerFrequency: 5,
-                        textOffset: 20,
+                        textOffset: 22,
                         color: SKColor.whiteColor()
                     )
                 )
