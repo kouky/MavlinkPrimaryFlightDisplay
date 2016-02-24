@@ -13,6 +13,7 @@ struct TapeStyle {
     let size: CGSize
     let type: Type
     let backgroundColor: SKColor
+    let pointerBackgroundColor: SKColor
     let markerStyle: TapeMarkerStyle
     
     private var optimalCellMagnitude: Int {
@@ -38,10 +39,11 @@ struct TapeStyle {
         }
     }
 
-    init(size: CGSize, type: Type, backgroundColor: SKColor, markerStyle: TapeMarkerStyle) throws {
+    init(size: CGSize, type: Type, backgroundColor: SKColor, pointerBackgroundColor: SKColor, markerStyle: TapeMarkerStyle) throws {
         self.size = size
         self.type = type
         self.backgroundColor = backgroundColor
+        self.pointerBackgroundColor = pointerBackgroundColor
         self.markerStyle = markerStyle
 
         // TODO: Ensure size can fit 120 or less

@@ -87,6 +87,7 @@ struct Constants {
                     size: CGSize(width: 60, height: 300),
                     type: .Continuous,
                     backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+                    pointerBackgroundColor: SKColor.blackColor(),
                     markerStyle: TapeMarkerStyle(
                         justification: .Right,
                         pointsPerValue: 15,
@@ -109,6 +110,7 @@ struct Constants {
                     size: CGSize(width: 60, height: 300),
                     type: .Continuous,
                     backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+                    pointerBackgroundColor: SKColor.blackColor(),
                     markerStyle: TapeMarkerStyle(
                         justification: .Left,
                         pointsPerValue: 5,
@@ -131,6 +133,7 @@ struct Constants {
                     size: CGSize(width: 400, height: 60),
                     type: .Compass,
                     backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
+                    pointerBackgroundColor: SKColor.blackColor(),
                     markerStyle: TapeMarkerStyle(
                         justification: .Bottom,
                         pointsPerValue: 5,

@@ -105,7 +105,7 @@ class TapePointer: SKNode {
         }
         
         let shape = SKShapeNode(path: transformedPath!)
-        shape.fillColor = SKColor.blackColor() // TODO: Constant
+        shape.fillColor = style.pointerBackgroundColor
         shape.strokeColor = SKColor.whiteColor()
         return shape
     }
