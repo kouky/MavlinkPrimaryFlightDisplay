@@ -46,9 +46,15 @@ struct TapeStyle {
         self.pointerBackgroundColor = pointerBackgroundColor
         self.markerStyle = markerStyle
 
-        // TODO: Ensure size can fit 120 or less
-        if type == .Compass && optimalCellMagnitude > 120  {
-            throw Error.InvalidCompassStyle
+        switch markerStyle.justification {
+        case .Bottom, .Top:
+            if type == .Compass && (size.width / CGFloat(markerStyle.pointsPerValue) > CGFloat(optimalCellMagnitude)) {
+                throw Error.InvalidCompassStyle
+            }
+        case .Left, .Right:
+            if type == .Compass && (size.height / CGFloat(markerStyle.pointsPerValue) > CGFloat(optimalCellMagnitude)) {
+                throw Error.InvalidCompassStyle
+            }
         }
     }
     
