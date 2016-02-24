@@ -30,15 +30,11 @@ struct TapeStyle {
     }
     
     var seedModel: TapeCellModelType {
-        do {
-            switch type {
-            case .Continuous:
-                return try ContinuousTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
-            case .Compass:
-                return try CompassTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
-            }
-        } catch {
-            fatalError("Could not create seed tape cell model")
+        switch type {
+        case .Continuous:
+            return ContinuousTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
+        case .Compass:
+            return CompassTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
         }
     }
 

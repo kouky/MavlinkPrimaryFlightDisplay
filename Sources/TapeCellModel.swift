@@ -12,12 +12,11 @@ protocol TapeCellModelType {
     var magnitude:  UInt { get }
     var midValue:   Double { get }
 
-    // TODO: Hide throws
     func containsValue(value: Double) -> Bool
-    func next() throws -> TapeCellModelType
-    func previous() throws -> TapeCellModelType
+    func next() -> TapeCellModelType
+    func previous() -> TapeCellModelType
     
-    init(lowerValue: Int, upperValue: Int) throws
+    init(lowerValue: Int, upperValue: Int)
 }
 
 extension TapeCellModelType {
@@ -35,26 +34,23 @@ extension TapeCellModelType {
         return Double(lowerValue) <= value && value <= Double(upperValue)
     }
     
-    func next() throws -> TapeCellModelType {
-        return try Self(lowerValue: upperValue, upperValue: upperValue + Int(magnitude))
+    func next() -> TapeCellModelType {
+        return Self(lowerValue: upperValue, upperValue: upperValue + Int(magnitude))
     }
     
-    func previous() throws -> TapeCellModelType {
-        return try Self(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue)
+    func previous() -> TapeCellModelType {
+        return Self(lowerValue: lowerValue - Int(magnitude), upperValue: lowerValue)
     }
-}
-
-enum TapeCellModelError: ErrorType {
-    case UpperValueMustExceedLowerValue
 }
 
 struct ContinuousTapeCellModel: TapeCellModelType {
     let lowerValue: Int
     let upperValue: Int
     
-    init(lowerValue: Int, upperValue: Int) throws {
-        guard upperValue > lowerValue else { throw TapeCellModelError.UpperValueMustExceedLowerValue }
-        
+    init(lowerValue: Int, upperValue: Int) {
+        guard upperValue > lowerValue else {
+            fatalError("Tape cell model upper value must be smaller than lower value")
+        }
         self.lowerValue = lowerValue
         self.upperValue = upperValue
     }
@@ -64,9 +60,10 @@ struct CompassTapeCellModel: TapeCellModelType {
     let lowerValue: Int
     let upperValue: Int
     
-    init(lowerValue: Int, upperValue: Int) throws {
-        guard upperValue > lowerValue else { throw TapeCellModelError.UpperValueMustExceedLowerValue }
-        
+    init(lowerValue: Int, upperValue: Int) {
+        guard upperValue > lowerValue else {
+            fatalError("Tape cell model upper value must be smaller than lower value")
+        }
         self.lowerValue = lowerValue
         self.upperValue = upperValue
     }
