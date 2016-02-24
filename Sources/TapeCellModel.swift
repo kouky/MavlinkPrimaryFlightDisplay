@@ -12,6 +12,7 @@ protocol TapeCellModelType {
     var magnitude:  UInt { get }
     var midValue:   Double { get }
 
+    // TODO: Hide throws
     func containsValue(value: Double) -> Bool
     func next() throws -> TapeCellModelType
     func previous() throws -> TapeCellModelType

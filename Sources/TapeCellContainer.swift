@@ -59,8 +59,14 @@ class TapeCellContainer: SKNode {
                 cell1.model = try cell3.model.next()
                 cell1.position = cell1.positionForValue(initialValue)
                 break
-            case ((false, _),  (false, _),  (false, _)):
-                //TODO: Handle case
+            case ((false, let cell1),  (false, let cell2),  (false, let cell3)):
+                let model = modelForValue(valueForPosition(), fromModel: cell2.model)
+                cell1.model = try model.previous()
+                cell1.position = cell1.positionForValue(initialValue)
+                cell2.model = model
+                cell2.position = cell2.positionForValue(initialValue)
+                cell3.model = try model.next()
+                cell3.position = cell3.positionForValue(initialValue)
                 break
             default:
                 break
@@ -127,6 +133,20 @@ class TapeCellContainer: SKNode {
         }
         else {
             return toCompassValue - fromCompassValue
+        }
+    }
+    
+    private func modelForValue(value: Double, fromModel model: TapeCellModelType) -> TapeCellModelType {
+        do {
+            if model.containsValue(value) {
+                return model
+            } else if value < model.midValue {
+                return modelForValue(value, fromModel: try model.previous())
+            } else {
+                return modelForValue(value, fromModel: try model.next())
+            }
+        } catch {
+            fatalError("Cannot create next / previous tape cell model")
         }
     }
 }

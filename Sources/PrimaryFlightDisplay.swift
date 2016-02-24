@@ -78,6 +78,14 @@ class PrimaryFlightDisplayScene: SKScene {
         horizon = Horizon(sceneSize: size)
         pitchLadder = PitchLadder(sceneSize: size)
         super.init(size: size)
+        
+        delayOnMainQueue(1) { self.altimeter.value = 20 }
+        delayOnMainQueue(3) { self.altimeter.value = 40 }
+        delayOnMainQueue(5) { self.altimeter.value = 60 }
+        delayOnMainQueue(7) { self.altimeter.value = 100 }
+        delayOnMainQueue(9) { self.altimeter.value = 140 }
+        delayOnMainQueue(12) { self.altimeter.value = 0 }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -112,7 +120,7 @@ class PrimaryFlightDisplayScene: SKScene {
     }
     
     func setAltitude(altitude: Double) {
-        altimeter.value = altitude
+//        altimeter.value = altitude
     }
 
     func setAirSpeed(airSpeed: Double) {
@@ -127,4 +135,8 @@ extension PrimaryFlightDisplayScene: AttitudeSettable {
         pitchLadder.setAttitude(attitude)
         bankIndicator.setAttitude(attitude)
     }
+}
+
+func delayOnMainQueue(delay: Double, closure: ()->()) {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), closure)
 }
