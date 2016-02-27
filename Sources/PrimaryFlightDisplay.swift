@@ -22,7 +22,7 @@ public class PrimaryFlightDisplayView: SKView {
     }
     
     private func commonInit() {
-        let scene = PrimaryFlightDisplayScene(size: bounds.size, settings: Settings())
+        let scene = PrimaryFlightDisplayScene(size: bounds.size, settings: DefaultSettings())
         scene.scaleMode = .AspectFill
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         presentScene(scene)
@@ -68,7 +68,7 @@ class PrimaryFlightDisplayScene: SKScene {
     private let airSpeedIndicator = TapeIndicator(style: Constants.Style.airSpeedIndicator())
     private let headingIndicator = TapeIndicator(style: Constants.Style.headingIndicator())
     
-    init(size: CGSize, settings: Settings) {
+    init(size: CGSize, settings: SettingsType) {
         horizon = Horizon(sceneSize: size, style: settings.horizon)
         pitchLadder = PitchLadder(sceneSize: size, style: settings.pitchLadder)
         attitudeReferenceIndex = AttitudeReferenceIndex(style: settings.attitudeReferenceIndex)

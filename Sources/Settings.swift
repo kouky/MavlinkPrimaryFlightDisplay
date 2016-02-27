@@ -8,30 +8,37 @@
 
 import SpriteKit
 
-public struct Settings {
-    let horizon: HorizonStyleType = DefaultHorizonStyle()
-    let attitudeReferenceIndex: AttitudeReferenceIndexStyleType = DefaultAttitudeReferenceIndexStyle()
-    let pitchLadder: PitchLadderStyleType = DefaultPitchLadderStyle()
-    let bankIndicator: BankIndicatorStyleType = DefaultBankIndicatorStyle()
+public protocol SettingsType {
+    var horizon:                HorizonStyleType { get }
+    var attitudeReferenceIndex: AttitudeReferenceIndexStyleType { get }
+    var pitchLadder:            PitchLadderStyleType { get }
+    var bankIndicator:          BankIndicatorStyleType { get }
+}
+
+public struct DefaultSettings: SettingsType {
+    public let horizon: HorizonStyleType = DefaultHorizonStyle()
+    public let attitudeReferenceIndex: AttitudeReferenceIndexStyleType = DefaultAttitudeReferenceIndexStyle()
+    public let pitchLadder: PitchLadderStyleType = DefaultPitchLadderStyle()
+    public let bankIndicator: BankIndicatorStyleType = DefaultBankIndicatorStyle()
 }
 
 // MARK: HorizonStyle
 
-protocol HorizonStyleType {
+public protocol HorizonStyleType {
     var skyColor:           SKColor { get set }
     var groundColor:        SKColor { get set }
     var zeroPitchLineColor: SKColor { get set }
 }
 
-struct DefaultHorizonStyle: HorizonStyleType {
-    var skyColor = SKColor(red: 0.078, green: 0.490, blue: 0.816, alpha: 1.00)
-    var groundColor = SKColor(red: 0.667, green: 0.855, blue: 0.196, alpha: 1.00)
-    var zeroPitchLineColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+public struct DefaultHorizonStyle: HorizonStyleType {
+    public var skyColor = SKColor(red: 0.078, green: 0.490, blue: 0.816, alpha: 1.00)
+    public var groundColor = SKColor(red: 0.667, green: 0.855, blue: 0.196, alpha: 1.00)
+    public var zeroPitchLineColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
 }
 
 // MARK: AttitudeReferenceIndexStyle
 
-protocol AttitudeReferenceIndexStyleType {
+public protocol AttitudeReferenceIndexStyleType {
     var fillColor:      SKColor { get set }
     var strokeColor:    SKColor { get set }
     var centerBarWidth: Int { get set }
@@ -40,18 +47,18 @@ protocol AttitudeReferenceIndexStyleType {
     var sideBarOffset:  Int { get set }
 }
 
-struct DefaultAttitudeReferenceIndexStyle: AttitudeReferenceIndexStyleType {
-    var fillColor = SKColor.whiteColor()
-    var strokeColor = SKColor.blackColor()
-    var centerBarWidth = 10
-    var sideBarWidth = 120
-    var sideBarHeight = 20
-    var sideBarOffset = 70
+public struct DefaultAttitudeReferenceIndexStyle: AttitudeReferenceIndexStyleType {
+    public var fillColor = SKColor.whiteColor()
+    public var strokeColor = SKColor.blackColor()
+    public var centerBarWidth = 10
+    public var sideBarWidth = 120
+    public var sideBarHeight = 20
+    public var sideBarOffset = 70
 }
 
 // MARK: PitchLadder
 
-protocol PitchLadderStyleType {
+public protocol PitchLadderStyleType {
     var fillColor:      SKColor { get set }
     var strokeColor:    SKColor { get set }
     var textColor:      SKColor { get set }
@@ -60,18 +67,18 @@ protocol PitchLadderStyleType {
     var markerTextOffset:   Int { get set }
 }
 
-struct DefaultPitchLadderStyle: PitchLadderStyleType {
-    var fillColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-    var strokeColor = SKColor.blackColor()
-    var textColor = SKColor.whiteColor()
-    var minorLineWidth = 20
-    var majorLineWidth = 50
-    var markerTextOffset = 10
+public struct DefaultPitchLadderStyle: PitchLadderStyleType {
+    public var fillColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+    public var strokeColor = SKColor.blackColor()
+    public var textColor = SKColor.whiteColor()
+    public var minorLineWidth = 20
+    public var majorLineWidth = 50
+    public var markerTextOffset = 10
 }
 
 // MARK: BankIndicator
 
-protocol BankIndicatorStyleType {
+public protocol BankIndicatorStyleType {
     var arcStrokeColor:          SKColor { get set }
     var textColor:            SKColor { get set }
     var skyPointerFillColor:  SKColor { get set }
@@ -86,17 +93,17 @@ protocol BankIndicatorStyleType {
     var skyPointerWidth:      Int { get set }
 }
 
-struct DefaultBankIndicatorStyle: BankIndicatorStyleType {
-    var arcStrokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-    var textColor = SKColor.whiteColor()
-    var skyPointerFillColor = SKColor.whiteColor()
+public struct DefaultBankIndicatorStyle: BankIndicatorStyleType {
+    public var arcStrokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+    public var textColor = SKColor.whiteColor()
+    public var skyPointerFillColor = SKColor.whiteColor()
     
-    var arcRadius = 180
-    var arcMaximumDisplayDegree = 60 // Keep between 0 to 180
-    var arcLineWidth = 2
-    var minorMarkerHeight = 5
-    var majorMarkerHeight = 10
-    var markerTextOffset = 20
-    var skyPointerHeight = 12
-    var skyPointerWidth = 12
+    public var arcRadius = 180
+    public var arcMaximumDisplayDegree = 60 // Keep between 0 to 180
+    public var arcLineWidth = 2
+    public var minorMarkerHeight = 5
+    public var majorMarkerHeight = 10
+    public var markerTextOffset = 20
+    public var skyPointerHeight = 12
+    public var skyPointerWidth = 12
 }
