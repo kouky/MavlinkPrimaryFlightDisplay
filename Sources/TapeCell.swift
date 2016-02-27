@@ -16,6 +16,11 @@ class TapeCell: SKNode {
             createMarkerNodes()
         }
     }
+    
+    var positionForZeroValue: CGPoint {
+        return positionForValue(0)
+    }
+    
     private let style: TapeStyle
     
     init(model: TapeCellModelType, style: TapeStyle) {
@@ -29,8 +34,7 @@ class TapeCell: SKNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // TODO: Account for container initial value
-    func positionForValue(value: Double) -> CGPoint {
+     private func positionForValue(value: Double) -> CGPoint {
         let valuePosition = (model.midValue - value) * Double(style.markerStyle.pointsPerValue)
         switch style.markerStyle.justification {
         case .Top, .Bottom:

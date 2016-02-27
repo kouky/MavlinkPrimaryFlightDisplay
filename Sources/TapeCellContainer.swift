@@ -12,20 +12,26 @@ class TapeCellContainer: SKNode {
     
     private let cellTriad: TapeCellTriad
     private let style: TapeStyle
-    private let initialValue: Double
     
-    init(seedModel: TapeCellModelType, style: TapeStyle) {
+    enum Error: ErrorType {
+        case SeedModelLowerValueMustBeZero
+    }
+    
+    init(seedModel: TapeCellModelType, style: TapeStyle) throws {
         let centerCell = TapeCell(model: seedModel, style: style)
         let previousCell = TapeCell(model: seedModel.previous(), style: style)
         let nextCell = TapeCell(model: seedModel.next(), style: style)
         cellTriad = TapeCellTriad(cell1: previousCell, cell2: centerCell, cell3: nextCell)
         self.style = style
-        initialValue = Double(seedModel.lowerValue)
-        
         super.init()
+        
+        guard seedModel.lowerValue == 0 else {
+            throw Error.SeedModelLowerValueMustBeZero
+        }
+
         cellTriad.forEach { cell in
             addChild(cell)
-            cell.position = cell.positionForValue(initialValue)
+            cell.position = cell.positionForZeroValue
         }
     }
 
@@ -135,6 +141,6 @@ class TapeCellContainer: SKNode {
     
     private func recycleCell(cell: TapeCell, model: TapeCellModelType) {
         cell.model = model
-        cell.position = cell.positionForValue(initialValue)
+        cell.position = cell.positionForZeroValue
     }
 }

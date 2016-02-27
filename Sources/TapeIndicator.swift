@@ -26,7 +26,11 @@ class TapeIndicator: SKNode {
     init(style: TapeStyle) {
         self.style = style
         let seedModel = style.seedModel
-        cellContainer = TapeCellContainer(seedModel: seedModel, style: style)
+        do {
+            cellContainer = try TapeCellContainer(seedModel: seedModel, style: style)
+        } catch  {
+            fatalError("Seed model lower value must be zero")
+        }
         pointer = TapePointer(initialValue: style.seedModel.lowerValue, style: style)
         super.init()
 
