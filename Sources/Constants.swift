@@ -37,19 +37,6 @@ struct Constants {
             static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
             static let text = SKColor.whiteColor()
             static let skyPointer = SKColor.whiteColor()
-        }
-        
-        struct Altimeter {
-            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
-        }
-        
-        struct AirSpeedIndicator {
-            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
-        }
-        
-        struct HeadingIndicator {
-            static let background = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
-        }
     }
     
     struct Size {
