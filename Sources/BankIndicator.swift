@@ -130,8 +130,8 @@ private class BankArcMarker: SKNode {
         
         if type == .Major {
             let label = SKLabelNode(text: marker.displayText)
-            label.fontName = Constants.Font.family
-            label.fontSize = Constants.Font.size
+            label.fontName = style.font.family
+            label.fontSize = style.font.size
             label.fontColor = style.textColor
             
             let offset = CGFloat(style.arcRadius + style.markerTextOffset)

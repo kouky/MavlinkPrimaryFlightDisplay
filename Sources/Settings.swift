@@ -59,9 +59,10 @@ public struct DefaultAttitudeReferenceIndexStyle: AttitudeReferenceIndexStyleTyp
 // MARK: PitchLadder
 
 public protocol PitchLadderStyleType {
-    var fillColor:      SKColor { get set }
-    var strokeColor:    SKColor { get set }
-    var textColor:      SKColor { get set }
+    var fillColor:      SKColor  { get set }
+    var strokeColor:    SKColor  { get set }
+    var textColor:      SKColor  { get set }
+    var font:           FontType { get set }
     var minorLineWidth:     Int { get set }
     var majorLineWidth:     Int { get set }
     var markerTextOffset:   Int { get set }
@@ -71,6 +72,7 @@ public struct DefaultPitchLadderStyle: PitchLadderStyleType {
     public var fillColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
     public var strokeColor = SKColor.blackColor()
     public var textColor = SKColor.whiteColor()
+    public var font: FontType = DefaultFont()
     public var minorLineWidth = 20
     public var majorLineWidth = 50
     public var markerTextOffset = 10
@@ -79,9 +81,10 @@ public struct DefaultPitchLadderStyle: PitchLadderStyleType {
 // MARK: BankIndicator
 
 public protocol BankIndicatorStyleType {
-    var arcStrokeColor:          SKColor { get set }
-    var textColor:            SKColor { get set }
-    var skyPointerFillColor:  SKColor { get set }
+    var arcStrokeColor:       SKColor  { get set }
+    var textColor:            SKColor  { get set }
+    var font:                 FontType { get set }
+    var skyPointerFillColor:  SKColor  { get set }
     
     var arcRadius:               Int { get set }
     var arcMaximumDisplayDegree: Int { get set }
@@ -96,6 +99,7 @@ public protocol BankIndicatorStyleType {
 public struct DefaultBankIndicatorStyle: BankIndicatorStyleType {
     public var arcStrokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
     public var textColor = SKColor.whiteColor()
+    public var font: FontType = DefaultFont()
     public var skyPointerFillColor = SKColor.whiteColor()
     
     public var arcRadius = 180
@@ -106,4 +110,16 @@ public struct DefaultBankIndicatorStyle: BankIndicatorStyleType {
     public var markerTextOffset = 20
     public var skyPointerHeight = 12
     public var skyPointerWidth = 12
+}
+
+// MARK: Font
+
+public protocol FontType {
+    var family: String { get }
+    var size:   CGFloat { get }
+}
+
+public struct DefaultFont: FontType {
+    public var family = "Helvetica-Bold"
+    public var size: CGFloat = 16
 }

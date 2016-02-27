@@ -101,8 +101,8 @@ private struct PitchLineBuilder {
 
     private func pitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, type: PitchLineType) -> SKLabelNode {
         let label = SKLabelNode(text: "\(degree)")
-        label.fontName = Constants.Font.family
-        label.fontSize = Constants.Font.size
+        label.fontName = style.font.family
+        label.fontSize = style.font.size
         label.fontColor = style.textColor
         label.verticalAlignmentMode = .Center
         label.position.y = CGFloat(degree) * sceneSize.pointsPerDegree

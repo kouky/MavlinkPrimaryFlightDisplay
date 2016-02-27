@@ -10,11 +10,6 @@ import SpriteKit
 
 struct Constants {
     
-    struct Font {
-        static let family = "Helvetica-Bold"
-        static let size: CGFloat = 16
-    }
-    
     struct Style {
         
         static func altimeter() -> TapeStyle {
@@ -24,6 +19,7 @@ struct Constants {
                     type: .Continuous,
                     backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
                     pointerBackgroundColor: SKColor.blackColor(),
+                    font: DefaultFont(),
                     markerStyle: TapeMarkerStyle(
                         justification: .Right,
                         pointsPerValue: 15,
@@ -47,6 +43,7 @@ struct Constants {
                     type: .Continuous,
                     backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
                     pointerBackgroundColor: SKColor.blackColor(),
+                    font: DefaultFont(),
                     markerStyle: TapeMarkerStyle(
                         justification: .Left,
                         pointsPerValue: 5,
@@ -70,6 +67,7 @@ struct Constants {
                     type: .Compass,
                     backgroundColor: SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5),
                     pointerBackgroundColor: SKColor.blackColor(),
+                    font: DefaultFont(),
                     markerStyle: TapeMarkerStyle(
                         justification: .Bottom,
                         pointsPerValue: 5,

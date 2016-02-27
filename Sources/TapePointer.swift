@@ -36,8 +36,8 @@ class TapePointer: SKNode {
     }
     
     private func styleLabelNode() {
-        label.fontName = Constants.Font.family
-        label.fontSize = Constants.Font.size
+        label.fontName = style.font.family
+        label.fontSize = style.font.size
         label.color = style.markerStyle.color
         
         switch style.markerStyle.justification {

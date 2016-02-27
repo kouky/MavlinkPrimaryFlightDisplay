@@ -85,8 +85,8 @@ class TapeCell: SKNode {
     
     private func buildLabelNode(marker: CellMarker) -> SKLabelNode {
         let label = SKLabelNode(text: style.type.labelForValue(marker.value))
-        label.fontName = Constants.Font.family
-        label.fontSize = Constants.Font.size
+        label.fontName = style.font.family
+        label.fontSize = style.font.size
         label.horizontalAlignmentMode = marker.labelAlignment.horizontal
         label.verticalAlignmentMode = marker.labelAlignment.vertical
         label.color = style.markerStyle.color
