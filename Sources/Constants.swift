@@ -18,24 +18,14 @@ struct Constants {
     
     struct Color {
         
-        struct PitchLadder {
-            static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-        }
-        
         struct BankIndicator {
             static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
             static let text = SKColor.whiteColor()
             static let skyPointer = SKColor.whiteColor()
-        }        
+        }
     }
     
     struct Size {
-        
-        struct PitchLadder {
-            static let minorLineWidth = 20
-            static let majorLineWidth = 50
-            static let markerTextOffset = 10
-        }
         
         struct BankIndicator {
             static let radius = 180

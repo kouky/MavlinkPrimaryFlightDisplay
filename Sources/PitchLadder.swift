@@ -11,28 +11,30 @@ import SpriteKit
 class PitchLadder: SKNode {
     
     let sceneSize: CGSize
-    private let degreeValues = Array(5.stride(to: 91, by: 5))
     private let cropNode = SKCropNode()
     private let maskNode: SKSpriteNode
     
-    init(sceneSize: CGSize) {
+    init(sceneSize: CGSize, style: PitchLadderStyleType) {
         self.sceneSize = sceneSize
         let maskSize = CGSize(
-            width: CGFloat(Constants.Size.PitchLadder.majorLineWidth) * 3.0,
+            width: CGFloat(style.majorLineWidth) * 3.0,
             height: sceneSize.pointsPerDegree * 44)
         self.maskNode = SKSpriteNode(color: SKColor.blackColor(), size: maskSize)
         super.init()
         
+        let builder = PitchLineBuilder(style: style)
+        let degreeValues = Array(5.stride(to: 91, by: 5))
+        
         let skyPitchLines = degreeValues.map { degree in
-            return (degree, (degree % 10 == 0) ? PitchLineStyle.Major : PitchLineStyle.Minor)
+            return (degree, (degree % 10 == 0) ? PitchLineType.Major : PitchLineType.Minor)
         }
         let pitchLines = skyPitchLines + skyPitchLines.map { ($0.0 * -1, $0.1) }
-        for (degree, style) in pitchLines {
-            cropNode.addChild(PitchLineBuilder.pitchLine(sceneSize: sceneSize, degree: degree, style: style))
+        for (degree, type) in pitchLines {
+            cropNode.addChild(builder.pitchLine(sceneSize: sceneSize, degree: degree, type: type))
         }
-        for (degree, style) in pitchLines.filter({ $1 == .Major }) {
-            cropNode.addChild(PitchLineBuilder.leftPitchLineLabel(sceneSize: sceneSize, degree: degree, style: style))
-            cropNode.addChild(PitchLineBuilder.rightPitchLineLabel(sceneSize: sceneSize, degree: degree, style: style))
+        for (degree, type) in pitchLines.filter({ $1 == .Major }) {
+            cropNode.addChild(builder.leftPitchLineLabel(sceneSize: sceneSize, degree: degree, type: type))
+            cropNode.addChild(builder.rightPitchLineLabel(sceneSize: sceneSize, degree: degree, type: type))
         }
         
         cropNode.maskNode = maskNode
@@ -53,23 +55,18 @@ extension PitchLadder: AttitudeSettable {
     }
 }
 
-private enum PitchLineStyle {
+private enum PitchLineType {
     case Major
     case Minor
-    
-    var width: Int {
-        switch self {
-        case .Major: return Constants.Size.PitchLadder.majorLineWidth
-        case .Minor: return Constants.Size.PitchLadder.minorLineWidth
-        }
-    }
 }
 
 private struct PitchLineBuilder {
     
-    static func pitchLine(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKShapeNode {
+    let style: PitchLadderStyleType
+    
+    func pitchLine(sceneSize sceneSize: CGSize, degree: Int, type: PitchLineType) -> SKShapeNode {
         
-        let halfWidth = CGFloat(style.width) / 2
+        let halfWidth = halfWidthForPitchLineType(type)
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -halfWidth, 2)
         CGPathAddLineToPoint(path, nil, halfWidth, 2)
@@ -83,33 +80,43 @@ private struct PitchLineBuilder {
         }
 
         let line = SKShapeNode(path: transformedPath!)
-        line.fillColor = Constants.Color.PitchLadder.line
-        line.strokeColor = SKColor.blackColor()
+        line.fillColor = style.fillColor
+        line.strokeColor = style.strokeColor
         return line
     }
     
-    static func leftPitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKLabelNode {
-        let label = pitchLineLabel(sceneSize: sceneSize, degree: degree, style: style)
+    func leftPitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, type: PitchLineType) -> SKLabelNode {
+        let label = pitchLineLabel(sceneSize: sceneSize, degree: degree, type: type)
         label.horizontalAlignmentMode = .Right
-        let halfWidth = CGFloat(style.width) / 2
-        label.position.x = -halfWidth - CGFloat(Constants.Size.PitchLadder.markerTextOffset)
+        label.position.x = -halfWidthForPitchLineType(type) - CGFloat(style.markerTextOffset)
         return label
     }
 
-    static func rightPitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKLabelNode {
-        let label = pitchLineLabel(sceneSize: sceneSize, degree: degree, style: style)
+    func rightPitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, type: PitchLineType) -> SKLabelNode {
+        let label = pitchLineLabel(sceneSize: sceneSize, degree: degree, type: type)
         label.horizontalAlignmentMode = .Left
-        let halfWidth = CGFloat(style.width) / 2
-        label.position.x = halfWidth + CGFloat(Constants.Size.PitchLadder.markerTextOffset)
+        label.position.x = halfWidthForPitchLineType(type) + CGFloat(style.markerTextOffset)
         return label
     }
 
-    private static func pitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, style: PitchLineStyle) -> SKLabelNode {
+    private func pitchLineLabel(sceneSize sceneSize: CGSize, degree: Int, type: PitchLineType) -> SKLabelNode {
         let label = SKLabelNode(text: "\(degree)")
         label.fontName = Constants.Font.family
         label.fontSize = Constants.Font.size
+        label.fontColor = style.textColor
         label.verticalAlignmentMode = .Center
         label.position.y = CGFloat(degree) * sceneSize.pointsPerDegree
         return label
+    }
+    
+    private func widthForPitchLineType(type: PitchLineType) -> CGFloat {
+        switch type {
+        case .Major: return CGFloat(style.majorLineWidth)
+        case .Minor: return CGFloat(style.minorLineWidth)
+        }
+    }
+    
+    private func halfWidthForPitchLineType(type: PitchLineType) -> CGFloat {
+        return widthForPitchLineType(type) / 2
     }
 }

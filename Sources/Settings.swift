@@ -11,6 +11,7 @@ import SpriteKit
 public struct Settings {
     let horizon: HorizonStyleType = DefaultHorizonStyle()
     let attitudeReferenceIndex: AttitudeReferenceIndexStyleType = DefaultAttitudeReferenceIndexStyle()
+    let pitchLadder: PitchLadderStyleType = DefaultPitchLadderStyle()
 }
 
 // MARK: HorizonStyle
@@ -47,5 +48,22 @@ struct DefaultAttitudeReferenceIndexStyle: AttitudeReferenceIndexStyleType {
     var sideBarOffset = 70
 }
 
+// MARK: PitchLadder
 
+protocol PitchLadderStyleType {
+    var fillColor:      SKColor { get set }
+    var strokeColor:    SKColor { get set }
+    var textColor:      SKColor { get set }
+    var minorLineWidth:     Int { get set }
+    var majorLineWidth:     Int { get set }
+    var markerTextOffset:   Int { get set }
+}
 
+struct DefaultPitchLadderStyle: PitchLadderStyleType {
+    var fillColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+    var strokeColor = SKColor.blackColor()
+    var textColor = SKColor.whiteColor()
+    var minorLineWidth = 20
+    var majorLineWidth = 50
+    var markerTextOffset = 10
+}

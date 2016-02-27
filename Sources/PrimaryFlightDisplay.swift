@@ -70,7 +70,7 @@ class PrimaryFlightDisplayScene: SKScene {
     
     init(size: CGSize, settings: Settings) {
         horizon = Horizon(sceneSize: size, style: settings.horizon)
-        pitchLadder = PitchLadder(sceneSize: size)
+        pitchLadder = PitchLadder(sceneSize: size, style: settings.pitchLadder)
         attitudeReferenceIndex = AttitudeReferenceIndex(style: settings.attitudeReferenceIndex)
         super.init(size: size)
     }
