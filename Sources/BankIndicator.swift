@@ -84,7 +84,7 @@ private class BankArc: SKNode {
         arc.lineWidth = CGFloat(Constants.Size.BankIndicator.lineWidth)
         cropNode.addChild(arc)
         cropNode.maskNode = maskNode
-        let cropMaskVerticalPosition = CGFloat(cos(Constants.Angular.radiansFromDegrees(CGFloat(maxDegree)))) * CGFloat(Constants.Size.BankIndicator.radius)
+        let cropMaskVerticalPosition = cos(maxDegree.radians) * CGFloat(Constants.Size.BankIndicator.radius)
         cropNode.maskNode?.position = CGPoint(x: 0, y: CGFloat(Constants.Size.BankIndicator.radius) + cropMaskVerticalPosition)
         addChild(cropNode)
     }
@@ -118,7 +118,7 @@ private class BankArcMarker: SKNode {
     init(marker: (degree: Int, displayText: String), style: BankArcMarkerStyle) {
         super.init()
         
-        let radians = Constants.Angular.radiansFromDegrees(CGFloat(marker.degree))
+        let radians = marker.degree.radians
         let rotateAction = SKAction.rotateByAngle(-radians, duration: 0)
         let moveAction = { (offset: CGFloat) -> SKAction in
             SKAction.moveBy(CGVector(dx: offset * sin(radians), dy: offset * cos(radians)), duration: 0)

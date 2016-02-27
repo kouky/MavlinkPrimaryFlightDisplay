@@ -159,10 +159,6 @@ struct Constants {
         
         static func pointsPerRadianForSceneSize(size: CGSize) -> CGFloat {
             return CGFloat.degreesPerRadian * pointsPerDegreeForSceneSize(size)
-        }
-        
-        static func radiansFromDegrees(degrees: CGFloat) -> CGFloat {
-            return CGFloat.radiansPerDegree * degrees
-        }
+        }        
     }
 }
