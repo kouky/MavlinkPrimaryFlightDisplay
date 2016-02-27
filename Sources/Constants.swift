@@ -11,32 +11,8 @@ import SpriteKit
 struct Constants {
     
     struct Font {
-        
         static let family = "Helvetica-Bold"
         static let size: CGFloat = 16
-    }
-    
-    struct Color {
-        
-        struct BankIndicator {
-            static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-            static let text = SKColor.whiteColor()
-            static let skyPointer = SKColor.whiteColor()
-        }
-    }
-    
-    struct Size {
-        
-        struct BankIndicator {
-            static let radius = 180
-            static let maximumDisplayDegree = 60 // Keep between 0 to 180
-            static let lineWidth = 2
-            static let minorMarkerHeight = 5
-            static let majorMarkerHeight = 10
-            static let markerTextOffset = 20
-            static let skyPointerHeight = 12
-            static let skyPointerWidth = 12
-        }
     }
     
     struct Style {

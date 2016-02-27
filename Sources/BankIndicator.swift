@@ -13,12 +13,12 @@ class BankIndicator: SKNode {
     
     private let bankArc: BankArc
     
-    override init() {
-        bankArc = BankArc()
+    init(style: BankIndicatorStyleType) {
+        bankArc = BankArc(style: style)
         super.init()
 
         addChild(bankArc)
-        addChild(SkyPointer())
+        addChild(SkyPointer(style: style))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -35,20 +35,20 @@ extension BankIndicator: AttitudeSettable {
 
 private class SkyPointer: SKNode {
     
-    override init() {
+    init(style: BankIndicatorStyleType) {
         super.init()
         
         let path = CGPathCreateMutable()
-        CGPathMoveToPoint(path, nil, -CGFloat(Constants.Size.BankIndicator.skyPointerWidth)/2, 0)
-        CGPathAddLineToPoint(path, nil, CGFloat(Constants.Size.BankIndicator.skyPointerWidth)/2, 0)
-        CGPathAddLineToPoint(path, nil, 0, CGFloat(Constants.Size.BankIndicator.skyPointerHeight))
+        CGPathMoveToPoint(path, nil, -CGFloat(style.skyPointerWidth)/2, 0)
+        CGPathAddLineToPoint(path, nil, CGFloat(style.skyPointerWidth)/2, 0)
+        CGPathAddLineToPoint(path, nil, 0, CGFloat(style.skyPointerHeight))
         CGPathCloseSubpath(path)
         
         let shape = SKShapeNode(path: path)
-        shape.fillColor = Constants.Color.BankIndicator.skyPointer
-        shape.strokeColor = Constants.Color.BankIndicator.skyPointer
+        shape.fillColor = style.skyPointerFillColor
+        shape.strokeColor = style.skyPointerFillColor
         shape.lineJoin = .Miter
-        shape.position = CGPoint(x: 0, y: Constants.Size.BankIndicator.radius - Constants.Size.BankIndicator.skyPointerHeight - Constants.Size.BankIndicator.lineWidth*2)
+        shape.position = CGPoint(x: 0, y: style.arcRadius - style.skyPointerHeight - style.arcLineWidth*2)
         addChild(shape)
     }
 
@@ -60,10 +60,12 @@ private class SkyPointer: SKNode {
 private class BankArc: SKNode {
     
     private let degreeValues = Array((-175).stride(to: 181, by: 5))
- 
-    override init() {
-        assert(Constants.Size.BankIndicator.maximumDisplayDegree > 0, "Bank indicator maximum display degree must be greater than 0")
-        assert(Constants.Size.BankIndicator.maximumDisplayDegree <= 180, "Bank indicator maximum display degree must have maximum value of 180")
+    private let style: BankIndicatorStyleType
+    
+    init(style: BankIndicatorStyleType) {
+        assert(style.arcMaximumDisplayDegree > 0, "Bank indicator maximum display degree must be greater than 0")
+        assert(style.arcMaximumDisplayDegree <= 180, "Bank indicator maximum display degree must have maximum value of 180")
+        self.style = style
         super.init()
 
         addMaskedArc()
@@ -75,47 +77,40 @@ private class BankArc: SKNode {
     }
     
     private func addMaskedArc() {
-        let arc = SKShapeNode(circleOfRadius: CGFloat(Constants.Size.BankIndicator.radius))
+        let arc = SKShapeNode(circleOfRadius: CGFloat(style.arcRadius))
         let cropNode = SKCropNode()
-        let maskNodeEdgeSize = Constants.Size.BankIndicator.radius * 2 + Constants.Size.BankIndicator.lineWidth
+        let maskNodeEdgeSize = style.arcRadius * 2 + style.arcLineWidth
         let maskNode = SKSpriteNode(color: SKColor.blackColor(), size: CGSize(width: maskNodeEdgeSize, height: maskNodeEdgeSize))
-        let maxDegree = Constants.Size.BankIndicator.maximumDisplayDegree
+        let maxDegree = style.arcMaximumDisplayDegree
         
-        arc.lineWidth = CGFloat(Constants.Size.BankIndicator.lineWidth)
+        arc.lineWidth = CGFloat(style.arcLineWidth)
         cropNode.addChild(arc)
         cropNode.maskNode = maskNode
-        let cropMaskVerticalPosition = cos(maxDegree.radians) * CGFloat(Constants.Size.BankIndicator.radius)
-        cropNode.maskNode?.position = CGPoint(x: 0, y: CGFloat(Constants.Size.BankIndicator.radius) + cropMaskVerticalPosition)
+        let cropMaskVerticalPosition = cos(maxDegree.radians) * CGFloat(style.arcRadius)
+        cropNode.maskNode?.position = CGPoint(x: 0, y: CGFloat(style.arcRadius) + cropMaskVerticalPosition)
         addChild(cropNode)
     }
     
     private func addMarkers() {
         degreeValues.filter {
-            abs($0) <= Constants.Size.BankIndicator.maximumDisplayDegree
+            abs($0) <= style.arcMaximumDisplayDegree
         }.map {
             (degree: $0, displayText: "\(abs($0))")
         }.forEach { marker in
-            let style: BankArcMarkerStyle = marker.degree % 15 == 0 ? .Major : . Minor
-            addChild(BankArcMarker(marker: marker, style: style))
+            let type: BankArcMarkerType = marker.degree % 15 == 0 ? .Major : . Minor
+            addChild(BankArcMarker(marker: marker, type: type, style: style))
         }
     }
 }
 
-private enum BankArcMarkerStyle {
+private enum BankArcMarkerType {
     case Major
     case Minor
-    
-    var height: Int {
-        switch self {
-        case .Major: return Constants.Size.BankIndicator.majorMarkerHeight
-        case .Minor: return Constants.Size.BankIndicator.minorMarkerHeight
-        }
-    }
 }
 
 private class BankArcMarker: SKNode {
     
-    init(marker: (degree: Int, displayText: String), style: BankArcMarkerStyle) {
+    init(marker: (degree: Int, displayText: String), type: BankArcMarkerType, style: BankIndicatorStyleType) {
         super.init()
         
         let radians = marker.degree.radians
@@ -124,22 +119,22 @@ private class BankArcMarker: SKNode {
             SKAction.moveBy(CGVector(dx: offset * sin(radians), dy: offset * cos(radians)), duration: 0)
         }
         
-        let height = (style == .Major ? Constants.Size.BankIndicator.majorMarkerHeight : Constants.Size.BankIndicator.minorMarkerHeight)
+        let height = (type == .Major ? style.majorMarkerHeight : style.minorMarkerHeight)
         let line = SKShapeNode(rectOfSize: CGSize(width: 0, height: height))
-        line.strokeColor = Constants.Color.BankIndicator.line
-        line.fillColor = Constants.Color.BankIndicator.line
-        let offset = CGFloat(Constants.Size.BankIndicator.radius + (height / 2))
+        line.strokeColor = style.arcStrokeColor
+        line.fillColor = style.arcStrokeColor
+        let offset = CGFloat(style.arcRadius + (height / 2))
         line.runAction(SKAction.sequence([rotateAction, moveAction(offset)]))
         line.antialiased = true
         addChild(line)
         
-        if style == .Major {
+        if type == .Major {
             let label = SKLabelNode(text: marker.displayText)
             label.fontName = Constants.Font.family
             label.fontSize = Constants.Font.size
-            label.fontColor = Constants.Color.BankIndicator.text
+            label.fontColor = style.textColor
             
-            let offset = CGFloat(Constants.Size.BankIndicator.radius + Constants.Size.BankIndicator.markerTextOffset)
+            let offset = CGFloat(style.arcRadius + style.markerTextOffset)
             label.runAction(SKAction.sequence([rotateAction, moveAction(offset)]))
             addChild(label)
         }

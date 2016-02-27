@@ -12,6 +12,7 @@ public struct Settings {
     let horizon: HorizonStyleType = DefaultHorizonStyle()
     let attitudeReferenceIndex: AttitudeReferenceIndexStyleType = DefaultAttitudeReferenceIndexStyle()
     let pitchLadder: PitchLadderStyleType = DefaultPitchLadderStyle()
+    let bankIndicator: BankIndicatorStyleType = DefaultBankIndicatorStyle()
 }
 
 // MARK: HorizonStyle
@@ -66,4 +67,36 @@ struct DefaultPitchLadderStyle: PitchLadderStyleType {
     var minorLineWidth = 20
     var majorLineWidth = 50
     var markerTextOffset = 10
+}
+
+// MARK: BankIndicator
+
+protocol BankIndicatorStyleType {
+    var arcStrokeColor:          SKColor { get set }
+    var textColor:            SKColor { get set }
+    var skyPointerFillColor:  SKColor { get set }
+    
+    var arcRadius:               Int { get set }
+    var arcMaximumDisplayDegree: Int { get set }
+    var arcLineWidth:         Int { get set }
+    var minorMarkerHeight:    Int { get set }
+    var majorMarkerHeight:    Int { get set }
+    var markerTextOffset:     Int { get set }
+    var skyPointerHeight:     Int { get set }
+    var skyPointerWidth:      Int { get set }
+}
+
+struct DefaultBankIndicatorStyle: BankIndicatorStyleType {
+    var arcStrokeColor = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
+    var textColor = SKColor.whiteColor()
+    var skyPointerFillColor = SKColor.whiteColor()
+    
+    var arcRadius = 180
+    var arcMaximumDisplayDegree = 60 // Keep between 0 to 180
+    var arcLineWidth = 2
+    var minorMarkerHeight = 5
+    var majorMarkerHeight = 10
+    var markerTextOffset = 20
+    var skyPointerHeight = 12
+    var skyPointerWidth = 12
 }
