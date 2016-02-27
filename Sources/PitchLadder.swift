@@ -19,7 +19,7 @@ class PitchLadder: SKNode {
         self.sceneSize = sceneSize
         let maskSize = CGSize(
             width: CGFloat(Constants.Size.PitchLadder.majorLineWidth) * 3.0,
-            height: Constants.Angular.pointsPerDegreeForSceneSize(sceneSize) * 44)
+            height: sceneSize.pointsPerDegree * 44)
         self.maskNode = SKSpriteNode(color: SKColor.blackColor(), size: maskSize)
         super.init()
         
@@ -77,7 +77,7 @@ private struct PitchLineBuilder {
         CGPathAddLineToPoint(path, nil, -halfWidth, -2)
         CGPathCloseSubpath(path)
         
-        var transform = CGAffineTransformMakeTranslation(0, CGFloat(degree) * Constants.Angular.pointsPerDegreeForSceneSize(sceneSize))
+        var transform = CGAffineTransformMakeTranslation(0, CGFloat(degree) * sceneSize.pointsPerDegree)
         let transformedPath = withUnsafeMutablePointer(&transform) {
             CGPathCreateMutableCopyByTransformingPath(path, $0)
         }
@@ -109,7 +109,7 @@ private struct PitchLineBuilder {
         label.fontName = Constants.Font.family
         label.fontSize = Constants.Font.size
         label.verticalAlignmentMode = .Center
-        label.position.y = CGFloat(degree) * Constants.Angular.pointsPerDegreeForSceneSize(sceneSize)
+        label.position.y = CGFloat(degree) * sceneSize.pointsPerDegree
         return label
     }
 }

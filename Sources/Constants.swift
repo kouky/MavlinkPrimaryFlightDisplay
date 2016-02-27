@@ -149,16 +149,5 @@ struct Constants {
                 fatalError("Invalid compass style. Decrease size and/or increase points per value.")
             }
         }
-    }
-    
-    struct Angular {
-        
-        static func pointsPerDegreeForSceneSize(size: CGSize) -> CGFloat {
-            return (size.height / 2) / CGFloat(90)
-        }
-        
-        static func pointsPerRadianForSceneSize(size: CGSize) -> CGFloat {
-            return CGFloat.degreesPerRadian * pointsPerDegreeForSceneSize(size)
-        }        
-    }
+    }    
 }

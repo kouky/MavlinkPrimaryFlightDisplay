@@ -9,6 +9,7 @@
 import Foundation
 
 extension Int {
+    
     var radians: CGFloat {
         return CGFloat.radiansPerDegree * CGFloat(self)
     }

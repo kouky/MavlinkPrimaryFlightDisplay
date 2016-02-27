@@ -27,12 +27,12 @@ extension AttitudeType {
     }
     
     func pitchAction(sceneSize sceneSize: CGSize) -> SKAction {
-        let displacement = CGFloat(pitchRadians) * -1 * Constants.Angular.pointsPerRadianForSceneSize(sceneSize)
+        let displacement = CGFloat(pitchRadians) * -1 * sceneSize.pointsPerRadian
         return SKAction.moveToY(displacement, duration: 0.05)
     }
     
     func pitchReverseAction(sceneSize sceneSize: CGSize) -> SKAction {
-        let displacement = CGFloat(pitchRadians) * Constants.Angular.pointsPerRadianForSceneSize(sceneSize)
+        let displacement = CGFloat(pitchRadians) * sceneSize.pointsPerRadian
         return SKAction.moveToY(displacement, duration: 0.05)
     }
 }
