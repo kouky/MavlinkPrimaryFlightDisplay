@@ -13,12 +13,14 @@ class Horizon: SKNode {
     let sceneSize: CGSize
 
     private let gimbalNode = SKNode()
-    private let skyNode = SKSpriteNode(color: Constants.Color.Horizon.sky, size: CGSize(width: 100, height: 100))
-    private let groundNode = SKSpriteNode(color: Constants.Color.Horizon.ground, size: CGSize(width: 100, height: 100))
+    private let skyNode: SKSpriteNode
+    private let groundNode: SKSpriteNode
     private let zeroPitchLine: SKShapeNode
     
-    init(sceneSize: CGSize) {
+    init(sceneSize: CGSize, style: HorizonStyleType) {
         self.sceneSize = sceneSize
+        skyNode = SKSpriteNode(color: style.skyColor, size: CGSize(width: 100, height: 100))
+        groundNode = SKSpriteNode(color: style.groundColor, size: CGSize(width: 100, height: 100))
         zeroPitchLine = SKShapeNode(rectOfSize: CGSize(width: 2 * sceneSize.width, height: 1))
         super.init()
         
@@ -26,7 +28,7 @@ class Horizon: SKNode {
         groundNode.size = CGSize(width: sceneSize.width * 2, height: sceneSize.height * 2)
         skyNode.position = CGPoint(x: 0, y: sceneSize.height)
         groundNode.position = CGPoint(x: 0, y: -sceneSize.height)
-        zeroPitchLine.strokeColor = Constants.Color.Horizon.zeroPitchLine   
+        zeroPitchLine.strokeColor = style.zeroPitchLineColor
         zeroPitchLine.position = CGPoint.zero
         
         gimbalNode.addChild(skyNode)

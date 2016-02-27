@@ -10,12 +10,14 @@ import SpriteKit
 
 class AttitudeReferenceIndex: SKNode {
     
-    override init() {
+    let style: AttitudeReferenceIndexStyleType
+    
+    init(style: AttitudeReferenceIndexStyleType) {
+        self.style = style
         super.init()
         
-        let offset = Constants.Size.AttitudeReferenceIndex.sideBarOffset
-        addChild(buildLeftBar(transform: CGAffineTransformMakeTranslation(CGFloat(-offset), 0)))
-        addChild(buildLeftBar(transform: CGAffineTransformMake(-1, 0, 0, 1, CGFloat(offset), 0)))
+        addChild(buildLeftBar(transform: CGAffineTransformMakeTranslation(CGFloat(-style.sideBarOffset), 0)))
+        addChild(buildLeftBar(transform: CGAffineTransformMake(-1, 0, 0, 1, CGFloat(style.sideBarOffset), 0)))
         addChild(buildCenterBar())
     }
 
@@ -24,8 +26,8 @@ class AttitudeReferenceIndex: SKNode {
     }
     
     private func buildLeftBar(var transform transform: CGAffineTransform) -> SKShapeNode {
-        let width = CGFloat(Constants.Size.AttitudeReferenceIndex.sideBarWidth)
-        let height = CGFloat(Constants.Size.AttitudeReferenceIndex.sideBarHeight)
+        let width = CGFloat(style.sideBarWidth)
+        let height = CGFloat(style.sideBarHeight)
         
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -width, 2)
@@ -41,13 +43,13 @@ class AttitudeReferenceIndex: SKNode {
         }
         
         let shape = SKShapeNode(path: transformedPath!)
-        shape.fillColor = Constants.Color.AttitudeReferenceIndex.shapeFill
-        shape.strokeColor = Constants.Color.AttitudeReferenceIndex.shapeStroke
+        shape.fillColor = style.fillColor
+        shape.strokeColor = style.strokeColor
         return shape
     }
     
     private func buildCenterBar() -> SKShapeNode {
-        let halfWidth = CGFloat(Constants.Size.AttitudeReferenceIndex.centerBarWidth) / 2
+        let halfWidth = CGFloat(style.centerBarWidth) / 2
         let path = CGPathCreateMutable()
         CGPathMoveToPoint(path, nil, -halfWidth, 2)
         CGPathAddLineToPoint(path, nil, halfWidth, 2)
@@ -56,8 +58,8 @@ class AttitudeReferenceIndex: SKNode {
         CGPathCloseSubpath(path)
         
         let shape = SKShapeNode(path: path)
-        shape.fillColor = Constants.Color.AttitudeReferenceIndex.shapeFill
-        shape.strokeColor = Constants.Color.AttitudeReferenceIndex.shapeStroke
+        shape.fillColor = style.fillColor
+        shape.strokeColor = style.strokeColor
         return shape
     }
 }

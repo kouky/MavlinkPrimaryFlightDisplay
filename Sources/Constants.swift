@@ -18,17 +18,6 @@ struct Constants {
     
     struct Color {
         
-        struct Horizon {
-            static let sky = SKColor(red: 0.078, green: 0.490, blue: 0.816, alpha: 1.00)
-            static let ground = SKColor(red: 0.667, green: 0.855, blue: 0.196, alpha: 1.00)
-            static let zeroPitchLine = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
-        }
-        
-        struct AttitudeReferenceIndex {
-            static let shapeFill = SKColor.whiteColor()
-            static let shapeStroke = SKColor.blackColor()
-        }
-        
         struct PitchLadder {
             static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
         }
@@ -37,16 +26,10 @@ struct Constants {
             static let line = SKColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)
             static let text = SKColor.whiteColor()
             static let skyPointer = SKColor.whiteColor()
+        }        
     }
     
     struct Size {
-        
-        struct AttitudeReferenceIndex {
-            static let centerBarWidth = 10
-            static let sideBarWidth = 120
-            static let sideBarHeight = 20
-            static let sideBarOffset = 70
-        }
         
         struct PitchLadder {
             static let minorLineWidth = 20

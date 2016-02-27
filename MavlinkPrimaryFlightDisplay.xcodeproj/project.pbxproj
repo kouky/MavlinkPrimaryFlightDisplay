@@ -29,6 +29,7 @@
 		27936DA71C8130D6004CDCE8 /* CGFloat+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27936DA61C8130D6004CDCE8 /* CGFloat+Additions.swift */; };
 		27936DA91C813826004CDCE8 /* Int+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27936DA81C813826004CDCE8 /* Int+Additions.swift */; };
 		27936DAB1C813E1A004CDCE8 /* CGSize+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27936DAA1C813E1A004CDCE8 /* CGSize+Additions.swift */; };
+		27936DAD1C814687004CDCE8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27936DAC1C814687004CDCE8 /* Settings.swift */; };
 		27D4F5841C3E7BA4001FA7BB /* Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4F5831C3E7BA4001FA7BB /* Additions.swift */; };
 		27D4F5861C3E81AD001FA7BB /* Attitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4F5851C3E81AD001FA7BB /* Attitude.swift */; };
 		27E069ED1C72ED2800AE26C1 /* TapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */; };
@@ -81,6 +82,7 @@
 		27936DA61C8130D6004CDCE8 /* CGFloat+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGFloat+Additions.swift"; path = "Sources/CGFloat+Additions.swift"; sourceTree = SOURCE_ROOT; };
 		27936DA81C813826004CDCE8 /* Int+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Int+Additions.swift"; path = "Sources/Int+Additions.swift"; sourceTree = SOURCE_ROOT; };
 		27936DAA1C813E1A004CDCE8 /* CGSize+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGSize+Additions.swift"; path = "Sources/CGSize+Additions.swift"; sourceTree = SOURCE_ROOT; };
+		27936DAC1C814687004CDCE8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Settings.swift; path = Sources/Settings.swift; sourceTree = SOURCE_ROOT; };
 		27D4F5831C3E7BA4001FA7BB /* Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Additions.swift; path = Sources/Additions.swift; sourceTree = SOURCE_ROOT; };
 		27D4F5851C3E81AD001FA7BB /* Attitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attitude.swift; path = Sources/Attitude.swift; sourceTree = SOURCE_ROOT; };
 		27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeStyle.swift; path = Sources/TapeStyle.swift; sourceTree = SOURCE_ROOT; };
@@ -137,6 +139,7 @@
 				27D4F5831C3E7BA4001FA7BB /* Additions.swift */,
 				27D4F5851C3E81AD001FA7BB /* Attitude.swift */,
 				278B7DA11C43CECC00F5794C /* Constants.swift */,
+				27936DAC1C814687004CDCE8 /* Settings.swift */,
 				27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */,
 				274C98241C4CFA1800334726 /* TapeIndicator.swift */,
 				27FEA2E91C5333AB00616ADA /* TapeCell.swift */,
@@ -275,6 +278,7 @@
 				2787452B1C0161440038FDBF /* PrimaryFlightDisplay.swift in Sources */,
 				27D4F5841C3E7BA4001FA7BB /* Additions.swift in Sources */,
 				27E593EE1C622E3A00B79EF7 /* TapeCellModel.swift in Sources */,
+				27936DAD1C814687004CDCE8 /* Settings.swift in Sources */,
 				27E069ED1C72ED2800AE26C1 /* TapeStyle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
