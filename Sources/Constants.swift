@@ -153,20 +153,16 @@ struct Constants {
     
     struct Angular {
         
-        static let degreesPerRadian: CGFloat = CGFloat(180.0 / M_PI)
-        
-        static let radiansPerDegree: CGFloat = CGFloat(M_PI / 180.0)
-        
         static func pointsPerDegreeForSceneSize(size: CGSize) -> CGFloat {
             return (size.height / 2) / CGFloat(90)
         }
         
         static func pointsPerRadianForSceneSize(size: CGSize) -> CGFloat {
-            return CGFloat(degreesPerRadian) * pointsPerDegreeForSceneSize(size)
+            return CGFloat.degreesPerRadian * pointsPerDegreeForSceneSize(size)
         }
         
         static func radiansFromDegrees(degrees: CGFloat) -> CGFloat {
-            return radiansPerDegree * degrees
+            return CGFloat.radiansPerDegree * degrees
         }
     }
 }

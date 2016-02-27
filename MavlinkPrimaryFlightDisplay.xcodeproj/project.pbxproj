@@ -26,6 +26,7 @@
 		278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745321C016C2B0038FDBF /* MavlinkController.swift */; };
 		278785461C47B94500DB9531 /* BankIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278785451C47B94500DB9531 /* BankIndicator.swift */; };
 		278B7DA21C43CECC00F5794C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278B7DA11C43CECC00F5794C /* Constants.swift */; };
+		27936DA71C8130D6004CDCE8 /* CGFloat+Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27936DA61C8130D6004CDCE8 /* CGFloat+Additions.swift */; };
 		27D4F5841C3E7BA4001FA7BB /* Additions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4F5831C3E7BA4001FA7BB /* Additions.swift */; };
 		27D4F5861C3E81AD001FA7BB /* Attitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D4F5851C3E81AD001FA7BB /* Attitude.swift */; };
 		27E069ED1C72ED2800AE26C1 /* TapeStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */; };
@@ -75,6 +76,7 @@
 		278745321C016C2B0038FDBF /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MavlinkController.swift; path = Sources/MavlinkController.swift; sourceTree = SOURCE_ROOT; };
 		278785451C47B94500DB9531 /* BankIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BankIndicator.swift; path = Sources/BankIndicator.swift; sourceTree = SOURCE_ROOT; };
 		278B7DA11C43CECC00F5794C /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Sources/Constants.swift; sourceTree = SOURCE_ROOT; };
+		27936DA61C8130D6004CDCE8 /* CGFloat+Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGFloat+Additions.swift"; path = "Sources/CGFloat+Additions.swift"; sourceTree = SOURCE_ROOT; };
 		27D4F5831C3E7BA4001FA7BB /* Additions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Additions.swift; path = Sources/Additions.swift; sourceTree = SOURCE_ROOT; };
 		27D4F5851C3E81AD001FA7BB /* Attitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Attitude.swift; path = Sources/Attitude.swift; sourceTree = SOURCE_ROOT; };
 		27E069EC1C72ED2800AE26C1 /* TapeStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TapeStyle.swift; path = Sources/TapeStyle.swift; sourceTree = SOURCE_ROOT; };
@@ -138,6 +140,7 @@
 				27E593ED1C622E3A00B79EF7 /* TapeCellModel.swift */,
 				27487E4F1C65F45400C18065 /* TapeCellTriad.swift */,
 				276374161C7C466500CAC59C /* TapePointer.swift */,
+				27936DA61C8130D6004CDCE8 /* CGFloat+Additions.swift */,
 			);
 			name = Sources;
 			path = MavlinkPrimaryFlightDisplay;
@@ -253,6 +256,7 @@
 				278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */,
 				27F16A3D1C3A56AB00422D85 /* AttitudeReferenceIndex.swift in Sources */,
 				274C98251C4CFA1800334726 /* TapeIndicator.swift in Sources */,
+				27936DA71C8130D6004CDCE8 /* CGFloat+Additions.swift in Sources */,
 				276374171C7C466500CAC59C /* TapePointer.swift in Sources */,
 				278B7DA21C43CECC00F5794C /* Constants.swift in Sources */,
 				271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */,
