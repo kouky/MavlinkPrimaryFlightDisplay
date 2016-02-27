@@ -11,8 +11,6 @@ import Darwin
 
 public class PrimaryFlightDisplayView: SKView {
     
-    // MARK: Initializers
-    
     override init(frame frameRect: NSRect) {
         super.init(frame: frameRect)
         commonInit()
@@ -30,11 +28,7 @@ public class PrimaryFlightDisplayView: SKView {
         presentScene(scene)
         
         // Apply additional optimizations to improve rendering performance
-        ignoresSiblingOrder = true
-        
-        // Diagnostics
-        showsFPS = true
-        showsNodeCount = true
+        ignoresSiblingOrder = true        
     }
     
     public func setHeading(heading: Double) {
