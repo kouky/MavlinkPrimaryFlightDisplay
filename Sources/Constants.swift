@@ -168,9 +168,5 @@ struct Constants {
         static func radiansFromDegrees(degrees: CGFloat) -> CGFloat {
             return radiansPerDegree * degrees
         }
-        
-        static func degreesFromRadians(radians: CGFloat) -> CGFloat {
-            return degreesPerRadian * radians
-        }
     }
 }
