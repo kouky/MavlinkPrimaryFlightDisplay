@@ -11,19 +11,19 @@ import SpriteKit
 class TapePointer: SKNode {
     
 
-    var style: TapeStyle
+    var style: TapeIndicatorStyleType
     private let label: SKLabelNode
     
     var value: Int {
         didSet {
-            label.text = style.type.labelForValue(value)
+            label.text = style.labelForValue(value)
         }
     }
     
-    init(initialValue: Int, style: TapeStyle) {
+    init(initialValue: Int, style: TapeIndicatorStyleType) {
         self.value = initialValue
         self.style = style
-        label = SKLabelNode(text: style.type.labelForValue(value))
+        label = SKLabelNode(text: style.labelForValue(value))
         super.init()
         
         addChild(buildBackgroundShape())
@@ -38,32 +38,32 @@ class TapePointer: SKNode {
     private func styleLabelNode() {
         label.fontName = style.font.family
         label.fontSize = style.font.size
-        label.color = style.markerStyle.color
+        label.color = style.markerTextColor
         
-        switch style.markerStyle.justification {
+        switch style.markerJustification {
         case .Top:
             label.horizontalAlignmentMode = .Center
             label.verticalAlignmentMode = .Top
-            label.position = CGPoint(x: 0, y: style.size.height/2 - CGFloat(style.markerStyle.textOffset))
+            label.position = CGPoint(x: 0, y: style.size.height/2 - CGFloat(style.markerTextOffset))
         case .Bottom:
             label.horizontalAlignmentMode = .Center
             label.verticalAlignmentMode = .Bottom
-            label.position = CGPoint(x: 0, y: CGFloat(style.markerStyle.textOffset) - style.size.height/2)
+            label.position = CGPoint(x: 0, y: CGFloat(style.markerTextOffset) - style.size.height/2)
         case .Left:
             label.horizontalAlignmentMode = .Left
             label.verticalAlignmentMode = .Center
-            label.position = CGPoint(x: CGFloat(style.markerStyle.textOffset) - style.size.width/2, y: 0)
+            label.position = CGPoint(x: CGFloat(style.markerTextOffset) - style.size.width/2, y: 0)
         case .Right:
             label.horizontalAlignmentMode = .Right
             label.verticalAlignmentMode = .Center
-            label.position = CGPoint(x: style.size.width/2 - CGFloat(style.markerStyle.textOffset), y: 0)
+            label.position = CGPoint(x: style.size.width/2 - CGFloat(style.markerTextOffset), y: 0)
         }
     }
     
     private func buildBackgroundShape() -> SKShapeNode {
         let width, halfWidth, thirdWidth: CGFloat
         
-        switch style.markerStyle.justification {
+        switch style.markerJustification {
         case .Top, .Bottom:
             width = CGFloat(style.size.height)
             halfWidth = width / 2
@@ -84,7 +84,7 @@ class TapePointer: SKNode {
         
         let translateTransform, rotateTransform: CGAffineTransform
 
-        switch style.markerStyle.justification {
+        switch style.markerJustification {
         case .Top:
             translateTransform = CGAffineTransformMakeTranslation(-halfWidth, 0)
             rotateTransform = CGAffineTransformMakeRotation(CGFloat(-M_PI_2))

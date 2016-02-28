@@ -11,13 +11,13 @@ import SpriteKit
 class TapeCellContainer: SKNode {
     
     private let cellTriad: TapeCellTriad
-    private let style: TapeStyle
+    private let style: TapeIndicatorStyleType
     
     enum Error: ErrorType {
         case SeedModelLowerValueMustBeZero
     }
     
-    init(seedModel: TapeCellModelType, style: TapeStyle) throws {
+    init(seedModel: TapeCellModelType, style: TapeIndicatorStyleType) throws {
         let centerCell = TapeCell(model: seedModel, style: style)
         let previousCell = TapeCell(model: seedModel.previous(), style: style)
         let nextCell = TapeCell(model: seedModel.next(), style: style)
@@ -80,8 +80,8 @@ class TapeCellContainer: SKNode {
     
     private func positionForContinuousValue(value: Double) -> CGPoint {
         // TODO: Account for initial value
-        let valuePosition =  -value * Double(style.markerStyle.pointsPerValue)
-        switch style.markerStyle.justification {
+        let valuePosition =  -value * Double(style.pointsPerUnitValue)
+        switch style.markerJustification {
         case .Top, .Bottom:
             return CGPoint(x: CGFloat(valuePosition), y: position.y)
         case .Left, .Right:
@@ -103,11 +103,11 @@ class TapeCellContainer: SKNode {
     }
     
     private func continuousValueForPosition() -> Double {
-        switch style.markerStyle.justification {
+        switch style.markerJustification {
         case .Top, .Bottom:
-            return -Double(position.x) / Double(style.markerStyle.pointsPerValue)
+            return -Double(position.x) / Double(style.pointsPerUnitValue)
         case .Left, .Right:
-            return -Double(position.y) / Double(style.markerStyle.pointsPerValue)
+            return -Double(position.y) / Double(style.pointsPerUnitValue)
         }
     }
     

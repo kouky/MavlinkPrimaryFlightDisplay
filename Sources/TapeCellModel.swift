@@ -6,7 +6,7 @@
 //  Copyright © 2016 Michael Koukoullis. All rights reserved.
 //
 
-protocol TapeCellModelType {
+public protocol TapeCellModelType {
     var lowerValue: Int  { get }
     var upperValue: Int  { get }
     var magnitude:  UInt { get }

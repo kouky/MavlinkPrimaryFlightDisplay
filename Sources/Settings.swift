@@ -13,6 +13,9 @@ public protocol SettingsType {
     var attitudeReferenceIndex: AttitudeReferenceIndexStyleType { get }
     var pitchLadder:            PitchLadderStyleType { get }
     var bankIndicator:          BankIndicatorStyleType { get }
+    var altimeter:              TapeIndicatorStyleType { get }
+    var airSpeedIndicator:      TapeIndicatorStyleType { get }
+    var headingIndicator:       TapeIndicatorStyleType { get }
 }
 
 public struct DefaultSettings: SettingsType {
@@ -20,6 +23,9 @@ public struct DefaultSettings: SettingsType {
     public let attitudeReferenceIndex: AttitudeReferenceIndexStyleType = DefaultAttitudeReferenceIndexStyle()
     public let pitchLadder: PitchLadderStyleType = DefaultPitchLadderStyle()
     public let bankIndicator: BankIndicatorStyleType = DefaultBankIndicatorStyle()
+    public let altimeter: TapeIndicatorStyleType = DefaultAltimeterStyle()
+    public let airSpeedIndicator: TapeIndicatorStyleType = DefaultAirspeedIndicatorStyle()
+    public let headingIndicator: TapeIndicatorStyleType = DefaultHeadingIndicatorStyle()
 }
 
 // MARK: HorizonStyle
@@ -87,7 +93,7 @@ public protocol BankIndicatorStyleType {
     var skyPointerFillColor:  SKColor  { get set }
     
     var arcRadius:               Int { get set }
-    var arcMaximumDisplayDegree: Int { get set }
+    var arcMaximumDisplayDegree: Int { get set } // Keep between 0 and 180
     var arcLineWidth:         Int { get set }
     var minorMarkerHeight:    Int { get set }
     var majorMarkerHeight:    Int { get set }
@@ -103,13 +109,140 @@ public struct DefaultBankIndicatorStyle: BankIndicatorStyleType {
     public var skyPointerFillColor = SKColor.whiteColor()
     
     public var arcRadius = 180
-    public var arcMaximumDisplayDegree = 60 // Keep between 0 to 180
+    public var arcMaximumDisplayDegree = 60
     public var arcLineWidth = 2
     public var minorMarkerHeight = 5
     public var majorMarkerHeight = 10
     public var markerTextOffset = 20
     public var skyPointerHeight = 12
     public var skyPointerWidth = 12
+}
+
+// MARK: TapeIndicator
+
+public enum TapeType {
+    case Compass
+    case Continuous
+}
+
+public enum TapeMarkerJustification {
+    case Top
+    case Bottom
+    case Left
+    case Right
+}
+
+public protocol TapeIndicatorStyleType {
+    var size:                   CGSize { get set }
+    var type:                   TapeType { get set }
+    var backgroundColor:        SKColor { get set }
+    var pointerBackgroundColor: SKColor { get set }
+    var font:                   FontType { get set }
+
+    var markerJustification:    TapeMarkerJustification { get set }
+    var pointsPerUnitValue:     UInt { get set }
+    var majorMarkerLength:      Int { get set }
+    var minorMarkerLength:      Int { get set }
+    var majorMarkerFrequency:   Int { get set }
+    var minorMarkerFrequency:   Int { get set }
+    var markerTextOffset:       Int { get set }
+    var markerColor:            SKColor { get set }
+    var markerTextColor:        SKColor { get set }    
+}
+
+public struct DefaultAltimeterStyle: TapeIndicatorStyleType {
+    public var size = CGSize(width: 60, height: 300)
+    public var type = TapeType.Continuous
+    public var backgroundColor = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
+    public var pointerBackgroundColor = SKColor.blackColor()
+    public var font: FontType = DefaultFont()
+
+    public var markerJustification = TapeMarkerJustification.Left
+    public var pointsPerUnitValue: UInt = 15
+    public var majorMarkerLength = 10
+    public var minorMarkerLength = 5
+    public var majorMarkerFrequency = 5
+    public var minorMarkerFrequency = 1
+    public var markerTextOffset = 20
+    public var markerColor = SKColor.whiteColor()
+    public var markerTextColor = SKColor.whiteColor()
+}
+
+public struct DefaultAirspeedIndicatorStyle: TapeIndicatorStyleType {
+    public var size = CGSize(width: 60, height: 300)
+    public var type = TapeType.Continuous
+    public var backgroundColor = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
+    public var pointerBackgroundColor = SKColor.blackColor()
+    public var font: FontType = DefaultFont()
+    
+    public var markerJustification = TapeMarkerJustification.Right
+    public var pointsPerUnitValue: UInt = 5
+    public var majorMarkerLength = 10
+    public var minorMarkerLength = 5
+    public var majorMarkerFrequency = 10
+    public var minorMarkerFrequency = 5
+    public var markerTextOffset = 20
+    public var markerColor = SKColor.whiteColor()
+    public var markerTextColor = SKColor.whiteColor()
+}
+
+public struct DefaultHeadingIndicatorStyle: TapeIndicatorStyleType {
+    public var size = CGSize(width: 400, height: 60)
+    public var type = TapeType.Compass
+    public var backgroundColor = SKColor(calibratedRed: 0, green: 0, blue: 0, alpha: 0.5)
+    public var pointerBackgroundColor = SKColor.blackColor()
+    public var font: FontType = DefaultFont()
+    
+    public var markerJustification = TapeMarkerJustification.Bottom
+    public var pointsPerUnitValue: UInt = 5
+    public var majorMarkerLength = 10
+    public var minorMarkerLength = 5
+    public var majorMarkerFrequency = 10
+    public var minorMarkerFrequency = 5
+    public var markerTextOffset = 22
+    public var markerColor = SKColor.whiteColor()
+    public var markerTextColor = SKColor.whiteColor()
+}
+
+extension TapeIndicatorStyleType {
+    public func labelForValue(value: Int) -> String  {
+        switch type {
+        case .Continuous:
+            return "\(value)"
+        case .Compass:
+            let compassValue = Int(value.compassValue)
+            let cardinalDirections = [0: "N", 45: "NE", 90: "E", 135: "SE", 180: "S", 225: "SW", 270: "W", 315: "NW"]
+            
+            if let cardinal = cardinalDirections[compassValue] {
+                return cardinal
+            } else {
+                return "\(compassValue)"
+            }
+        }
+    }
+    
+    public var seedModel: TapeCellModelType {
+        switch type {
+        case .Continuous:
+            return ContinuousTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
+        case .Compass:
+            return CompassTapeCellModel(lowerValue: 0, upperValue: optimalCellMagnitude)
+        }
+    }
+
+    public var optimalCellMagnitude: Int {
+        switch type {
+        case .Continuous:
+            switch markerJustification {
+            case .Bottom, .Top:
+                return Int(round(size.width / CGFloat(pointsPerUnitValue)))
+            case .Left, .Right:
+                return Int(round(size.height / CGFloat(pointsPerUnitValue)))
+            }
+        case .Compass:
+            return 120
+        }
+    }    
 }
 
 // MARK: Font
