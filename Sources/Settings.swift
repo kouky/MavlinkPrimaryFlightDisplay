@@ -19,13 +19,13 @@ public protocol SettingsType {
 }
 
 public struct DefaultSettings: SettingsType {
-    public let horizon: HorizonStyleType = DefaultHorizonStyle()
-    public let attitudeReferenceIndex: AttitudeReferenceIndexStyleType = DefaultAttitudeReferenceIndexStyle()
-    public let pitchLadder: PitchLadderStyleType = DefaultPitchLadderStyle()
-    public let bankIndicator: BankIndicatorStyleType = DefaultBankIndicatorStyle()
-    public let altimeter: TapeIndicatorStyleType = DefaultAltimeterStyle()
-    public let airSpeedIndicator: TapeIndicatorStyleType = DefaultAirspeedIndicatorStyle()
-    public let headingIndicator: TapeIndicatorStyleType = DefaultHeadingIndicatorStyle()
+    public var horizon: HorizonStyleType = DefaultHorizonStyle()
+    public var attitudeReferenceIndex: AttitudeReferenceIndexStyleType = DefaultAttitudeReferenceIndexStyle()
+    public var pitchLadder: PitchLadderStyleType = DefaultPitchLadderStyle()
+    public var bankIndicator: BankIndicatorStyleType = DefaultBankIndicatorStyle()
+    public var altimeter: TapeIndicatorStyleType = DefaultAltimeterStyle()
+    public var airSpeedIndicator: TapeIndicatorStyleType = DefaultAirspeedIndicatorStyle()
+    public var headingIndicator: TapeIndicatorStyleType = DefaultHeadingIndicatorStyle()
 }
 
 // MARK: HorizonStyle

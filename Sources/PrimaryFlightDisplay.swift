@@ -10,18 +10,18 @@ import SpriteKit
 
 public class PrimaryFlightDisplayView: SKView {
     
-    override init(frame frameRect: NSRect) {
-        super.init(frame: frameRect)
-        commonInit()
+    init(frame: NSRect, settings: SettingsType = DefaultSettings()) {
+        super.init(frame: frame)
+        commonInit(settings: settings)
     }
-    
+
     required public init?(coder: NSCoder) {
         super.init(coder: coder)
-        commonInit()
+        commonInit(settings: DefaultSettings())
     }
     
-    private func commonInit() {
-        let scene = PrimaryFlightDisplayScene(size: bounds.size, settings: DefaultSettings())
+    private func commonInit(settings settings: SettingsType) {
+        let scene = PrimaryFlightDisplayScene(size: bounds.size, settings: settings)
         scene.scaleMode = .AspectFill
         scene.anchorPoint = CGPoint(x: 0.5, y: 0.5)
         presentScene(scene)

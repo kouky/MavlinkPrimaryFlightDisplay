@@ -14,25 +14,31 @@ import SpriteKit
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
-    @IBOutlet weak var flightView: PrimaryFlightDisplayView!
     @IBOutlet weak var mavlinkMenu: NSMenu!
     var menuManager: MenuManager!
     var mavlinkController: MavlinkController!
     
     func applicationDidFinishLaunching(notification: NSNotification) {
+        
+        let frame = (self.window.contentView?.frame)!
+        let flightView = PrimaryFlightDisplayView(frame: frame)
+        
         mavlinkController = MavlinkController()
         menuManager = MenuManager(mavlinkMenu: mavlinkMenu, availableSerialPorts: mavlinkController.availableSerialPorts, mavlinkController: mavlinkController)
                 
-        mavlinkController.reactiveMavlink.attitude.observeNext { [weak self] attitude in
+        mavlinkController.reactiveMavlink.attitude.observeNext { attitude in
             let attitude = Attitude(pitchRadians: attitude.pitch, rollRadians: attitude.roll)
-            self?.flightView.setAttitude(attitude)
+            flightView.setAttitude(attitude)
         }
         
-        mavlinkController.reactiveMavlink.headUpDisplay.observeNext { [weak self] hud in
-            self?.flightView.setHeading(Double(hud.heading))
-            self?.flightView.setAirSpeed(Double(hud.airSpeed))
-            self?.flightView.setAltitude(Double(hud.altitude))
+        mavlinkController.reactiveMavlink.headUpDisplay.observeNext { hud in
+            flightView.setHeading(Double(hud.heading))
+            flightView.setAirSpeed(Double(hud.airSpeed))
+            flightView.setAltitude(Double(hud.altitude))
         }
+        
+        flightView.autoresizingMask = [.ViewHeightSizable, .ViewWidthSizable]
+        self.window.contentView?.addSubview(flightView)
     }
     
     func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
