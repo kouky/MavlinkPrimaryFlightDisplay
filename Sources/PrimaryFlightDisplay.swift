@@ -92,8 +92,8 @@ class PrimaryFlightDisplayScene: SKScene {
     }
     
     override func didChangeSize(oldSize: CGSize) {
-        altimeter.position = CGPoint(x: -size.width/2 + altimeter.style.size.width/2, y: 0)
-        airSpeedIndicator.position = CGPoint(x: size.width/2 - airSpeedIndicator.style.size.width/2, y: 0)
+        altimeter.position = CGPoint(x: size.width/2 - altimeter.style.size.width/2, y: 0)
+        airSpeedIndicator.position = CGPoint(x: -size.width/2 + airSpeedIndicator.style.size.width/2, y: 0)
         headingIndicator.position = CGPoint(x: 0, y: size.height/2 - headingIndicator.style.size.height/2)
     }
     

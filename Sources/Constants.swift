@@ -21,7 +21,7 @@ struct Constants {
                     pointerBackgroundColor: SKColor.blackColor(),
                     font: DefaultFont(),
                     markerStyle: TapeMarkerStyle(
-                        justification: .Right,
+                        justification: .Left,
                         pointsPerValue: 15,
                         majorMarkerLength: 10,
                         minorMarkerLength: 5,
@@ -45,7 +45,7 @@ struct Constants {
                     pointerBackgroundColor: SKColor.blackColor(),
                     font: DefaultFont(),
                     markerStyle: TapeMarkerStyle(
-                        justification: .Left,
+                        justification: .Right,
                         pointsPerValue: 5,
                         majorMarkerLength: 10,
                         minorMarkerLength: 5,
