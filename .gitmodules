@@ -13,3 +13,6 @@
 [submodule "Carthage/Checkouts/ORSSerialPort"]
 	path = Carthage/Checkouts/ORSSerialPort
 	url = https://github.com/armadsen/ORSSerialPort.git
+[submodule "Carthage/Checkouts/PrimaryFlightDisplay"]
+	path = Carthage/Checkouts/PrimaryFlightDisplay
+	url = https://github.com/kouky/PrimaryFlightDisplay.git

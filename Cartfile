@@ -1,2 +1,3 @@
 github "kouky/ReactiveMavlink" "master"
+github "kouky/PrimaryFlightDisplay" "master"
 github "armadsen/ORSSerialPort"

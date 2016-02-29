@@ -6,9 +6,9 @@
 //  Copyright (c) 2015 Michael Koukoullis. All rights reserved.
 //
 
-
 import Cocoa
 import SpriteKit
+import PrimaryFlightDisplay
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -27,8 +27,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuManager = MenuManager(mavlinkMenu: mavlinkMenu, availableSerialPorts: mavlinkController.availableSerialPorts, mavlinkController: mavlinkController)
                 
         mavlinkController.reactiveMavlink.attitude.observeNext { attitude in
-            let attitude = Attitude(pitchRadians: attitude.pitch, rollRadians: attitude.roll)
-            flightView.setAttitude(attitude)
+            flightView.setAttitude(rollRadians: Double(attitude.roll), pitchRadians: Double(attitude.pitch))
         }
         
         mavlinkController.reactiveMavlink.headUpDisplay.observeNext { hud in
