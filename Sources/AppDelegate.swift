@@ -31,7 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         mavlinkController.reactiveMavlink.headUpDisplay.observeNext { hud in
-            flightView.setHeading(Double(hud.heading))
+            flightView.setHeadingDegree(Double(hud.heading))
             flightView.setAirSpeed(Double(hud.airSpeed))
             flightView.setAltitude(Double(hud.altitude))
         }
