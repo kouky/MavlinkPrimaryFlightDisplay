@@ -1,5 +1,5 @@
 github "armadsen/ORSSerialPort" "2.0.1"
-github "kouky/PrimaryFlightDisplay" "fbbd13cf99809f24b8aa4457b89664a1c42d8a89"
+github "kouky/PrimaryFlightDisplay" "e855e2a4c0b9e05103f9e3107ca966094ce21799"
 github "antitypical/Result" "1.0.2"
 github "ReactiveCocoa/ReactiveCocoa" "7877f99bdfb4be1c82c4804082e99c35d0a93a91"
 github "kouky/ReactiveMavlink" "263e5b31e7a1a465a75a15faeef3fad45f02e35a"
