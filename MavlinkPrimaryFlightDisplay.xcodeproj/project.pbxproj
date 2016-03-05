@@ -11,6 +11,11 @@
 		271AFC041BFDF73700842B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC031BFDF73700842B1D /* Assets.xcassets */; };
 		271AFC071BFDF74700842B1D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC051BFDF74700842B1D /* MainMenu.xib */; };
 		278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745321C016C2B0038FDBF /* MavlinkController.swift */; };
+		27C86DDF1C8A750C0026D4A6 /* ORSSerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C86DDE1C8A750C0026D4A6 /* ORSSerial.framework */; };
+		27C86DE11C8A75140026D4A6 /* PrimaryFlightDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C86DE01C8A75140026D4A6 /* PrimaryFlightDisplay.framework */; };
+		27C86DE31C8A751B0026D4A6 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C86DE21C8A751B0026D4A6 /* ReactiveCocoa.framework */; };
+		27C86DE51C8A75200026D4A6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C86DE41C8A75200026D4A6 /* Result.framework */; };
+		27C86DE71C8A75250026D4A6 /* ReactiveMavlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27C86DE61C8A75250026D4A6 /* ReactiveMavlink.framework */; };
 		27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA2EF71C0724A600C4E349 /* MenuManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -37,6 +42,11 @@
 		271AFC0C1BFDF84000842B1D /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Config/Base/Configurations/Release.xcconfig; sourceTree = "<group>"; };
 		278745261C009FFB0038FDBF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		278745321C016C2B0038FDBF /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MavlinkController.swift; path = Sources/MavlinkController.swift; sourceTree = SOURCE_ROOT; };
+		27C86DDE1C8A750C0026D4A6 /* ORSSerial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ORSSerial.framework; path = "../../../../private/tmp/xcode-derived-data/MavlinkPrimaryFlightDisplay-gxjntlzqndjjaxaxcjkkmzkhpbfo/Build/Products/Debug/ORSSerial.framework"; sourceTree = "<group>"; };
+		27C86DE01C8A75140026D4A6 /* PrimaryFlightDisplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrimaryFlightDisplay.framework; path = Carthage/Checkouts/PrimaryFlightDisplay/build/Debug/PrimaryFlightDisplay.framework; sourceTree = "<group>"; };
+		27C86DE21C8A751B0026D4A6 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Checkouts/ReactiveCocoa/build/Debug/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		27C86DE41C8A75200026D4A6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../../../private/tmp/xcode-derived-data/MavlinkPrimaryFlightDisplay-gxjntlzqndjjaxaxcjkkmzkhpbfo/Build/Products/Debug/Result.framework"; sourceTree = "<group>"; };
+		27C86DE61C8A75250026D4A6 /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Checkouts/ReactiveMavlink/build/Debug/ReactiveMavlink.framework; sourceTree = "<group>"; };
 		27FA2EF71C0724A600C4E349 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuManager.swift; path = Sources/MenuManager.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -45,6 +55,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27C86DE71C8A75250026D4A6 /* ReactiveMavlink.framework in Frameworks */,
+				27C86DE51C8A75200026D4A6 /* Result.framework in Frameworks */,
+				27C86DE31C8A751B0026D4A6 /* ReactiveCocoa.framework in Frameworks */,
+				27C86DE11C8A75140026D4A6 /* PrimaryFlightDisplay.framework in Frameworks */,
+				27C86DDF1C8A750C0026D4A6 /* ORSSerial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +69,11 @@
 		270E51F21BFDF640009A050A = {
 			isa = PBXGroup;
 			children = (
+				27C86DE61C8A75250026D4A6 /* ReactiveMavlink.framework */,
+				27C86DE41C8A75200026D4A6 /* Result.framework */,
+				27C86DE21C8A751B0026D4A6 /* ReactiveCocoa.framework */,
+				27C86DE01C8A75140026D4A6 /* PrimaryFlightDisplay.framework */,
+				27C86DDE1C8A750C0026D4A6 /* ORSSerial.framework */,
 				270E51FD1BFDF640009A050A /* Sources */,
 				271AFBFA1BFDF70D00842B1D /* Resources */,
 				271AFC081BFDF80400842B1D /* Config */,
@@ -280,10 +300,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/PrimaryFlightDisplay/build/Debug",
-				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kouky.MavlinkPrimaryFlightDisplay;
@@ -299,10 +315,6 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Checkouts/PrimaryFlightDisplay/build/Debug",
-				);
 				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kouky.MavlinkPrimaryFlightDisplay;

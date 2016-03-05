@@ -19,7 +19,7 @@ After cloning the repository initialize and update git submodules.
 
 Using Xcode 7.2+ open the workspace `MavlinkPrimaryFlightDisplay.xcworkspace`, select the target `MavlinkPrimaryFlightDisplay` then build and run.
 
-Use the `Mavlink` menu in the runnin application to choose which serial port to connect to.
+Use the `Mavlink` menu in the running application to choose which serial port to connect to.
 
 ## Notes when using application with Pixhawk
 
