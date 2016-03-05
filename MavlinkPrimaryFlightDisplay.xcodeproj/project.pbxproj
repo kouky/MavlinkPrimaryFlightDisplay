@@ -11,11 +11,6 @@
 		271AFC041BFDF73700842B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC031BFDF73700842B1D /* Assets.xcassets */; };
 		271AFC071BFDF74700842B1D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC051BFDF74700842B1D /* MainMenu.xib */; };
 		278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745321C016C2B0038FDBF /* MavlinkController.swift */; };
-		27A0E70F1C8A6E1500D8D718 /* ORSSerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E70E1C8A6E1500D8D718 /* ORSSerial.framework */; };
-		27A0E7111C8A6E1F00D8D718 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E7101C8A6E1F00D8D718 /* ReactiveCocoa.framework */; };
-		27A0E7131C8A6E2E00D8D718 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E7121C8A6E2E00D8D718 /* Result.framework */; };
-		27A0E7151C8A6E3400D8D718 /* ReactiveMavlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E7141C8A6E3400D8D718 /* ReactiveMavlink.framework */; };
-		27A0E7171C8A6EC500D8D718 /* PrimaryFlightDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27A0E7161C8A6EC500D8D718 /* PrimaryFlightDisplay.framework */; };
 		27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA2EF71C0724A600C4E349 /* MenuManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -42,11 +37,6 @@
 		271AFC0C1BFDF84000842B1D /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Config/Base/Configurations/Release.xcconfig; sourceTree = "<group>"; };
 		278745261C009FFB0038FDBF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
 		278745321C016C2B0038FDBF /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MavlinkController.swift; path = Sources/MavlinkController.swift; sourceTree = SOURCE_ROOT; };
-		27A0E70E1C8A6E1500D8D718 /* ORSSerial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ORSSerial.framework; path = "Carthage/Checkouts/ORSSerialPort/Framework Project/build/Debug/ORSSerial.framework"; sourceTree = "<group>"; };
-		27A0E7101C8A6E1F00D8D718 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Checkouts/ReactiveCocoa/build/Debug/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		27A0E7121C8A6E2E00D8D718 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = "../../../../../private/tmp/xcode-derived-data/MavlinkPrimaryFlightDisplay-bohzxbqpzvdadqcrpsfzgrfhleft/Build/Products/Debug/Result.framework"; sourceTree = "<group>"; };
-		27A0E7141C8A6E3400D8D718 /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Checkouts/ReactiveMavlink/build/Debug/ReactiveMavlink.framework; sourceTree = "<group>"; };
-		27A0E7161C8A6EC500D8D718 /* PrimaryFlightDisplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrimaryFlightDisplay.framework; path = Carthage/Checkouts/PrimaryFlightDisplay/build/Debug/PrimaryFlightDisplay.framework; sourceTree = "<group>"; };
 		27FA2EF71C0724A600C4E349 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuManager.swift; path = Sources/MenuManager.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -55,11 +45,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27A0E7171C8A6EC500D8D718 /* PrimaryFlightDisplay.framework in Frameworks */,
-				27A0E7151C8A6E3400D8D718 /* ReactiveMavlink.framework in Frameworks */,
-				27A0E7131C8A6E2E00D8D718 /* Result.framework in Frameworks */,
-				27A0E7111C8A6E1F00D8D718 /* ReactiveCocoa.framework in Frameworks */,
-				27A0E70F1C8A6E1500D8D718 /* ORSSerial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,7 +56,7 @@
 			children = (
 				270E51FD1BFDF640009A050A /* Sources */,
 				271AFBFA1BFDF70D00842B1D /* Resources */,
-				271AFC191BFDFAEB00842B1D /* Frameworks */,
+				271AFC081BFDF80400842B1D /* Config */,
 				270E51FC1BFDF640009A050A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,19 +98,6 @@
 				271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */,
 			);
 			name = Config;
-			sourceTree = "<group>";
-		};
-		271AFC191BFDFAEB00842B1D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				27A0E7161C8A6EC500D8D718 /* PrimaryFlightDisplay.framework */,
-				27A0E7141C8A6E3400D8D718 /* ReactiveMavlink.framework */,
-				27A0E7121C8A6E2E00D8D718 /* Result.framework */,
-				27A0E7101C8A6E1F00D8D718 /* ReactiveCocoa.framework */,
-				27A0E70E1C8A6E1500D8D718 /* ORSSerial.framework */,
-				271AFC081BFDF80400842B1D /* Config */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
