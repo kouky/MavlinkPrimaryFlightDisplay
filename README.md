@@ -13,21 +13,11 @@ SpriteKit Primary Flight Display for Mavlink demonstrates how to:
 
 ## Getting Started
 
-Follow these steps after cloning the repository to get the Mac app running.
-
-Initialize and update git submodules.
+After cloning the repository initialize and update git submodules.
 
     git submodule update --init
 
-Build framework dependencies.
-
-    carthage build
-
-If you don't have the [Carthage](https://github.com/Carthage/Carthage) dependency manager it can be installed with [Homebrew](http://brew.sh).
-
-    brew install carthage
-
-Build and run the demo using Xcode 7 or above.
+Build and run the demo using Xcode 7.2 or above.
 
 ## Notes when using application with Pixhawk
 
