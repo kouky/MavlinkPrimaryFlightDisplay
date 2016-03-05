@@ -2,7 +2,7 @@
 
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/kouky/MavlinkPrimaryFlightDisplay/blob/master/LICENSE)
 
-SpriteKit Primary Flight Display for Mavlink demonstrates how to:
+Mavlink Primary Flight Display demonstrates how to:
 - integrate the [PrimaryFlightDisplay](https://github.com/kouky/PrimaryFlightDisplay) framework into a Mac application
 - customize the display style of the Primary Flight Display
 - connect to Pixhawk over USB, Bluetooth, and 3DR radio telemetry
@@ -17,7 +17,7 @@ After cloning the repository initialize and update git submodules.
 
     git submodule update --init
 
-Build and run the demo using Xcode 7.2 or above.
+Open the workspace `MavlinkPrimaryFlightDisplay.xcworkspace`, build and run the demo using Xcode 7.2 or above.
 
 ## Notes when using application with Pixhawk
 
