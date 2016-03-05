@@ -15,17 +15,17 @@ Mavlink Primary Flight Display demonstrates how to:
 
 After cloning the repository initialize and update git submodules.
 
-    git submodule update --init
+    git submodule update --init --recursive
 
-Open the workspace `MavlinkPrimaryFlightDisplay.xcworkspace`, build and run the demo using Xcode 7.2 or above.
+Using Xcode 7.2+ open the workspace `MavlinkPrimaryFlightDisplay.xcworkspace`, select the target `MavlinkPrimaryFlightDisplay` then build and run.
+
+Use the `Mavlink` menu in the running application to choose which serial port to connect to.
 
 ## Notes when using application with Pixhawk
 
 The sample project is only tested with an authentic 3DR Pixhawk running PX4 firmware.
 
 Communication with 3DR bluetooth and radio telemetry requires a connection to telemetry port 1.
-
-Use the `Mavlink` menu in the application to choose which serial port to connect to.
 
 ## Contributing
 
