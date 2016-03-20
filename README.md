@@ -9,7 +9,7 @@ The demo app is useful as a learning tool in several other ways as it also demon
 - connect to [Pixhawk](https://pixhawk.org/modules/pixhawk) over USB, Bluetooth, and 3DR radio telemetry
 - decode [MAVLink](http://qgroundcontrol.org/mavlink/start) attitude, heading, airspeed, and altitude messages
 - send decoded data to the primary flight display for real time updates
-
+- customize the display style of the primary flight display
 
 ![Screenshot](http://kouky.org/assets/primary-flight-display/alternative-screenshot.png)
 
