@@ -2,12 +2,14 @@
 
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/kouky/MavlinkPrimaryFlightDisplay/blob/master/LICENSE)
 
-Mavlink Primary Flight Display demonstrates how to:
-- integrate the [PrimaryFlightDisplay](https://github.com/kouky/PrimaryFlightDisplay) framework into a Mac application
-- customize the display style of the Primary Flight Display
-- connect to Pixhawk over USB, Bluetooth, and 3DR radio telemetry
+
+MavlinkPrimaryFlightDisplay is a Mac app which demonstrates how to integrate the [PrimaryFlightDisplay](https://github.com/kouky/PrimaryFlightDisplay) framework for a [MAVLink](http://qgroundcontrol.org/mavlink/start) speaking autopilot.
+
+The demo app is useful as a learning tool in several other ways as it also demonstrates how to:
+- connect to [Pixhawk](https://pixhawk.org/modules/pixhawk) over USB, Bluetooth, and 3DR radio telemetry
 - decode [MAVLink](http://qgroundcontrol.org/mavlink/start) attitude, heading, airspeed, and altitude messages
 - send decoded data to the primary flight display for real time updates
+
 
 ![Screenshot](http://kouky.org/assets/primary-flight-display/alternative-screenshot.png)
 
