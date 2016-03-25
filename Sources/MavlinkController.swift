@@ -47,8 +47,8 @@ class MavlinkController: NSObject {
         super.init()
         
         let notificationCenter = NSNotificationCenter.defaultCenter()
-        notificationCenter.addObserver(self, selector: "serialPortsWereConnected:", name: ORSSerialPortsWereConnectedNotification, object: nil)
-        notificationCenter.addObserver(self, selector: "serialPortsWereDisconnected:", name: ORSSerialPortsWereDisconnectedNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(MavlinkController.serialPortsWereConnected(_:)), name: ORSSerialPortsWereConnectedNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(MavlinkController.serialPortsWereDisconnected(_:)), name: ORSSerialPortsWereDisconnectedNotification, object: nil)
         NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
         availablePorts.value = serialPortManager.availablePorts
     }

@@ -25,7 +25,7 @@ class MenuManager: NSObject {
         
         let ports = availableSerialPorts.map { ports -> [MenuPort] in
             return ports.map { port in
-                let item = NSMenuItem(title: port.description, action:"connectPort:", keyEquivalent: "")
+                let item = NSMenuItem(title: port.description, action:#selector(MenuManager.connectPort(_:)), keyEquivalent: "")
                 return (port, item)
             }
         }   
@@ -39,7 +39,7 @@ class MenuManager: NSObject {
             }
             self?.mavlinkMenu.addItem(NSMenuItem.separatorItem())
 
-            let disconnectItem = NSMenuItem(title: "Disconnect", action:"disconnectPort:", keyEquivalent: "")
+            let disconnectItem = NSMenuItem(title: "Disconnect", action:#selector(MenuManager.disconnectPort(_:)), keyEquivalent: "")
             disconnectItem.target = self
             self?.mavlinkMenu.addItem(disconnectItem)
         }
