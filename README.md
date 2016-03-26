@@ -15,13 +15,23 @@ The demo app is useful as a learning tool in several other ways as it also demon
 
 ## Getting Started
 
-After cloning the repository initialize and update git submodules.
+Follow these steps after cloning the repository to get the Mac app running.
 
-    git submodule update --init --recursive
+Initialize and update git submodules.
 
-Using Xcode 7.2+ open the workspace `MavlinkPrimaryFlightDisplay.xcworkspace`, select the target `MavlinkPrimaryFlightDisplay` then build and run.
+    git submodule update --init
 
-Use the `Mavlink` menu in the running application to choose which serial port to connect to.
+Build the framework dependencies.
+
+    carthage bootstrap --platform Mac
+
+If you don't have the [Carthage](https://github.com/Carthage/Carthage) dependency manager it can be installed with [Homebrew](http://brew.sh).
+
+    brew install carthage
+
+Build and run the demo using Xcode 7.3+
+
+Use the `Mavlink` menu in the running Mac application to choose which serial port to connect to.
 
 ## Notes when using application with Pixhawk
 

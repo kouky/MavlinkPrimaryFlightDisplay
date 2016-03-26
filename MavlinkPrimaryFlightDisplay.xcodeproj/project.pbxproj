@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271AFBFB1BFDF72100842B1D /* AppDelegate.swift */; };
-		271AFC041BFDF73700842B1D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC031BFDF73700842B1D /* Assets.xcassets */; };
-		271AFC071BFDF74700842B1D /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 271AFC051BFDF74700842B1D /* MainMenu.xib */; };
-		276D23F61C8BE50200C178F6 /* ORSSerial.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276D23F51C8BE50200C178F6 /* ORSSerial.framework */; };
-		276D23F81C8BE50C00C178F6 /* PrimaryFlightDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276D23F71C8BE50C00C178F6 /* PrimaryFlightDisplay.framework */; };
-		276D23FA1C8BE51200C178F6 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276D23F91C8BE51200C178F6 /* ReactiveCocoa.framework */; };
-		276D23FC1C8BE51900C178F6 /* ReactiveMavlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276D23FB1C8BE51900C178F6 /* ReactiveMavlink.framework */; };
-		276D23FE1C8BE51E00C178F6 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 276D23FD1C8BE51E00C178F6 /* Result.framework */; };
-		278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278745321C016C2B0038FDBF /* MavlinkController.swift */; };
-		27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27FA2EF71C0724A600C4E349 /* MenuManager.swift */; };
+		27243AB81CA646AC000BA22B /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAE1CA64647000BA22B /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		27243AB91CA646AC000BA22B /* PrimaryFlightDisplay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAF1CA64647000BA22B /* PrimaryFlightDisplay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		27243ABA1CA646AC000BA22B /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB01CA64647000BA22B /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		27243ABB1CA646AC000BA22B /* ReactiveMavlink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB11CA64647000BA22B /* ReactiveMavlink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		27243ABC1CA646AC000BA22B /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB21CA64647000BA22B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		27406A531CA6481800012FF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27406A4F1CA6481800012FF4 /* AppDelegate.swift */; };
+		27406A551CA6481800012FF4 /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27406A511CA6481800012FF4 /* MavlinkController.swift */; };
+		27406A561CA6481800012FF4 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27406A521CA6481800012FF4 /* MenuManager.swift */; };
+		27406A5A1CA6488200012FF4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27406A581CA6488200012FF4 /* MainMenu.xib */; };
+		27406A5C1CA6488A00012FF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27406A5B1CA6488A00012FF4 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +26,11 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				27243AB81CA646AC000BA22B /* ORSSerial.framework in Embed Frameworks */,
+				27243AB91CA646AC000BA22B /* PrimaryFlightDisplay.framework in Embed Frameworks */,
+				27243ABA1CA646AC000BA22B /* ReactiveCocoa.framework in Embed Frameworks */,
+				27243ABB1CA646AC000BA22B /* ReactiveMavlink.framework in Embed Frameworks */,
+				27243ABC1CA646AC000BA22B /* Result.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,20 +39,20 @@
 
 /* Begin PBXFileReference section */
 		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MavlinkPrimaryFlightDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		271AFBFB1BFDF72100842B1D /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Sources/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		271AFC031BFDF73700842B1D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = Resources/Assets.xcassets; sourceTree = "<group>"; };
-		271AFC061BFDF74700842B1D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Resources/Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Mac-Application.xcconfig"; path = "Config/Mac OS X/Mac-Application.xcconfig"; sourceTree = "<group>"; };
 		271AFC0B1BFDF84000842B1D /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Config/Base/Configurations/Debug.xcconfig; sourceTree = "<group>"; };
 		271AFC0C1BFDF84000842B1D /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Config/Base/Configurations/Release.xcconfig; sourceTree = "<group>"; };
-		276D23F51C8BE50200C178F6 /* ORSSerial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ORSSerial.framework; path = "Carthage/Checkouts/ORSSerialPort/Framework Project/build/Debug/ORSSerial.framework"; sourceTree = "<group>"; };
-		276D23F71C8BE50C00C178F6 /* PrimaryFlightDisplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrimaryFlightDisplay.framework; path = Carthage/Checkouts/PrimaryFlightDisplay/build/Debug/PrimaryFlightDisplay.framework; sourceTree = "<group>"; };
-		276D23F91C8BE51200C178F6 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Checkouts/ReactiveCocoa/build/Debug/ReactiveCocoa.framework; sourceTree = "<group>"; };
-		276D23FB1C8BE51900C178F6 /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Checkouts/ReactiveMavlink/build/Debug/ReactiveMavlink.framework; sourceTree = "<group>"; };
-		276D23FD1C8BE51E00C178F6 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Checkouts/Result/build/Debug/Result.framework; sourceTree = "<group>"; };
-		278745261C009FFB0038FDBF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Resources/Info.plist; sourceTree = "<group>"; };
-		278745321C016C2B0038FDBF /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MavlinkController.swift; path = Sources/MavlinkController.swift; sourceTree = SOURCE_ROOT; };
-		27FA2EF71C0724A600C4E349 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuManager.swift; path = Sources/MenuManager.swift; sourceTree = SOURCE_ROOT; };
+		27243AAE1CA64647000BA22B /* ORSSerial.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ORSSerial.framework; path = Carthage/Build/Mac/ORSSerial.framework; sourceTree = SOURCE_ROOT; };
+		27243AAF1CA64647000BA22B /* PrimaryFlightDisplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrimaryFlightDisplay.framework; path = Carthage/Build/Mac/PrimaryFlightDisplay.framework; sourceTree = SOURCE_ROOT; };
+		27243AB01CA64647000BA22B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = SOURCE_ROOT; };
+		27243AB11CA64647000BA22B /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/Mac/ReactiveMavlink.framework; sourceTree = SOURCE_ROOT; };
+		27243AB21CA64647000BA22B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = SOURCE_ROOT; };
+		27406A4F1CA6481800012FF4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		27406A501CA6481800012FF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27406A511CA6481800012FF4 /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MavlinkController.swift; sourceTree = "<group>"; };
+		27406A521CA6481800012FF4 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
+		27406A591CA6488200012FF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		27406A5B1CA6488A00012FF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +60,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				276D23FE1C8BE51E00C178F6 /* Result.framework in Frameworks */,
-				276D23FC1C8BE51900C178F6 /* ReactiveMavlink.framework in Frameworks */,
-				276D23FA1C8BE51200C178F6 /* ReactiveCocoa.framework in Frameworks */,
-				276D23F81C8BE50C00C178F6 /* PrimaryFlightDisplay.framework in Frameworks */,
-				276D23F61C8BE50200C178F6 /* ORSSerial.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,7 +70,7 @@
 			isa = PBXGroup;
 			children = (
 				270E51FD1BFDF640009A050A /* Sources */,
-				271AFBFA1BFDF70D00842B1D /* Resources */,
+				2796F1921CA64B40003A7A48 /* Frameworks */,
 				271AFC081BFDF80400842B1D /* Config */,
 				270E51FC1BFDF640009A050A /* Products */,
 			);
@@ -87,23 +87,9 @@
 		270E51FD1BFDF640009A050A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				271AFBFB1BFDF72100842B1D /* AppDelegate.swift */,
-				27FA2EF71C0724A600C4E349 /* MenuManager.swift */,
-				278745321C016C2B0038FDBF /* MavlinkController.swift */,
+				27406A571CA6483200012FF4 /* Mac */,
 			);
-			name = Sources;
-			path = MavlinkPrimaryFlightDisplay;
-			sourceTree = "<group>";
-		};
-		271AFBFA1BFDF70D00842B1D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				278745261C009FFB0038FDBF /* Info.plist */,
-				271AFC051BFDF74700842B1D /* MainMenu.xib */,
-				271AFC031BFDF73700842B1D /* Assets.xcassets */,
-				27833DCA1C8BE65A0002078F /* Frameworks */,
-			);
-			name = Resources;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		271AFC081BFDF80400842B1D /* Config */ = {
@@ -116,14 +102,36 @@
 			name = Config;
 			sourceTree = "<group>";
 		};
-		27833DCA1C8BE65A0002078F /* Frameworks */ = {
+		27243AAD1CA644FA000BA22B /* Mac */ = {
 			isa = PBXGroup;
 			children = (
-				276D23FD1C8BE51E00C178F6 /* Result.framework */,
-				276D23FB1C8BE51900C178F6 /* ReactiveMavlink.framework */,
-				276D23F91C8BE51200C178F6 /* ReactiveCocoa.framework */,
-				276D23F71C8BE50C00C178F6 /* PrimaryFlightDisplay.framework */,
-				276D23F51C8BE50200C178F6 /* ORSSerial.framework */,
+				27243AAE1CA64647000BA22B /* ORSSerial.framework */,
+				27243AAF1CA64647000BA22B /* PrimaryFlightDisplay.framework */,
+				27243AB01CA64647000BA22B /* ReactiveCocoa.framework */,
+				27243AB11CA64647000BA22B /* ReactiveMavlink.framework */,
+				27243AB21CA64647000BA22B /* Result.framework */,
+			);
+			name = Mac;
+			path = MavlinkPrimaryFlightDisplay;
+			sourceTree = "<group>";
+		};
+		27406A571CA6483200012FF4 /* Mac */ = {
+			isa = PBXGroup;
+			children = (
+				27406A4F1CA6481800012FF4 /* AppDelegate.swift */,
+				27406A511CA6481800012FF4 /* MavlinkController.swift */,
+				27406A521CA6481800012FF4 /* MenuManager.swift */,
+				27406A501CA6481800012FF4 /* Info.plist */,
+				27406A5B1CA6488A00012FF4 /* Assets.xcassets */,
+				27406A581CA6488200012FF4 /* MainMenu.xib */,
+			);
+			path = Mac;
+			sourceTree = "<group>";
+		};
+		2796F1921CA64B40003A7A48 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				27243AAD1CA644FA000BA22B /* Mac */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -155,7 +163,7 @@
 		270E51F31BFDF640009A050A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Michael Koukoullis";
 				TargetAttributes = {
@@ -187,8 +195,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				271AFC041BFDF73700842B1D /* Assets.xcassets in Resources */,
-				271AFC071BFDF74700842B1D /* MainMenu.xib in Resources */,
+				27406A5C1CA6488A00012FF4 /* Assets.xcassets in Resources */,
+				27406A5A1CA6488200012FF4 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,19 +207,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27FA2EF81C0724A600C4E349 /* MenuManager.swift in Sources */,
-				278745331C016C2B0038FDBF /* MavlinkController.swift in Sources */,
-				271AFBFD1BFDF72100842B1D /* AppDelegate.swift in Sources */,
+				27406A561CA6481800012FF4 /* MenuManager.swift in Sources */,
+				27406A551CA6481800012FF4 /* MavlinkController.swift in Sources */,
+				27406A531CA6481800012FF4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		271AFC051BFDF74700842B1D /* MainMenu.xib */ = {
+		27406A581CA6488200012FF4 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				271AFC061BFDF74700842B1D /* Base */,
+				27406A591CA6488200012FF4 /* Base */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -308,8 +316,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kouky.MavlinkPrimaryFlightDisplay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -324,8 +335,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
-				INFOPLIST_FILE = "$(SRCROOT)/Resources/Info.plist";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kouky.MavlinkPrimaryFlightDisplay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
