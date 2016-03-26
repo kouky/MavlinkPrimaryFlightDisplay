@@ -7,6 +7,14 @@
 //
 
 import UIKit
+import PrimaryFlightDisplay
 
 class ViewController: UIViewController {
+    
+    override func viewDidLoad() {        
+        super.viewDidLoad()
+        let flightView = PrimaryFlightDisplayView(frame: view.frame)
+        flightView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
+        view.addSubview(flightView)
+    }
 }
