@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270DCCB21CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCAE1CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework */; };
+		270DCCB31CA6AB9800BE9F86 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */; };
+		270DCCB41CA6AB9800BE9F86 /* ReactiveMavlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */; };
+		270DCCB51CA6AB9800BE9F86 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCB11CA6AB9800BE9F86 /* Result.framework */; };
 		27243AB81CA646AC000BA22B /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAE1CA64647000BA22B /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243AB91CA646AC000BA22B /* PrimaryFlightDisplay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAF1CA64647000BA22B /* PrimaryFlightDisplay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243ABA1CA646AC000BA22B /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB01CA64647000BA22B /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -43,6 +47,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		270DCCAE1CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrimaryFlightDisplay.framework; path = Carthage/Build/iOS/PrimaryFlightDisplay.framework; sourceTree = "<group>"; };
+		270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/iOS/ReactiveMavlink.framework; sourceTree = "<group>"; };
+		270DCCB11CA6AB9800BE9F86 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MavlinkPrimaryFlightDisplay-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Mac-Application.xcconfig"; path = "Config/Mac OS X/Mac-Application.xcconfig"; sourceTree = "<group>"; };
 		271AFC0B1BFDF84000842B1D /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Config/Base/Configurations/Debug.xcconfig; sourceTree = "<group>"; };
@@ -79,12 +87,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				270DCCB21CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework in Frameworks */,
+				270DCCB31CA6AB9800BE9F86 /* ReactiveCocoa.framework in Frameworks */,
+				270DCCB41CA6AB9800BE9F86 /* ReactiveMavlink.framework in Frameworks */,
+				270DCCB51CA6AB9800BE9F86 /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270DCC991CA6600E00BE9F86 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				270DCCAE1CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework */,
+				270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */,
+				270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */,
+				270DCCB11CA6AB9800BE9F86 /* Result.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		270E51F21BFDF640009A050A = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +188,7 @@
 		2796F1921CA64B40003A7A48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				270DCC991CA6600E00BE9F86 /* iOS */,
 				27243AAD1CA644FA000BA22B /* Mac */,
 			);
 			name = Frameworks;
@@ -198,6 +222,7 @@
 				2727443B1CA64FAA0044FFC0 /* Sources */,
 				2727443C1CA64FAA0044FFC0 /* Frameworks */,
 				2727443D1CA64FAA0044FFC0 /* Resources */,
+				270DCCAD1CA6AAED00BE9F86 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -266,6 +291,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		270DCCAD1CA6AAED00BE9F86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveMavlink.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PrimaryFlightDisplay.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		270E51F71BFDF640009A050A /* Sources */ = {
@@ -409,6 +454,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -428,6 +474,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -443,6 +490,10 @@
 				CLANG_ANALYZER_NONNULL = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -459,6 +510,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/iOS/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
