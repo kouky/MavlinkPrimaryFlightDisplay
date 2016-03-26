@@ -51,6 +51,7 @@
 		270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/iOS/ReactiveMavlink.framework; sourceTree = "<group>"; };
 		270DCCB11CA6AB9800BE9F86 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "iOS-Application.xcconfig"; path = "Config/iOS/iOS-Application.xcconfig"; sourceTree = "<group>"; };
 		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MavlinkPrimaryFlightDisplay-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Mac-Application.xcconfig"; path = "Config/Mac OS X/Mac-Application.xcconfig"; sourceTree = "<group>"; };
 		271AFC0B1BFDF84000842B1D /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Config/Base/Configurations/Debug.xcconfig; sourceTree = "<group>"; };
@@ -141,6 +142,7 @@
 			children = (
 				271AFC0B1BFDF84000842B1D /* Debug.xcconfig */,
 				271AFC0C1BFDF84000842B1D /* Release.xcconfig */,
+				270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */,
 				271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */,
 			);
 			name = Config;
@@ -364,7 +366,7 @@
 /* Begin XCBuildConfiguration section */
 		270E520A1BFDF640009A050A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
+			baseConfigurationReference = 271AFC0B1BFDF84000842B1D /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -409,7 +411,7 @@
 		};
 		270E520B1BFDF640009A050A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
+			baseConfigurationReference = 271AFC0C1BFDF84000842B1D /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -446,7 +448,7 @@
 		};
 		270E520D1BFDF640009A050A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC0B1BFDF84000842B1D /* Debug.xcconfig */;
+			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -466,7 +468,7 @@
 		};
 		270E520E1BFDF640009A050A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC0C1BFDF84000842B1D /* Release.xcconfig */;
+			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -485,6 +487,7 @@
 		};
 		2727444E1CA64FAA0044FFC0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -506,6 +509,7 @@
 		};
 		2727444F1CA64FAA0044FFC0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ANALYZER_NONNULL = YES;
