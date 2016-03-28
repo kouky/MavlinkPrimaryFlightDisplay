@@ -11,6 +11,7 @@
 		270DCCB31CA6AB9800BE9F86 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */; };
 		270DCCB41CA6AB9800BE9F86 /* ReactiveMavlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */; };
 		270DCCB51CA6AB9800BE9F86 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCB11CA6AB9800BE9F86 /* Result.framework */; };
+		270DCCBA1CA6B98F00BE9F86 /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270DCCB81CA6B66500BE9F86 /* BLE.swift */; };
 		27243AB81CA646AC000BA22B /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAE1CA64647000BA22B /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243AB91CA646AC000BA22B /* PrimaryFlightDisplay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAF1CA64647000BA22B /* PrimaryFlightDisplay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243ABA1CA646AC000BA22B /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB01CA64647000BA22B /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -52,6 +53,7 @@
 		270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/iOS/ReactiveMavlink.framework; sourceTree = "<group>"; };
 		270DCCB11CA6AB9800BE9F86 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
 		270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "iOS-Application.xcconfig"; path = "Config/iOS/iOS-Application.xcconfig"; sourceTree = "<group>"; };
+		270DCCB81CA6B66500BE9F86 /* BLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
 		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MavlinkPrimaryFlightDisplay-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Mac-Application.xcconfig"; path = "Config/Mac OS X/Mac-Application.xcconfig"; sourceTree = "<group>"; };
 		271AFC0B1BFDF84000842B1D /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Config/Base/Configurations/Debug.xcconfig; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				272744481CA64FAA0044FFC0 /* Assets.xcassets */,
 				2727444A1CA64FAA0044FFC0 /* LaunchScreen.storyboard */,
 				2727444D1CA64FAA0044FFC0 /* Info.plist */,
+				270DCCB81CA6B66500BE9F86 /* BLE.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				272744441CA64FAA0044FFC0 /* ViewController.swift in Sources */,
+				270DCCBA1CA6B98F00BE9F86 /* BLE.swift in Sources */,
 				272744421CA64FAA0044FFC0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
