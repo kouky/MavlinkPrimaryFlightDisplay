@@ -33,6 +33,10 @@ class ViewController: UIViewController {
             flightView?.setAttitude(rollRadians: Double(attitude.roll), pitchRadians: Double(attitude.pitch))
         }
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 }
 
 extension ViewController: BLEDelegate {
