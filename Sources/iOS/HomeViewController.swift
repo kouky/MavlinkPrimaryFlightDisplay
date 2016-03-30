@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  MavlinkPrimaryFlightDisplay-iOS
 //
 //  Created by Michael Koukoullis on 26/03/2016.
@@ -11,7 +11,7 @@ import ReactiveMavlink
 import PrimaryFlightDisplay
 import CoreBluetooth
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     let ble = BLE()
     let reactiveMavlink = ReactiveMavlink()
@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: BLEDelegate {
+extension HomeViewController: BLEDelegate {
     
     func bleDidUpdateState(state: CBCentralManagerState) {
         switch state {
