@@ -13,15 +13,20 @@ import CoreBluetooth
 
 class HomeViewController: UIViewController {
     
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var scanButton: UIButton!
+    
     let ble = BLE()
     let reactiveMavlink = ReactiveMavlink()
     
     override func viewDidLoad() {        
         super.viewDidLoad()
-        let flightView = PrimaryFlightDisplayView(frame: view.frame)
+        let flightView = PrimaryFlightDisplayView(frame: containerView.frame)
         flightView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
-        view.addSubview(flightView)
+        containerView.addSubview(flightView)
         ble.delegate = self
+        
+        scanButton.layer.cornerRadius = 4
         
         reactiveMavlink.headUpDisplay.observeNext { [weak flightView] hud in
             flightView?.setHeadingDegree(Double(hud.heading))

@@ -16,8 +16,34 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mfU-9L-XOi">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQK-2X-5jf">
+                                <rect key="frame" x="272" y="562" width="55" height="28"/>
+                                <color key="backgroundColor" red="0.5" green="0.0" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
+                                <inset key="contentEdgeInsets" minX="10" minY="5" maxX="10" maxY="5"/>
+                                <state key="normal" title="Scan">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="mfU-9L-XOi" secondAttribute="trailing" id="GAN-Me-mr2"/>
+                            <constraint firstItem="MQK-2X-5jf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Mi2-um-JVL"/>
+                            <constraint firstAttribute="bottom" secondItem="MQK-2X-5jf" secondAttribute="bottom" constant="10" id="V2e-cl-qMY"/>
+                            <constraint firstItem="mfU-9L-XOi" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="VNG-ez-4wP"/>
+                            <constraint firstAttribute="bottom" secondItem="mfU-9L-XOi" secondAttribute="bottom" id="sKX-Aj-rCi"/>
+                            <constraint firstItem="mfU-9L-XOi" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="zQF-Vy-8N2"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="containerView" destination="mfU-9L-XOi" id="Och-Ej-xHI"/>
+                        <outlet property="scanButton" destination="MQK-2X-5jf" id="HPa-eE-GFF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
