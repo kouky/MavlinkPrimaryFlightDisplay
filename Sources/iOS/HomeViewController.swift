@@ -42,6 +42,16 @@ class HomeViewController: UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+        return [.Landscape]
+    }
+    
+    @IBAction func scanButtonTapped(sender: UIButton) {
+        let scanViewController = ScanViewController(nibName: "ScanViewController", bundle: nil)
+        let navViewConroller  = UINavigationController(rootViewController: scanViewController)
+        presentViewController(navViewConroller, animated: true, completion: nil)
+    }
 }
 
 extension HomeViewController: BLEDelegate {

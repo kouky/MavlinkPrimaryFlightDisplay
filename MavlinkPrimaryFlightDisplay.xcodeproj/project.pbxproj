@@ -27,6 +27,10 @@
 		27406A561CA6481800012FF4 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27406A521CA6481800012FF4 /* MenuManager.swift */; };
 		27406A5A1CA6488200012FF4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27406A581CA6488200012FF4 /* MainMenu.xib */; };
 		27406A5C1CA6488A00012FF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27406A5B1CA6488A00012FF4 /* Assets.xcassets */; };
+		275A6A791CAD50070079748D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275A6A781CAD50070079748D /* SnapKit.framework */; };
+		27B223BA1CAD383C00636683 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B223B81CAD383C00636683 /* ScanViewController.swift */; };
+		27B223BB1CAD383C00636683 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B223B91CAD383C00636683 /* ScanViewController.xib */; };
+		27B223BD1CAD435800636683 /* PeripheralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +80,10 @@
 		27406A521CA6481800012FF4 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		27406A591CA6488200012FF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		27406A5B1CA6488A00012FF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		275A6A781CAD50070079748D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		27B223B81CAD383C00636683 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		27B223B91CAD383C00636683 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
+		27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +99,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				270DCCB21CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework in Frameworks */,
+				275A6A791CAD50070079748D /* SnapKit.framework in Frameworks */,
 				270DCCB31CA6AB9800BE9F86 /* ReactiveCocoa.framework in Frameworks */,
 				270DCCB41CA6AB9800BE9F86 /* ReactiveMavlink.framework in Frameworks */,
 				270DCCB51CA6AB9800BE9F86 /* Result.framework in Frameworks */,
@@ -103,6 +112,7 @@
 		270DCC991CA6600E00BE9F86 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
+				275A6A781CAD50070079748D /* SnapKit.framework */,
 				270DCCAE1CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework */,
 				270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */,
 				270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */,
@@ -173,6 +183,9 @@
 				2727444A1CA64FAA0044FFC0 /* LaunchScreen.storyboard */,
 				2727444D1CA64FAA0044FFC0 /* Info.plist */,
 				270DCCB81CA6B66500BE9F86 /* BLE.swift */,
+				27B223B81CAD383C00636683 /* ScanViewController.swift */,
+				27B223B91CAD383C00636683 /* ScanViewController.xib */,
+				27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -289,6 +302,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B223BB1CAD383C00636683 /* ScanViewController.xib in Resources */,
 				2727444C1CA64FAA0044FFC0 /* LaunchScreen.storyboard in Resources */,
 				272744491CA64FAA0044FFC0 /* Assets.xcassets in Resources */,
 				272744471CA64FAA0044FFC0 /* Main.storyboard in Resources */,
@@ -308,6 +322,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveMavlink.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PrimaryFlightDisplay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
 			);
 			outputPaths = (
 			);
@@ -332,6 +347,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27B223BA1CAD383C00636683 /* ScanViewController.swift in Sources */,
+				27B223BD1CAD435800636683 /* PeripheralTableViewController.swift in Sources */,
 				272744441CA64FAA0044FFC0 /* HomeViewController.swift in Sources */,
 				270DCCBA1CA6B98F00BE9F86 /* BLE.swift in Sources */,
 				272744421CA64FAA0044FFC0 /* AppDelegate.swift in Sources */,
