@@ -7,16 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		270DCCB21CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCAE1CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework */; };
+		270DCCB31CA6AB9800BE9F86 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */; };
+		270DCCB41CA6AB9800BE9F86 /* ReactiveMavlink.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */; };
+		270DCCB51CA6AB9800BE9F86 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270DCCB11CA6AB9800BE9F86 /* Result.framework */; };
+		270DCCBA1CA6B98F00BE9F86 /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 270DCCB81CA6B66500BE9F86 /* BLE.swift */; };
 		27243AB81CA646AC000BA22B /* ORSSerial.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAE1CA64647000BA22B /* ORSSerial.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243AB91CA646AC000BA22B /* PrimaryFlightDisplay.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AAF1CA64647000BA22B /* PrimaryFlightDisplay.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243ABA1CA646AC000BA22B /* ReactiveCocoa.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB01CA64647000BA22B /* ReactiveCocoa.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243ABB1CA646AC000BA22B /* ReactiveMavlink.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB11CA64647000BA22B /* ReactiveMavlink.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		27243ABC1CA646AC000BA22B /* Result.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 27243AB21CA64647000BA22B /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		272744421CA64FAA0044FFC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272744411CA64FAA0044FFC0 /* AppDelegate.swift */; };
+		272744441CA64FAA0044FFC0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 272744431CA64FAA0044FFC0 /* HomeViewController.swift */; };
+		272744471CA64FAA0044FFC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 272744451CA64FAA0044FFC0 /* Main.storyboard */; };
+		272744491CA64FAA0044FFC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 272744481CA64FAA0044FFC0 /* Assets.xcassets */; };
+		2727444C1CA64FAA0044FFC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2727444A1CA64FAA0044FFC0 /* LaunchScreen.storyboard */; };
 		27406A531CA6481800012FF4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27406A4F1CA6481800012FF4 /* AppDelegate.swift */; };
 		27406A551CA6481800012FF4 /* MavlinkController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27406A511CA6481800012FF4 /* MavlinkController.swift */; };
 		27406A561CA6481800012FF4 /* MenuManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27406A521CA6481800012FF4 /* MenuManager.swift */; };
 		27406A5A1CA6488200012FF4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27406A581CA6488200012FF4 /* MainMenu.xib */; };
 		27406A5C1CA6488A00012FF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27406A5B1CA6488A00012FF4 /* Assets.xcassets */; };
+		275A6A791CAD50070079748D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275A6A781CAD50070079748D /* SnapKit.framework */; };
+		27631A731CAF6301008268B3 /* PeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27631A721CAF6301008268B3 /* PeripheralTableViewCell.swift */; };
+		27B223BA1CAD383C00636683 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B223B81CAD383C00636683 /* ScanViewController.swift */; };
+		27B223BB1CAD383C00636683 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B223B91CAD383C00636683 /* ScanViewController.xib */; };
+		27B223BD1CAD435800636683 /* PeripheralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +53,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MavlinkPrimaryFlightDisplay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		270DCCAE1CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PrimaryFlightDisplay.framework; path = Carthage/Build/iOS/PrimaryFlightDisplay.framework; sourceTree = "<group>"; };
+		270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/iOS/ReactiveMavlink.framework; sourceTree = "<group>"; };
+		270DCCB11CA6AB9800BE9F86 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/iOS/Result.framework; sourceTree = "<group>"; };
+		270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "iOS-Application.xcconfig"; path = "Config/iOS/iOS-Application.xcconfig"; sourceTree = "<group>"; };
+		270DCCB81CA6B66500BE9F86 /* BLE.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
+		270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MavlinkPrimaryFlightDisplay-Mac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Mac-Application.xcconfig"; path = "Config/Mac OS X/Mac-Application.xcconfig"; sourceTree = "<group>"; };
 		271AFC0B1BFDF84000842B1D /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Config/Base/Configurations/Debug.xcconfig; sourceTree = "<group>"; };
 		271AFC0C1BFDF84000842B1D /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Config/Base/Configurations/Release.xcconfig; sourceTree = "<group>"; };
@@ -47,12 +68,24 @@
 		27243AB01CA64647000BA22B /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/Mac/ReactiveCocoa.framework; sourceTree = SOURCE_ROOT; };
 		27243AB11CA64647000BA22B /* ReactiveMavlink.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveMavlink.framework; path = Carthage/Build/Mac/ReactiveMavlink.framework; sourceTree = SOURCE_ROOT; };
 		27243AB21CA64647000BA22B /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = SOURCE_ROOT; };
+		2727443F1CA64FAA0044FFC0 /* MavlinkPrimaryFlightDisplay-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MavlinkPrimaryFlightDisplay-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		272744411CA64FAA0044FFC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		272744431CA64FAA0044FFC0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		272744461CA64FAA0044FFC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		272744481CA64FAA0044FFC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2727444B1CA64FAA0044FFC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		2727444D1CA64FAA0044FFC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27406A4F1CA6481800012FF4 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27406A501CA6481800012FF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27406A511CA6481800012FF4 /* MavlinkController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MavlinkController.swift; sourceTree = "<group>"; };
 		27406A521CA6481800012FF4 /* MenuManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuManager.swift; sourceTree = "<group>"; };
 		27406A591CA6488200012FF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		27406A5B1CA6488A00012FF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		275A6A781CAD50070079748D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		27631A721CAF6301008268B3 /* PeripheralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewCell.swift; sourceTree = "<group>"; };
+		27B223B81CAD383C00636683 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
+		27B223B91CAD383C00636683 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
+		27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,9 +96,33 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2727443C1CA64FAA0044FFC0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				270DCCB21CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework in Frameworks */,
+				275A6A791CAD50070079748D /* SnapKit.framework in Frameworks */,
+				270DCCB31CA6AB9800BE9F86 /* ReactiveCocoa.framework in Frameworks */,
+				270DCCB41CA6AB9800BE9F86 /* ReactiveMavlink.framework in Frameworks */,
+				270DCCB51CA6AB9800BE9F86 /* Result.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		270DCC991CA6600E00BE9F86 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				275A6A781CAD50070079748D /* SnapKit.framework */,
+				270DCCAE1CA6AB9800BE9F86 /* PrimaryFlightDisplay.framework */,
+				270DCCAF1CA6AB9800BE9F86 /* ReactiveCocoa.framework */,
+				270DCCB01CA6AB9800BE9F86 /* ReactiveMavlink.framework */,
+				270DCCB11CA6AB9800BE9F86 /* Result.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 		270E51F21BFDF640009A050A = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +136,8 @@
 		270E51FC1BFDF640009A050A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay.app */,
+				270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac.app */,
+				2727443F1CA64FAA0044FFC0 /* MavlinkPrimaryFlightDisplay-iOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -87,6 +145,7 @@
 		270E51FD1BFDF640009A050A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				272744401CA64FAA0044FFC0 /* iOS */,
 				27406A571CA6483200012FF4 /* Mac */,
 			);
 			path = Sources;
@@ -97,6 +156,7 @@
 			children = (
 				271AFC0B1BFDF84000842B1D /* Debug.xcconfig */,
 				271AFC0C1BFDF84000842B1D /* Release.xcconfig */,
+				270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */,
 				271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */,
 			);
 			name = Config;
@@ -115,6 +175,24 @@
 			path = MavlinkPrimaryFlightDisplay;
 			sourceTree = "<group>";
 		};
+		272744401CA64FAA0044FFC0 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				272744411CA64FAA0044FFC0 /* AppDelegate.swift */,
+				272744431CA64FAA0044FFC0 /* HomeViewController.swift */,
+				272744451CA64FAA0044FFC0 /* Main.storyboard */,
+				272744481CA64FAA0044FFC0 /* Assets.xcassets */,
+				2727444A1CA64FAA0044FFC0 /* LaunchScreen.storyboard */,
+				2727444D1CA64FAA0044FFC0 /* Info.plist */,
+				270DCCB81CA6B66500BE9F86 /* BLE.swift */,
+				27B223B81CAD383C00636683 /* ScanViewController.swift */,
+				27B223B91CAD383C00636683 /* ScanViewController.xib */,
+				27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */,
+				27631A721CAF6301008268B3 /* PeripheralTableViewCell.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
 		27406A571CA6483200012FF4 /* Mac */ = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +209,7 @@
 		2796F1921CA64B40003A7A48 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				270DCC991CA6600E00BE9F86 /* iOS */,
 				27243AAD1CA644FA000BA22B /* Mac */,
 			);
 			name = Frameworks;
@@ -139,9 +218,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		270E51FA1BFDF640009A050A /* MavlinkPrimaryFlightDisplay */ = {
+		270E51FA1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 270E520C1BFDF640009A050A /* Build configuration list for PBXNativeTarget "MavlinkPrimaryFlightDisplay" */;
+			buildConfigurationList = 270E520C1BFDF640009A050A /* Build configuration list for PBXNativeTarget "MavlinkPrimaryFlightDisplay-Mac" */;
 			buildPhases = (
 				270E51F71BFDF640009A050A /* Sources */,
 				270E51F81BFDF640009A050A /* Frameworks */,
@@ -152,9 +231,27 @@
 			);
 			dependencies = (
 			);
-			name = MavlinkPrimaryFlightDisplay;
+			name = "MavlinkPrimaryFlightDisplay-Mac";
 			productName = MavlinkPrimaryFlightDisplay;
-			productReference = 270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay.app */;
+			productReference = 270E51FB1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac.app */;
+			productType = "com.apple.product-type.application";
+		};
+		2727443E1CA64FAA0044FFC0 /* MavlinkPrimaryFlightDisplay-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 272744501CA64FAA0044FFC0 /* Build configuration list for PBXNativeTarget "MavlinkPrimaryFlightDisplay-iOS" */;
+			buildPhases = (
+				2727443B1CA64FAA0044FFC0 /* Sources */,
+				2727443C1CA64FAA0044FFC0 /* Frameworks */,
+				2727443D1CA64FAA0044FFC0 /* Resources */,
+				270DCCAD1CA6AAED00BE9F86 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MavlinkPrimaryFlightDisplay-iOS";
+			productName = "MavlinkPrimaryFlightDisplay-iOS";
+			productReference = 2727443F1CA64FAA0044FFC0 /* MavlinkPrimaryFlightDisplay-iOS.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -169,6 +266,9 @@
 				TargetAttributes = {
 					270E51FA1BFDF640009A050A = {
 						CreatedOnToolsVersion = 7.1.1;
+					};
+					2727443E1CA64FAA0044FFC0 = {
+						CreatedOnToolsVersion = 7.3;
 					};
 				};
 			};
@@ -185,7 +285,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				270E51FA1BFDF640009A050A /* MavlinkPrimaryFlightDisplay */,
+				270E51FA1BFDF640009A050A /* MavlinkPrimaryFlightDisplay-Mac */,
+				2727443E1CA64FAA0044FFC0 /* MavlinkPrimaryFlightDisplay-iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -200,7 +301,39 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2727443D1CA64FAA0044FFC0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B223BB1CAD383C00636683 /* ScanViewController.xib in Resources */,
+				2727444C1CA64FAA0044FFC0 /* LaunchScreen.storyboard in Resources */,
+				272744491CA64FAA0044FFC0 /* Assets.xcassets in Resources */,
+				272744471CA64FAA0044FFC0 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		270DCCAD1CA6AAED00BE9F86 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveMavlink.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PrimaryFlightDisplay.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		270E51F71BFDF640009A050A /* Sources */ = {
@@ -213,9 +346,38 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2727443B1CA64FAA0044FFC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27B223BA1CAD383C00636683 /* ScanViewController.swift in Sources */,
+				27B223BD1CAD435800636683 /* PeripheralTableViewController.swift in Sources */,
+				272744441CA64FAA0044FFC0 /* HomeViewController.swift in Sources */,
+				270DCCBA1CA6B98F00BE9F86 /* BLE.swift in Sources */,
+				272744421CA64FAA0044FFC0 /* AppDelegate.swift in Sources */,
+				27631A731CAF6301008268B3 /* PeripheralTableViewCell.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		272744451CA64FAA0044FFC0 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				272744461CA64FAA0044FFC0 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		2727444A1CA64FAA0044FFC0 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2727444B1CA64FAA0044FFC0 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		27406A581CA6488200012FF4 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -229,7 +391,7 @@
 /* Begin XCBuildConfiguration section */
 		270E520A1BFDF640009A050A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
+			baseConfigurationReference = 271AFC0B1BFDF84000842B1D /* Debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -274,7 +436,7 @@
 		};
 		270E520B1BFDF640009A050A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
+			baseConfigurationReference = 271AFC0C1BFDF84000842B1D /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -311,7 +473,7 @@
 		};
 		270E520D1BFDF640009A050A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC0B1BFDF84000842B1D /* Debug.xcconfig */;
+			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -319,6 +481,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -330,7 +493,7 @@
 		};
 		270E520E1BFDF640009A050A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 271AFC0C1BFDF84000842B1D /* Release.xcconfig */;
+			baseConfigurationReference = 271AFC091BFDF82000842B1D /* Mac-Application.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -338,11 +501,56 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Sources/Mac/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.kouky.MavlinkPrimaryFlightDisplay;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		2727444E1CA64FAA0044FFC0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kouky.MavlinkPrimaryFlightDisplay-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2727444F1CA64FAA0044FFC0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 270DCCB61CA6AEAD00BE9F86 /* iOS-Application.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Sources/iOS/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.kouky.MavlinkPrimaryFlightDisplay-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
@@ -358,11 +566,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		270E520C1BFDF640009A050A /* Build configuration list for PBXNativeTarget "MavlinkPrimaryFlightDisplay" */ = {
+		270E520C1BFDF640009A050A /* Build configuration list for PBXNativeTarget "MavlinkPrimaryFlightDisplay-Mac" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				270E520D1BFDF640009A050A /* Debug */,
 				270E520E1BFDF640009A050A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		272744501CA64FAA0044FFC0 /* Build configuration list for PBXNativeTarget "MavlinkPrimaryFlightDisplay-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				2727444E1CA64FAA0044FFC0 /* Debug */,
+				2727444F1CA64FAA0044FFC0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

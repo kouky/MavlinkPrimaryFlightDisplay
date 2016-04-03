@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController" customModule="MavlinkPrimaryFlightDisplay_iOS" customModuleProvider="target">
+            <connections>
+                <outlet property="closeButton" destination="dDn-q7-hed" id="i8X-lW-9y4"/>
+                <outlet property="contentView" destination="731-SW-adm" id="kXf-Bx-TdN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="731-SW-adm">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDS-9m-Ic8" userLabel="ButtonView">
+                    <rect key="frame" x="0.0" y="540" width="600" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dDn-q7-hed" userLabel="CloseButton">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
+                            <state key="normal" title="Close">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="closeButtonAction:" destination="-1" eventType="touchUpInside" id="tHk-NW-BB7"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.30395236079999999" green="0.41544786119999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="dDn-q7-hed" secondAttribute="trailing" id="1Bw-PI-e26"/>
+                        <constraint firstAttribute="bottom" secondItem="dDn-q7-hed" secondAttribute="bottom" id="6MO-7R-2GD"/>
+                        <constraint firstItem="dDn-q7-hed" firstAttribute="leading" secondItem="qDS-9m-Ic8" secondAttribute="leading" id="QcA-xu-8xG"/>
+                        <constraint firstItem="dDn-q7-hed" firstAttribute="top" secondItem="qDS-9m-Ic8" secondAttribute="top" id="QsL-HT-Zqr"/>
+                        <constraint firstAttribute="height" constant="60" id="URD-y3-gQO"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="qDS-9m-Ic8" secondAttribute="trailing" id="9vT-4M-N2c"/>
+                <constraint firstItem="731-SW-adm" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="D4U-w8-pUZ"/>
+                <constraint firstItem="731-SW-adm" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Sx9-Ht-tgR"/>
+                <constraint firstAttribute="trailing" secondItem="731-SW-adm" secondAttribute="trailing" id="V6e-nf-yfx"/>
+                <constraint firstItem="qDS-9m-Ic8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="dcF-c3-oGt"/>
+                <constraint firstAttribute="bottom" secondItem="qDS-9m-Ic8" secondAttribute="bottom" id="jLp-Pb-Qxs"/>
+                <constraint firstItem="qDS-9m-Ic8" firstAttribute="top" secondItem="731-SW-adm" secondAttribute="bottom" id="t0b-Xk-Oqw"/>
+                <constraint firstItem="qDS-9m-Ic8" firstAttribute="top" secondItem="731-SW-adm" secondAttribute="bottom" id="xwo-f2-cL6"/>
+            </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="xwo-f2-cL6"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>
