@@ -13,6 +13,7 @@ The demo app is useful as a learning tool in several other ways as it also demon
 - customize the display style of the primary flight display
 
 ![Screenshot](http://kouky.org/assets/primary-flight-display/alternative-screenshot.png)
+![Screenshot](http://kouky.org/assets/primary-flight-display/alternative-screenshot-iphone.png)
 
 ## Getting Started
 
