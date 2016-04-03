@@ -82,6 +82,11 @@ class HomeViewController: UIViewController {
         let navViewConroller  = UINavigationController(rootViewController: scanViewController)
         presentViewController(navViewConroller, animated: true, completion: nil)
     }
+    
+    deinit {
+        ble.delegate = nil
+        ble.disconnectActivePeripheral()
+    }
 }
 
 extension HomeViewController: BLEDelegate {

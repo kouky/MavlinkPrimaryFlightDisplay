@@ -123,6 +123,12 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         return true
     }
     
+    func disconnectActivePeripheral() {
+        if let peripheral = activePeripheral {
+            disconnectFromPeripheral(peripheral)
+        }
+    }
+    
     func read() {
         
         guard let char = self.characteristics[RBL_CHAR_TX_UUID] else { return }
