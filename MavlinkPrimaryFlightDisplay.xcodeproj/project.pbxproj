@@ -28,6 +28,7 @@
 		27406A5A1CA6488200012FF4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27406A581CA6488200012FF4 /* MainMenu.xib */; };
 		27406A5C1CA6488A00012FF4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27406A5B1CA6488A00012FF4 /* Assets.xcassets */; };
 		275A6A791CAD50070079748D /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 275A6A781CAD50070079748D /* SnapKit.framework */; };
+		27631A731CAF6301008268B3 /* PeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27631A721CAF6301008268B3 /* PeripheralTableViewCell.swift */; };
 		27B223BA1CAD383C00636683 /* ScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B223B81CAD383C00636683 /* ScanViewController.swift */; };
 		27B223BB1CAD383C00636683 /* ScanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 27B223B91CAD383C00636683 /* ScanViewController.xib */; };
 		27B223BD1CAD435800636683 /* PeripheralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */; };
@@ -81,6 +82,7 @@
 		27406A591CA6488200012FF4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		27406A5B1CA6488A00012FF4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		275A6A781CAD50070079748D /* SnapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SnapKit.framework; path = Carthage/Build/iOS/SnapKit.framework; sourceTree = "<group>"; };
+		27631A721CAF6301008268B3 /* PeripheralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewCell.swift; sourceTree = "<group>"; };
 		27B223B81CAD383C00636683 /* ScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanViewController.swift; sourceTree = "<group>"; };
 		27B223B91CAD383C00636683 /* ScanViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScanViewController.xib; sourceTree = "<group>"; };
 		27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				27B223B81CAD383C00636683 /* ScanViewController.swift */,
 				27B223B91CAD383C00636683 /* ScanViewController.xib */,
 				27B223BC1CAD435800636683 /* PeripheralTableViewController.swift */,
+				27631A721CAF6301008268B3 /* PeripheralTableViewCell.swift */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				272744441CA64FAA0044FFC0 /* HomeViewController.swift in Sources */,
 				270DCCBA1CA6B98F00BE9F86 /* BLE.swift in Sources */,
 				272744421CA64FAA0044FFC0 /* AppDelegate.swift in Sources */,
+				27631A731CAF6301008268B3 /* PeripheralTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

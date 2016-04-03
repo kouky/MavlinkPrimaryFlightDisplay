@@ -8,16 +8,39 @@
 
 import UIKit
 import ReactiveMavlink
+import ReactiveCocoa
 import PrimaryFlightDisplay
 import CoreBluetooth
+
+typealias BLEScanner = () -> ()
+typealias BLEConnector = CBPeripheral -> ()
 
 class HomeViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var scanButton: UIButton!
     
-    let ble = BLE()
-    let reactiveMavlink = ReactiveMavlink()
+    private let ble = BLE()
+    private let reactiveMavlink = ReactiveMavlink()
+    private let peripherals = MutableProperty([CBPeripheral]())
+    
+    private var bleScanner: BLEScanner {
+        return { [weak self] in
+            guard let `self` = self else { return }
+            if case .PoweredOn = self.ble.state {
+                self.ble.startScanning(10)
+            }
+        }
+    }
+    
+    private var bleConnector: BLEConnector {
+        return { [weak self] peripheral in
+            guard let `self` = self else { return }
+            if case .PoweredOn = self.ble.state {
+                self.ble.connectToPeripheral(peripheral)
+            }
+        }
+    }
     
     override func viewDidLoad() {        
         super.viewDidLoad()
@@ -48,7 +71,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func scanButtonTapped(sender: UIButton) {
-        let scanViewController = ScanViewController(nibName: "ScanViewController", bundle: nil)
+        let scanViewController = ScanViewController(producer: peripherals.producer, scanner: bleScanner, connector: bleConnector)
         let navViewConroller  = UINavigationController(rootViewController: scanViewController)
         presentViewController(navViewConroller, animated: true, completion: nil)
     }
@@ -56,26 +79,12 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: BLEDelegate {
     
-    func bleDidUpdateState(state: CBCentralManagerState) {
-        switch state {
-        case .PoweredOff: break
-        case .PoweredOn:
-            ble.startScanning(200)
-            break
-        case .Resetting: break
-        case .Unauthorized: break
-        case .Unknown: break
-        case .Unsupported: break
-        }
-    }
-    
     func bleDidDiscoverPeripherals() {
-        if let peripheral = ble.peripherals.first {
-            ble.connectToPeripheral(peripheral)
-        }
+        self.peripherals.value = ble.peripherals
     }
     
     func bleDidConnectToPeripheral() {
+        // Noop
     }
     
     func bleDidReceiveData(data: NSData?) {
@@ -85,6 +94,7 @@ extension HomeViewController: BLEDelegate {
     }
     
     func bleDidDisconenctFromPeripheral() {
+        // Noop
     }
     
     func bleDidDicoverCharacateristics() {

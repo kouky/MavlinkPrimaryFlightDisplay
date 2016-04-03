@@ -14,7 +14,6 @@ import Foundation
 import CoreBluetooth
 
 protocol BLEDelegate {
-    func bleDidUpdateState(state: CBCentralManagerState)
     func bleDidDiscoverPeripherals()
     func bleDidConnectToPeripheral()
     func bleDidDisconenctFromPeripheral()
@@ -36,6 +35,7 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     private      var characteristics = [String : CBCharacteristic]()
     private      var data:             NSMutableData?
     private(set) var peripherals     = [CBPeripheral]()
+    private(set) var state           = CBCentralManagerState.Unknown
     private      var RSSICompletionHandler: ((NSNumber?, NSError?) -> ())?
     
     override init() {
@@ -165,7 +165,7 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
             break
         }
         
-        self.delegate?.bleDidUpdateState(central.state)
+        state = central.state
     }
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject],RSSI: NSNumber) {
