@@ -98,6 +98,6 @@ extension HomeViewController: BLEDelegate {
     }
     
     func bleDidDicoverCharacateristics() {
-        ble.setBaudRate()
+        ble.setBaudRate(.Bps57600)
     }
 }

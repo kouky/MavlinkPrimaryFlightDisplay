@@ -13,6 +13,29 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 import Foundation
 import CoreBluetooth
 
+enum BLEBaudRate {
+    case Bps9600
+    case Bps19200
+    case Bps38400
+    case Bps57600
+    case Bps115200
+    
+    var data: NSData {
+        switch self {
+        case .Bps9600:
+            return NSData(bytes: [0x00] as [UInt8],length: 1)
+        case .Bps19200:
+            return NSData(bytes: [0x01] as [UInt8],length: 1)
+        case .Bps38400:
+            return NSData(bytes: [0x02] as [UInt8],length: 1)
+        case .Bps57600:
+            return NSData(bytes: [0x03] as [UInt8],length: 1)
+        case .Bps115200:
+            return NSData(bytes: [0x04] as [UInt8],length: 1)
+        }
+    }
+}
+
 protocol BLEDelegate {
     func bleDidDiscoverPeripherals()
     func bleDidConnectToPeripheral()
@@ -127,13 +150,13 @@ class BLE: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
         self.activePeripheral?.readRSSI()
     }
     
-    func setBaudRate() {
-        guard let char = self.characteristics[RBL_CHAR_BAUD_UUID] else {
+    func setBaudRate(baudRate: BLEBaudRate) {
+        guard let characteristc = self.characteristics[RBL_CHAR_BAUD_UUID] else {
             print("[DEBUG] Cannot get BAUD characterictic")
             return
         }
-        let data = NSData(bytes: [0x03] as [UInt8],length: 1)
-        self.activePeripheral?.writeValue(data, forCharacteristic: char, type: .WithoutResponse)
+
+        self.activePeripheral?.writeValue(baudRate.data, forCharacteristic: characteristc, type: .WithoutResponse)
     }
     
     // MARK: CBCentralManager delegate
