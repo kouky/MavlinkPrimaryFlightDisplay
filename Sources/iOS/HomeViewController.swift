@@ -11,6 +11,7 @@ import ReactiveMavlink
 import ReactiveCocoa
 import PrimaryFlightDisplay
 import CoreBluetooth
+import SpriteKit
 
 typealias BLEScanner = () -> ()
 typealias BLEConnector = CBPeripheral -> ()
@@ -44,7 +45,13 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {        
         super.viewDidLoad()
-        let flightView = PrimaryFlightDisplayView(frame: containerView.frame)
+        
+        var settings = iPadSettings()
+        if case .Phone = UIDevice.currentDevice().userInterfaceIdiom {
+            settings = iPhoneSettings()
+        }
+        
+        let flightView = PrimaryFlightDisplayView(frame: containerView.frame, settings: settings)
         flightView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         containerView.addSubview(flightView)
         ble.delegate = self
@@ -100,4 +107,36 @@ extension HomeViewController: BLEDelegate {
     func bleDidDicoverCharacateristics() {
         ble.setBaudRate(.Bps57600)
     }
+}
+
+private func iPhoneSettings() -> SettingsType {
+    var settings = DefaultSmallScreenSettings()
+    let pinkColor = SKColor(red:1.00, green:0.11, blue:0.56, alpha:1.0)
+    settings.horizon.groundColor = SKColor.brownColor()
+    settings.attitudeReferenceIndex.fillColor = pinkColor
+    settings.bankIndicator.skyPointerFillColor = pinkColor
+    settings.bankIndicator.arcMaximumDisplayDegree = 75
+    return settings
+}
+
+private func iPadSettings() -> SettingsType {
+    var settings = DefaultSettings()
+    let pinkColor = SKColor(red:1.00, green:0.11, blue:0.56, alpha:1.0)
+    settings.horizon.groundColor = SKColor.brownColor()
+
+    settings.bankIndicator.skyPointerFillColor = pinkColor
+    settings.bankIndicator.arcMaximumDisplayDegree = 75
+    settings.bankIndicator.arcRadius = 160
+
+    settings.attitudeReferenceIndex.fillColor = pinkColor
+    settings.attitudeReferenceIndex.sideBarWidth = 80
+    settings.attitudeReferenceIndex.sideBarHeight = 15
+
+    settings.headingIndicator.pointsPerUnitValue = 10
+    settings.headingIndicator.size.width = 1060
+    settings.headingIndicator.size.height = 40
+    settings.headingIndicator.markerTextOffset = 15
+    settings.headingIndicator.minorMarkerFrequency = 1
+    settings.headingIndicator.majorMarkerFrequency = 10
+    return settings
 }
