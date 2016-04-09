@@ -39,7 +39,7 @@ Use the `Mavlink` menu in the running Mac application to choose which serial por
 
 ### iOS App
 
-Use the scan button to connect to the Readbear BLE mini.
+Use the scan button to connect to the Readbear BLE mini. Please read my article [MAVLink Radio Telemetry for iOS](http://kouky.org/blog/2016/04/09/mavlink-radio-telemetry-for-ios.html) to configure a ground-based radio station for use with iOS devices.
 
 ## Notes when using application with Pixhawk
 
